@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'sohne-extra-light';
+  src: url('../public/fonts/Sohne/TestSöhne-Extraleicht.otf');
+}
+@font-face {
+  font-family: 'sohne-light';
+  src: url('../public/fonts/Sohne/TestSöhne-Leicht.otf');
+}
+@font-face {
+  font-family: 'sohne-regular';
+  src: url('../public/fonts/Sohne/TestSöhne-Buch.otf');
+}
+@font-face {
+  font-family: 'sohne-semibold';
+  src: url('../public/fonts/Sohne/TestSöhne-Dreiviertelfett.otf');
+}
+@font-face {
+  font-family: 'sohne-bold';
+  src: url('../public/fonts/Sohne/TestSöhne-Fett.otf');
+}
+@font-face {
+  font-family: 'sohne-extra-bold';
+  src: url('../public/fonts/Sohne/TestSöhne-Extrafett.otf');
+}
+
+*{
+  font-family: sohne-regular;
+}
+
+@layer base {
+
+  :root {
+    --background: 118 100% 100%;
+    --foreground: 118 5% 10%;
+    --card: 118 50% 100%;
+    --card-foreground: 118 5% 15%;
+    --popover: 118 100% 100%;
+    --popover-foreground: 118 100% 10%;
+    --primary: 118 71.2% 31.4%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 118 30% 90%;
+    --secondary-foreground: 0 0% 0%;
+    --muted: 80 30% 95%;
+    --muted-foreground: 118 5% 40%;
+    --accent: 80 30% 90%;
+    --accent-foreground: 118 5% 15%;
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 118 5% 100%;
+    --border: 118 30% 82%;
+    --input: 118 30% 50%;
+    --ring: 118 71.2% 31.4%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 118 50% 10%;
+    --foreground: 118 5% 100%;
+    --card: 118 50% 10%;
+    --card-foreground: 118 5% 100%;
+    --popover: 118 50% 5%;
+    --popover-foreground: 118 5% 100%;
+    --primary: 118 71.2% 31.4%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 118 30% 20%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 80 30% 25%;
+    --muted-foreground: 118 5% 65%;
+    --accent: 80 30% 25%;
+    --accent-foreground: 118 5% 95%;
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 118 5% 100%;
+    --border: 118 30% 50%;
+    --input: 118 30% 50%;
+    --ring: 118 71.2% 31.4%;
+    --radius: 0.5rem;
+  }
+
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
