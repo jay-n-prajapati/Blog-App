@@ -4,27 +4,27 @@
 
 @font-face {
   font-family: 'sohne-extra-light';
-  src: url('../public/fonts/Sohne/TestSöhne-Extraleicht.otf');
+  src: url('/fonts/Sohne/TestSöhne-Extraleicht.otf');
 }
 @font-face {
   font-family: 'sohne-light';
-  src: url('../public/fonts/Sohne/TestSöhne-Leicht.otf');
+  src: url('/fonts/Sohne/TestSöhne-Leicht.otf');
 }
 @font-face {
   font-family: 'sohne-regular';
-  src: url('../public/fonts/Sohne/TestSöhne-Buch.otf');
+  src: url('/fonts/Sohne/TestSöhne-Buch.otf');
 }
 @font-face {
   font-family: 'sohne-semibold';
-  src: url('../public/fonts/Sohne/TestSöhne-Dreiviertelfett.otf');
+  src: url('/fonts/Sohne/TestSöhne-Dreiviertelfett.otf');
 }
 @font-face {
   font-family: 'sohne-bold';
-  src: url('../public/fonts/Sohne/TestSöhne-Fett.otf');
+  src: url('/fonts/Sohne/TestSöhne-Fett.otf');
 }
 @font-face {
   font-family: 'sohne-extra-bold';
-  src: url('../public/fonts/Sohne/TestSöhne-Extrafett.otf');
+  src: url('/fonts/Sohne/TestSöhne-Extrafett.otf');
 }
 
 *{
