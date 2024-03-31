@@ -72,7 +72,6 @@ module.exports = {
         "accordion-up": "accordion-up 0.2s ease-out",
       },
       fontFamily : {
-        // sohne : ['sohne-extra-light, sohne-light, sohne-regular, sohne-bold, sohne-extra-bold'],
         "sohne-extra-light" : ['sohne-extra-light'],
         "sohne-light" : ['sohne-light'],
         "sohne-regular" : ['sohne-regular'],
