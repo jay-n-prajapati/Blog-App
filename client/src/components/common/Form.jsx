@@ -1,16 +1,18 @@
 import {PropTypes} from 'prop-types'
 
-const Form = ({children , handleSubmit }) => {
+const Form = ({className, children , handleSubmit , handleReset }) => {
   return (
-    <form onSubmit={handleSubmit} className='p-4 flex flex-col gap-4'>
+    <form onSubmit={handleSubmit} onReset={handleReset} className={`p-4 flex flex-col gap-2 ${className}`}>
       {children}
     </form>
   )
 }
 
 Form.propTypes = {
+    className : PropTypes.string,
     children : PropTypes.node,
-    handleSubmit : PropTypes.func
+    handleSubmit : PropTypes.func,
+    handleReset : PropTypes.func
 }
 
 export default Form
