@@ -2,7 +2,7 @@ import { Navigate, Outlet } from 'react-router-dom';
 import {PropTypes} from 'prop-types'
 
 function PrivateRoutesSubAdmin({ isSubAdminAuth = false }) {
-  return isSubAdminAuth ? <Outlet /> : <Navigate to="/login" />;
+  return isSubAdminAuth ? <Outlet /> : <Navigate to="/auth" />;
 }
 
 PrivateRoutesSubAdmin.propTypes = {

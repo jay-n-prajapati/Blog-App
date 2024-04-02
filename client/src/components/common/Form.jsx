@@ -2,7 +2,7 @@ import {PropTypes} from 'prop-types'
 
 const Form = ({className, children , handleSubmit , handleReset }) => {
   return (
-    <form onSubmit={handleSubmit} onReset={handleReset} className={`p-4 flex flex-col gap-2 ${className}`}>
+    <form onSubmit={handleSubmit} onReset={handleReset} className={`p-4 flex flex-col gap-1 ${className}`}>
       {children}
     </form>
   )

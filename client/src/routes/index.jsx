@@ -1,63 +1,65 @@
-import { createBrowserRouter } from "react-router-dom";
-import Layout from "../components/layout/Layout.jsx";
-import ErrorPage from "../pages/ErrorPage/index.jsx";
-import PrivateRoutesUser from "./PrivateRoutes/PrivateRoutesUser/index.jsx";
-import PrivateRoutesAdmin from "./PrivateRoutes/PrivateRoutesAdmin/index.jsx";
-import PrivateRoutesSubAdmin from "./PrivateRoutes/PrivateRoutesSubAdmin/index.jsx";
-import Landing from "../pages/Home/index.jsx";
-import UserHome from "@/pages/Home/UserHome/index.jsx";
-import AdminHome from "@/pages/Home/AdminHome/index.jsx";
-import SubAdminHome from "@/pages/Home/SubAdminHome/index.jsx";
-import Auth from "@/pages/Authantication/index.jsx";
+import React from 'react';
+import { createBrowserRouter } from 'react-router-dom';
+import PrivateRoutesUser from './PrivateRoutes/PrivateRoutesUser/index.jsx';
+import PrivateRoutesAdmin from './PrivateRoutes/PrivateRoutesAdmin/index.jsx';
+import PrivateRoutesSubAdmin from './PrivateRoutes/PrivateRoutesSubAdmin/index.jsx';
+import { useSelector } from 'react-redux';
+
+const Landing = React.lazy(() => import('../pages/Home'));
+const UserHome = React.lazy(() => import('@/pages/Home/UserHome/index.jsx'));
+const AdminHome = React.lazy(() => import('@/pages/Home/AdminHome/index.jsx'));
+const SubAdminHome = React.lazy(() => import('@/pages/Home/SubAdminHome/index.jsx'));
+const Auth = React.lazy(() => import('@/pages/Authantication/index.jsx'));
+const Layout = React.lazy(() => import('../components/layout/Layout.jsx'));
+const ErrorPage = React.lazy(() => import('../pages/ErrorPage/index.jsx'));
 
 export const Router = () => {
+  const { user, subAdmin, admin } = useSelector((state) => state.auth);
   return createBrowserRouter([
     {
-      path : '/',
+      path: '/',
       element: <Layout />,
       children: [
         {
-          path : '',
-          element : <Landing/>
+          path: '',
+          element: <Landing />,
         },
         {
-          path : 'auth',
-          element : <Auth formType="signup" defaultOpen={true}/>
+          path: 'auth',
+          element: <Auth formType='signin' defaultOpen={true} />,
         },
         {
-          element : <PrivateRoutesUser/>,
-          children : [
+          element: <PrivateRoutesUser isUserAuth={user ? true : false} />,
+          children: [
             {
-              path : 'home',
-              element : <UserHome/>
-            }
-          ]
-        }
-        ,{
-          element : <PrivateRoutesAdmin/>,
-          children : [
+              path: 'home',
+              element: <UserHome />,
+            },
+          ],
+        },
+        {
+          element: <PrivateRoutesAdmin isAdminAuth={admin ? true : false} />,
+          children: [
             {
-              path : 'admin-users',
-              element : <AdminHome/>
-            }
-          ]
-        }
-        ,{
-          element : <PrivateRoutesSubAdmin/>,
-          children : [
+              path: 'admin-users',
+              element: <AdminHome />,
+            },
+          ],
+        },
+        {
+          element: <PrivateRoutesSubAdmin isSubAdminAuth={subAdmin ? true : false} />,
+          children: [
             {
-              path : 'subAdmin-blogs',
-              element : <SubAdminHome/>
-            }
-          ]
-        }
+              path: 'subAdmin-blogs',
+              element: <SubAdminHome />,
+            },
+          ],
+        },
       ],
     },
     {
-      path: "*",
+      path: '*',
       element: <ErrorPage />,
     },
   ]);
 };
-
-

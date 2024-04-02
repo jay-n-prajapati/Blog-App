@@ -1,6 +1,207 @@
 {
-    "blogs" : [],
-    "users" : [],
-    "subAdmins" : [],
-    "categories" : []
+  "blogs": [],
+  "users": [
+    {
+      "id": "1",
+      "name": "jay",
+      "email": "jay@gmail.com",
+      "password": "Jay@123",
+      "cpassword": "Jay@123",
+      "savedBlogs": [],
+      "publishedBlogs": [],
+      "subAdmin": false
+    },
+    {
+      "id": "2",
+      "name": "jay",
+      "email": "jay1@gmail.com",
+      "password": "Jay@123",
+      "cpassword": "Jay@123",
+      "savedBlogs": [],
+      "publishedBlogs": [],
+      "subAdmin": false
+    },
+    {
+      "id": "3",
+      "name": "jay",
+      "email": "jay2@gmail.com",
+      "password": "Jay@123",
+      "cpassword": "Jay@123",
+      "savedBlogs": [],
+      "publishedBlogs": [],
+      "subAdmin": false
+    },
+    {
+      "id": "4",
+      "name": "jay",
+      "email": "jay3@gmail.com",
+      "password": "Jay@123",
+      "cpassword": "Jay@123",
+      "savedBlogs": [],
+      "publishedBlogs": [],
+      "subAdmin": false
+    },
+    {
+      "id": "5",
+      "name": "jay",
+      "email": "jay4@gmail.com",
+      "password": "Jay@123",
+      "cpassword": "Jay@123",
+      "savedBlogs": [],
+      "publishedBlogs": [],
+      "subAdmin": false
+    },
+    {
+      "id": "6",
+      "name": "jay",
+      "email": "jay5@gmail.com",
+      "password": "Jay@123",
+      "cpassword": "Jay@123",
+      "savedBlogs": [],
+      "publishedBlogs": [],
+      "subAdmin": false
+    },
+    {
+      "id": "7",
+      "name": "dfdfff",
+      "email": "jay6@gmail.com",
+      "password": "Jay@123",
+      "cpassword": "Jay@123",
+      "savedBlogs": [],
+      "publishedBlogs": [],
+      "subAdmin": false
+    },
+    {
+      "id": "8",
+      "name": "jay",
+      "email": "jay7@gmail.com",
+      "password": "Jay@123",
+      "cpassword": "Jay@123",
+      "savedBlogs": [],
+      "publishedBlogs": [],
+      "subAdmin": false
+    },
+    {
+      "id": "9",
+      "name": "jay",
+      "email": "jay9@gmail.com",
+      "password": "Jay@123",
+      "cpassword": "Jay@123",
+      "savedBlogs": [],
+      "publishedBlogs": [],
+      "subAdmin": false
+    },
+    {
+      "id": "10",
+      "name": "jay",
+      "email": "jay11@gmail.com",
+      "password": "Jay@123",
+      "cpassword": "Jay@123",
+      "savedBlogs": [],
+      "publishedBlogs": [],
+      "subAdmin": false
+    },
+    {
+      "id": "11",
+      "name": "jay",
+      "email": "jay12@gmail.com",
+      "password": "Jay@123",
+      "cpassword": "Jay@123",
+      "savedBlogs": [],
+      "publishedBlogs": [],
+      "subAdmin": false
+    },
+    {
+      "id": "12",
+      "name": "jay",
+      "email": "jay13@gmail.com",
+      "password": "Jay@123",
+      "cpassword": "Jay@123",
+      "savedBlogs": [],
+      "publishedBlogs": [],
+      "subAdmin": false
+    },
+    {
+      "id": "13",
+      "name": "jay",
+      "email": "jay14@gmail.com",
+      "password": "Jay@123",
+      "cpassword": "Jay@123",
+      "savedBlogs": [],
+      "publishedBlogs": [],
+      "subAdmin": false
+    },
+    {
+      "id": "14",
+      "name": "jay",
+      "email": "jay15@gmail.com",
+      "password": "Jay@123",
+      "cpassword": "Jay@123",
+      "savedBlogs": [],
+      "publishedBlogs": [],
+      "subAdmin": false
+    },
+    {
+      "id": "15",
+      "name": "jay",
+      "email": "jay16@gmail.com",
+      "password": "Jay@123",
+      "cpassword": "Jay@123",
+      "savedBlogs": [],
+      "publishedBlogs": [],
+      "subAdmin": false
+    },
+    {
+      "id": "16",
+      "name": "jay",
+      "email": "jay17@gmail.com",
+      "password": "Jay@123",
+      "cpassword": "Jay@123",
+      "savedBlogs": [],
+      "publishedBlogs": [],
+      "subAdmin": false
+    },
+    {
+      "id": "17",
+      "name": "jay",
+      "email": "jay18@gmail.com",
+      "password": "Jay@123",
+      "cpassword": "Jay@123",
+      "savedBlogs": [],
+      "publishedBlogs": [],
+      "subAdmin": false
+    },
+    {
+      "id": "18",
+      "name": "jay",
+      "email": "jay19@gmail.com",
+      "password": "Jay@123",
+      "cpassword": "Jay@123",
+      "savedBlogs": [],
+      "publishedBlogs": [],
+      "subAdmin": false
+    },
+    {
+      "id": "19",
+      "name": "Dhruv",
+      "email": "dhruv@gmail.com",
+      "password": "Dhruv@123",
+      "cpassword": "Dhruv@123",
+      "savedBlogs": [],
+      "publishedBlogs": [],
+      "subAdmin": false
+    },
+    {
+      "id": "20",
+      "name": "John Doe",
+      "email": "john@gmail.com",
+      "password": "John@123",
+      "cpassword": "John@123",
+      "savedBlogs": [],
+      "publishedBlogs": [],
+      "subAdmin": false
+    }
+  ],
+  "subAdmins": [],
+  "categories": []
 }

@@ -17,6 +17,7 @@
     "@radix-ui/react-toast": "^1.1.5",
     "@radix-ui/react-tooltip": "^1.0.7",
     "@redux-devtools/extension": "^3.3.0",
+    "axios": "^1.6.8",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "firebase": "^10.10.0",
@@ -33,6 +34,7 @@
     "redux-persist": "^6.0.0",
     "tailwind-merge": "^2.2.2",
     "tailwindcss-animate": "^1.0.7",
+    "uuid": "^9.0.1",
     "yup": "^1.4.0"
   },
   "devDependencies": {

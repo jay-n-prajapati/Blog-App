@@ -6,25 +6,31 @@ import {
   DialogTitle,
   DialogTrigger
 } from '@/components/ui/dialog';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Signup from './Signup';
 import Signin from './Signin';
 import { useNavigate } from 'react-router-dom';
 import { DialogDescription } from '@radix-ui/react-dialog';
+import { useSelector } from 'react-redux';
 
 
 const Auth = ({ children , formType ='' , defaultOpen = false }) => {
   const [content, setContent] = useState(formType);
+  const {isAuth} = useSelector(state => state.auth)
   const navigate = useNavigate();
 
-  const handlechange =(open) =>{
+  const handleChange =(open) =>{
     if (!open) {
         navigate('/')
     }
   }
 
+  useEffect(() =>{
+    isAuth ? navigate(-1) : null
+  },[])
+
   return (
-    <Dialog defaultOpen={defaultOpen} onOpenChange={handlechange}>
+    <Dialog defaultOpen={defaultOpen} onOpenChange={handleChange}>
       <DialogTrigger asChild>{children}</DialogTrigger>
       <DialogContent>
         <DialogHeader>
