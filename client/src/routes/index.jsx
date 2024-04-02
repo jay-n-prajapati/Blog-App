@@ -12,6 +12,7 @@ const SubAdminHome = React.lazy(() => import('@/pages/Home/SubAdminHome/index.js
 const Auth = React.lazy(() => import('@/pages/Authantication/index.jsx'));
 const Layout = React.lazy(() => import('../components/layout/Layout.jsx'));
 const ErrorPage = React.lazy(() => import('../pages/ErrorPage/index.jsx'));
+const Write = React.lazy(() => import('@/pages/Write/index.jsx'));
 
 export const Router = () => {
   const { user, subAdmin, admin } = useSelector((state) => state.auth);
@@ -35,6 +36,10 @@ export const Router = () => {
               path: 'home',
               element: <UserHome />,
             },
+            {
+              path: 'write',
+              element: <Write />,
+            },
           ],
         },
         {
@@ -44,6 +49,10 @@ export const Router = () => {
               path: 'admin-users',
               element: <AdminHome />,
             },
+            {
+              path: 'write',
+              element: <Write />,
+            },
           ],
         },
         {
@@ -52,6 +61,10 @@ export const Router = () => {
             {
               path: 'subAdmin-blogs',
               element: <SubAdminHome />,
+            },
+            {
+              path: 'write',
+              element: <Write />,
             },
           ],
         },

@@ -200,6 +200,16 @@
       "savedBlogs": [],
       "publishedBlogs": [],
       "subAdmin": false
+    },
+    {
+      "id": "21",
+      "name": "john doe",
+      "email": "john1@gmail.com",
+      "password": "John@123",
+      "cpassword": "John@123",
+      "savedBlogs": [],
+      "publishedBlogs": [],
+      "subAdmin": false
     }
   ],
   "subAdmins": [],

@@ -1,10 +1,11 @@
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { NavLink, useNavigate } from 'react-router-dom';
 import Links from './Links';
-import { Menu, X } from 'lucide-react';
+// import { Menu, X } from 'lucide-react';
 import { useCallback, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { useSelector } from 'react-redux';
+import { links } from './LinkData';
 // import { publicLinks } from './LinkData';
 
 
@@ -24,7 +25,7 @@ const Navbar = () => {
 
   return (
     <nav className='sticky top-0 right-0 w-full z-50 bg-white transition-all duration-300 ease-in-out'>
-      <div className='py-1 px-6 flex items-center justify-between border-b border-secondary'>
+      <div className='py-1 px-4 md:px-6  flex items-center justify-between border-b border-secondary'>
         <div className='flex items-center justify-between w-full md:w-auto'>
           <div className='size-[3rem] overflow-hidden'>
             <NavLink to='/'>
@@ -36,7 +37,7 @@ const Navbar = () => {
           </div> */}
         </div>
         <div className={`block w-auto`}>
-          <Links linkToRender={[]}>
+          <Links linkToRender={links}>
             { !isAuth ? (
               <>
                 <Button onClick={() => navigate('/auth')} className='rounded-3xl text-[12px] md:text-sm border border-transparent bg-black font-sohne-light px-6 hover:text-black hover:bg-transparent hover:border hover:border-black'>
