@@ -1,8 +1,12 @@
-import { useState } from "react";
-import { Navigate, Outlet } from "react-router-dom";
+import { Navigate, Outlet } from 'react-router-dom';
+import {PropTypes} from 'prop-types'
 
-function PrivateRoutesAdmin({isAdminAuth}) {
-    return isAdminAuth ? <Outlet /> : <Navigate to="/login" />;
-  }
+function PrivateRoutesAdmin({ isAdminAuth = false }) {
+  return isAdminAuth ? <Outlet /> : <Navigate to="/auth" />;
+}
 
-export default PrivateRoutesAdmin
+PrivateRoutesAdmin.propTypes = {
+  isAdminAuth : PropTypes.bool
+}
+
+export default PrivateRoutesAdmin;
