@@ -4,13 +4,40 @@ import { Button } from '@/components/ui/button';
 import InputWithLabel from '@/components/common/InputWithLabel';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { getSubAdmin, getUsers } from '@/utils/axios-instance';
+import { toast } from 'react-toastify';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
+import { setAuth } from '@/redux/actions/authActions';
+import { setLoader } from '@/redux/actions/appActions';
+import { Loader2 } from 'lucide-react';
 
 const signinSchema = yup.object({
   email: yup.string().email().required('* email is required').trim(),
   password: yup.string().required('* required').trim(),
 });
+const options = [
+  { label: 'User', value: 'user' },
+  { label: 'Admin', value: 'admin' },
+  { label: 'Sub admin', value: 'subAdmin' },
+];
 
 const Signin = ({ setContent }) => {
+  const [users, setUsers] = useState([]);
+  const [subAdmins, setSubAdmins] = useState([]);
+  const [role, setRole] = useState('');
+  const { loader } = useSelector((state) => state.app);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const { values, errors, touched, handleChange, handleBlur, handleSubmit, handleReset } =
     useFormik({
       initialValues: {
@@ -20,16 +47,88 @@ const Signin = ({ setContent }) => {
       validationSchema: signinSchema,
       onSubmit: onSubmit,
     });
+
   function onSubmit() {
-    console.log('submitted');
+    if (role === 'user') {
+      dispatch(setLoader(true));
+      const user = users.find((user) => user.email === values.email);
+      if (!user) {
+        toast.warn('User Not exist , Please Signup');
+        handleReset();
+        dispatch(setLoader(false));
+        return;
+      } else if (user.password === values.password) {
+        dispatch(setAuth(role, user));
+        toast.success(`${role} logged in successfully`);
+        navigate('/home');
+      } else {
+        toast.error('Invalid Credentials , Try Again');
+      }
+      dispatch(setLoader(false));
+    }
+
+    if (role === 'subAdmin') {
+      dispatch(setLoader(true));
+      const subAdmin = subAdmins.find((subAdmin) => subAdmin.email === values.email);
+      if (!subAdmin) {
+        toast.warn('User Not exist');
+        handleReset();
+        dispatch(setLoader(false));
+        return;
+      } else if (subAdmin.password === values.password) {
+        dispatch(setAuth(role, subAdmin));
+        toast.success(`${role} logged in successfully`);
+        navigate('/subAdmin-home');
+      } else {
+        toast.error('Invalid Credentials , Try Again');
+      }
+      dispatch(setLoader(false));
+    }
+
+    if (role === 'admin') {
+      const admin = {
+        email: values.email,
+        savedBlogs: [],
+        publishedBlogs: [],
+      };
+ 
+      if (values.email === 'admin@gmail.com' && values.password === 'Admin@123') {
+        dispatch(setAuth(role, admin));
+        toast.success('Admin logged in successfully!');
+        navigate('/admin-home');
+      } else {
+        toast.error('Invalid credential !!');
+      }
+    }
   }
 
+  async function fetchUsers() {
+    const usersRes = await getUsers();
+    setUsers(usersRes.data);
+    const subAdminsRes = await getSubAdmin();
+    setSubAdmins(subAdminsRes.data);
+  }
+
+  useEffect(() => {
+    fetchUsers();
+  }, []);
   return (
     <>
-    
       <div>
         <Form className='p-0 gap-0' handleSubmit={handleSubmit} handleReset={handleReset}>
           <div>
+            <Select onValueChange={(value) => setRole(value)}>
+              <SelectTrigger className='w-full mb-2 text-primary-text text-[12px] md:text-sm'>
+                <SelectValue placeholder='Select Role' />
+              </SelectTrigger>
+              <SelectContent>
+                {options.map((option, idx) => (
+                  <SelectItem key={idx} value={option.value}>
+                    {option.label}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
             <InputWithLabel
               label='Email'
               labelFor='email'
@@ -62,7 +161,16 @@ const Signin = ({ setContent }) => {
             )}
           </div>
           <div className='flex gap-2 mt-1'>
-            <Button type='submit' className='text-[12px] md:text-sm'>SIGN IN</Button>
+            <Button type='submit' className='text-[12px] md:text-sm' disabled={loader}>
+              {!loader ? (
+                'SIGN IN'
+              ) : (
+                <>
+                  <Loader2 className='mr-2 h-4 w-4 animate-spin' />
+                  Please Wait
+                </>
+              )}
+            </Button>
           </div>
         </Form>
       </div>

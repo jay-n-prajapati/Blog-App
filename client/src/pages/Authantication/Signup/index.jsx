@@ -62,10 +62,10 @@ const Signup = ({ setContent }) => {
   async function onSubmit() {
     const newUser = {
       id: String(getId()),
-      ...values,
+      name : values.name,
+      email : values.email,
       savedBlogs: [],
       publishedBlogs: [],
-      subAdmin: false,
     };
     const idx = users.findIndex((user) => user.email === values.email);
     if (idx !== -1) {

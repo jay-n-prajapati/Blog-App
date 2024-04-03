@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 const Landing = () => {
   const { user, admin, subAdmin } = useSelector((state) => state.auth);
@@ -26,13 +26,15 @@ const Landing = () => {
             Discover stories, thinking, and expertise from writers on any topic.
           </p>
           <div>
+            <NavLink to='/auth'>
             <Button className='rounded-3xl text-[12px] md:text-sm border border-transparent bg-black font-sohne-regular px-6 hover:text-black hover:bg-transparent hover:border hover:border-black'>
-              Start Writing
+              Start Reading
             </Button>
+            </NavLink>
           </div>
         </div>
         <div className='h-full w-[45%]  hidden md:block'>
-          <img src='/images/blogify-landing-img.jpg' alt='landing-img' className='h-full w-full grayscale' />
+          <img src='/images/blogify-landing-img.jpg' alt='landing-img' className='h-full w-full brightness-50' />
         </div>
       </div>
     </div>

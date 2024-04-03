@@ -46,7 +46,7 @@ export const Router = () => {
           element: <PrivateRoutesAdmin isAdminAuth={admin ? true : false} />,
           children: [
             {
-              path: 'admin-users',
+              path: 'admin-home',
               element: <AdminHome />,
             },
             {
@@ -59,7 +59,7 @@ export const Router = () => {
           element: <PrivateRoutesSubAdmin isSubAdminAuth={subAdmin ? true : false} />,
           children: [
             {
-              path: 'subAdmin-blogs',
+              path: 'subAdmin-home',
               element: <SubAdminHome />,
             },
             {

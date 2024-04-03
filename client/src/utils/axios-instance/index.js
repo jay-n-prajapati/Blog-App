@@ -23,3 +23,6 @@ instance.interceptors.response.use(
 
 export const getUsers = async () => await instance.get('/users')
 export const addUser = async (payload) => await instance.post('/users',payload)
+
+export const getSubAdmin = async () => await instance.get('/subAdmins')
+export const addSubAdmin = async (payload) => await instance.post('/subAdmins',payload)
