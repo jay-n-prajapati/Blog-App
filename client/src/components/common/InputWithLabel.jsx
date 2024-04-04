@@ -21,7 +21,7 @@ const InputWithLabel = ({
     <>
       <div className={`flex gap-1 flex-col ${labelClass}`}>
         {label && (
-          <label htmlFor={labelFor} className='text-primary-text text-[12px] md:text-sm text-left'>
+          <label htmlFor={labelFor} className={`text-primary-text text-[12px] md:text-sm text-left ${labelClass}`}>
             {label}
           </label>
         )}
@@ -35,6 +35,7 @@ const InputWithLabel = ({
             placeholder={placeholder}
             onChange={onChange}
             onBlur ={onBlur}
+            required
           />
           {type === 'password' ? (
             showPass ? (

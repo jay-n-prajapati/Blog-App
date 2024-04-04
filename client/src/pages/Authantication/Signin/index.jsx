@@ -91,7 +91,7 @@ const Signin = ({ setContent }) => {
         savedBlogs: [],
         publishedBlogs: [],
       };
- 
+
       if (values.email === 'admin@gmail.com' && values.password === 'Admin@123') {
         dispatch(setAuth(role, admin));
         toast.success('Admin logged in successfully!');
@@ -103,9 +103,13 @@ const Signin = ({ setContent }) => {
   }
 
   async function fetchUsers() {
-    const usersRes = await getUsers();
+    const { success: userSuccess, data: usersRes, error: userError } = await getUsers();
     setUsers(usersRes.data);
-    const subAdminsRes = await getSubAdmin();
+    const {
+      success: subAdminSuccess,
+      data: subAdminsRes,
+      error: subAdminError,
+    } = await getSubAdmin();
     setSubAdmins(subAdminsRes.data);
   }
 

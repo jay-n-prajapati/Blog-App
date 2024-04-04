@@ -10,15 +10,21 @@ const instance = axios.create({
 });
 
 instance.interceptors.response.use(
-  (res) => {
-    return res;
+  (response) => {
+    return {
+      success: true,
+      data: response.data,
+      error: null
+    };
   },
   (error) => {
-    const errRes = error.response;
-    if (errRes) {
-      console.log(errRes);
-    }
-  },
+    console.error("Global error interceptor:", error);
+    return Promise.reject({
+      success: false,
+      data: [],
+      error: error.message
+    });
+  }
 );
 
 export const getUsers = async () => await instance.get('/users')
@@ -26,3 +32,8 @@ export const addUser = async (payload) => await instance.post('/users',payload)
 
 export const getSubAdmin = async () => await instance.get('/subAdmins')
 export const addSubAdmin = async (payload) => await instance.post('/subAdmins',payload)
+
+export const getCategories = async () => await instance.get('/categories')
+export const getSingleCategories = async (parentCategory) => await instance.get(`/categories?parentCategory=${parentCategory}`)
+
+export const postBlog = async (payload) => await instance.post('/blogs',payload)

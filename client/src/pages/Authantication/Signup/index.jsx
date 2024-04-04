@@ -64,6 +64,7 @@ const Signup = ({ setContent }) => {
       id: String(getId()),
       name : values.name,
       email : values.email,
+      password : values.password,
       savedBlogs: [],
       publishedBlogs: [],
     };
@@ -75,7 +76,6 @@ const Signup = ({ setContent }) => {
     try {
       dispatch(setLoader(true));
       const res = await addUser(newUser);
-      console.log(res);
       dispatch(setAuth('user', newUser));
       toast.success('Registered Successfully');
       navigate('/home');

@@ -61,7 +61,7 @@ const Navbar = () => {
               </>
             ) : (
               <div className='flex items-center gap-2'>
-                <Avatar>
+                <Avatar className='border-2'>
                   <AvatarFallback>{getName()}</AvatarFallback>
                 </Avatar>
                 <Button

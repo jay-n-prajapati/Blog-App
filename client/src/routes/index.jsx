@@ -12,7 +12,7 @@ const SubAdminHome = React.lazy(() => import('@/pages/Home/SubAdminHome/index.js
 const Auth = React.lazy(() => import('@/pages/Authantication/index.jsx'));
 const Layout = React.lazy(() => import('../components/layout/Layout.jsx'));
 const ErrorPage = React.lazy(() => import('../pages/ErrorPage/index.jsx'));
-const Write = React.lazy(() => import('@/pages/Write/index.jsx'));
+const Write = React.lazy(() => import('@/pages/Write'));
 
 export const Router = () => {
   const { user, subAdmin, admin } = useSelector((state) => state.auth);
