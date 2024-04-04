@@ -17,7 +17,7 @@ const App = () => {
             pauseOnFocusLoss={false}
             pauseOnHover
             transition={Bounce}
-            style={{ marginTop: "4rem" }}
+            className='mt-16 xsm:mt-12 w-[90%] xsm:w-auto min-w-[200px] xsm:min-w-[320px] left-auto text-sm xsm:text-sm md:text-base'
           />
           <RouterProvider router={router} />
         </Suspense>

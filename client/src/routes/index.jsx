@@ -4,6 +4,7 @@ import PrivateRoutesUser from './PrivateRoutes/PrivateRoutesUser/index.jsx';
 import PrivateRoutesAdmin from './PrivateRoutes/PrivateRoutesAdmin/index.jsx';
 import PrivateRoutesSubAdmin from './PrivateRoutes/PrivateRoutesSubAdmin/index.jsx';
 import { useSelector } from 'react-redux';
+import PrivateRouteEditor from './PrivateRoutes/PrivateRouteEditor/index.jsx';
 
 const Landing = React.lazy(() => import('../pages/Home'));
 const UserHome = React.lazy(() => import('@/pages/Home/UserHome/index.jsx'));
@@ -12,10 +13,10 @@ const SubAdminHome = React.lazy(() => import('@/pages/Home/SubAdminHome/index.js
 const Auth = React.lazy(() => import('@/pages/Authantication/index.jsx'));
 const Layout = React.lazy(() => import('../components/layout/Layout.jsx'));
 const ErrorPage = React.lazy(() => import('../pages/ErrorPage/index.jsx'));
-const Write = React.lazy(() => import('@/pages/Write/index.jsx'));
+const Write = React.lazy(() => import('@/pages/Write'));
 
 export const Router = () => {
-  const { user, subAdmin, admin } = useSelector((state) => state.auth);
+  const { isAuth , user, subAdmin, admin } = useSelector((state) => state.auth);
   return createBrowserRouter([
     {
       path: '/',
@@ -30,16 +31,25 @@ export const Router = () => {
           element: <Auth formType='signin' defaultOpen={true} />,
         },
         {
+          path: '/blog/:id',
+          element: <Auth formType='signin' defaultOpen={true} />,
+        },
+        {
+          element: <PrivateRouteEditor isAuth={isAuth} />,
+          children: [
+            {
+              path: 'write',
+              element: <Write />,
+            }
+          ],
+        },
+        {
           element: <PrivateRoutesUser isUserAuth={user ? true : false} />,
           children: [
             {
               path: 'home',
               element: <UserHome />,
-            },
-            {
-              path: 'write',
-              element: <Write />,
-            },
+            }
           ],
         },
         {
@@ -48,11 +58,7 @@ export const Router = () => {
             {
               path: 'admin-home',
               element: <AdminHome />,
-            },
-            {
-              path: 'write',
-              element: <Write />,
-            },
+            }
           ],
         },
         {
@@ -61,11 +67,7 @@ export const Router = () => {
             {
               path: 'subAdmin-home',
               element: <SubAdminHome />,
-            },
-            {
-              path: 'write',
-              element: <Write />,
-            },
+            }
           ],
         },
       ],

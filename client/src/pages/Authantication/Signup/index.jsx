@@ -1,4 +1,4 @@
-import { PropTypes } from 'prop-types';
+import PropTypes from 'prop-types';
 import Form from '@/components/common/Form';
 import { Button } from '@/components/ui/button';
 import InputWithLabel from '@/components/common/InputWithLabel';
@@ -64,6 +64,7 @@ const Signup = ({ setContent }) => {
       id: String(getId()),
       name : values.name,
       email : values.email,
+      password : values.password,
       savedBlogs: [],
       publishedBlogs: [],
     };
@@ -75,7 +76,6 @@ const Signup = ({ setContent }) => {
     try {
       dispatch(setLoader(true));
       const res = await addUser(newUser);
-      console.log(res);
       dispatch(setAuth('user', newUser));
       toast.success('Registered Successfully');
       navigate('/home');

@@ -1,13 +1,13 @@
-import { PropTypes } from 'prop-types';
+import PropTypes from 'prop-types';
 import Form from '@/components/common/Form';
 import { Button } from '@/components/ui/button';
 import InputWithLabel from '@/components/common/InputWithLabel';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { getSubAdmin, getUsers } from '@/utils/axios-instance';
+import { findUser} from '@/utils/axios-instance';
 import { toast } from 'react-toastify';
 import {
   Select,
@@ -31,8 +31,7 @@ const options = [
 ];
 
 const Signin = ({ setContent }) => {
-  const [users, setUsers] = useState([]);
-  const [subAdmins, setSubAdmins] = useState([]);
+
   const [role, setRole] = useState('');
   const { loader } = useSelector((state) => state.app);
   const dispatch = useDispatch();
@@ -48,17 +47,18 @@ const Signin = ({ setContent }) => {
       onSubmit: onSubmit,
     });
 
-  function onSubmit() {
+  async function onSubmit() {
     if (role === 'user') {
       dispatch(setLoader(true));
-      const user = users.find((user) => user.email === values.email);
-      if (!user) {
+      const {data:user} = await findUser('users', values.email);
+      console.log(user);
+      if (user.length === 0) {
         toast.warn('User Not exist , Please Signup');
         handleReset();
         dispatch(setLoader(false));
         return;
-      } else if (user.password === values.password) {
-        dispatch(setAuth(role, user));
+      } else if (user[0].password === values.password) {
+        dispatch(setAuth(role, user[0]));
         toast.success(`${role} logged in successfully`);
         navigate('/home');
       } else {
@@ -69,14 +69,14 @@ const Signin = ({ setContent }) => {
 
     if (role === 'subAdmin') {
       dispatch(setLoader(true));
-      const subAdmin = subAdmins.find((subAdmin) => subAdmin.email === values.email);
-      if (!subAdmin) {
+      const {data:subAdmin} = await findUser('subAdmins', values.email);
+      if (subAdmin.length === 0) {
         toast.warn('User Not exist');
         handleReset();
         dispatch(setLoader(false));
         return;
-      } else if (subAdmin.password === values.password) {
-        dispatch(setAuth(role, subAdmin));
+      } else if (subAdmin[0].password === values.password) {
+        dispatch(setAuth(role, subAdmin[0]));
         toast.success(`${role} logged in successfully`);
         navigate('/subAdmin-home');
       } else {
@@ -86,32 +86,19 @@ const Signin = ({ setContent }) => {
     }
 
     if (role === 'admin') {
-      const admin = {
-        email: values.email,
-        savedBlogs: [],
-        publishedBlogs: [],
-      };
- 
-      if (values.email === 'admin@gmail.com' && values.password === 'Admin@123') {
-        dispatch(setAuth(role, admin));
+      dispatch(setLoader(true));
+      const {data:admin} = await findUser('admin', values.email);
+      if (values.email === admin[0].email && values.password === admin[0].password) {
+        dispatch(setAuth(role, admin[0]));
         toast.success('Admin logged in successfully!');
         navigate('/admin-home');
       } else {
         toast.error('Invalid credential !!');
       }
+      dispatch(setLoader(false));
     }
   }
 
-  async function fetchUsers() {
-    const usersRes = await getUsers();
-    setUsers(usersRes.data);
-    const subAdminsRes = await getSubAdmin();
-    setSubAdmins(subAdminsRes.data);
-  }
-
-  useEffect(() => {
-    fetchUsers();
-  }, []);
   return (
     <>
       <div>
@@ -123,7 +110,7 @@ const Signin = ({ setContent }) => {
               </SelectTrigger>
               <SelectContent>
                 {options.map((option, idx) => (
-                  <SelectItem key={idx} value={option.value}>
+                  <SelectItem key={idx} value={option.value} className='text-primary-text text-[12px] md:text-sm'>
                     {option.label}
                   </SelectItem>
                 ))}

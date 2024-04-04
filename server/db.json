@@ -1,217 +1,209 @@
 {
-  "blogs": [],
+  "blogs": [
+    {
+      "id": "22c1",
+      "title": "Prop-Types",
+      "briefDescription": "You can use prop-types to document the intended types of properties passed to components. React (and potentially other libraries—see the checkPropTypes() reference below) will check props passed to your components against those definitions, and warn in development if they don’t match.",
+      "detailedBlog": "<h2>Installation</h2><pre class=\"ql-syntax\" spellcheck=\"false\">npm install --save prop-types\n</pre><h2><br></h2><h2>Importing</h2><pre class=\"ql-syntax\" spellcheck=\"false\">import PropTypes from 'prop-types'; // ES6\nvar PropTypes = require('prop-types'); // ES5 with npm\n</pre><h3><br></h3><h3>CDN</h3><p>If you prefer to exclude&nbsp;<span style=\"background-color: rgb(247, 247, 247);\">prop-types</span>&nbsp;from your application and use it globally via&nbsp;<span style=\"background-color: rgb(247, 247, 247);\">window.PropTypes</span>, the&nbsp;<span style=\"background-color: rgb(247, 247, 247);\">prop-types</span>&nbsp;package provides single-file distributions, which are hosted on the following CDNs:</p><ul><li><a href=\"https://unpkg.com/prop-types/\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"color: rgb(203, 56, 55); background-color: transparent;\"><strong>unpkg</strong></a></li></ul><pre class=\"ql-syntax\" spellcheck=\"false\">&lt;!-- development version --&gt;\n&lt;script src=\"https://unpkg.com/prop-types@15.6/prop-types.js\"&gt;&lt;/script&gt;\n\n&lt;!-- production version --&gt;\n&lt;script src=\"https://unpkg.com/prop-types@15.6/prop-types.min.js\"&gt;&lt;/script&gt;\n</pre><ul><li><a href=\"https://cdnjs.com/libraries/prop-types\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"color: rgb(203, 56, 55); background-color: transparent;\"><strong>cdnjs</strong></a></li></ul><pre class=\"ql-syntax\" spellcheck=\"false\">&lt;!-- development version --&gt;\n&lt;script src=\"https://cdnjs.cloudflare.com/ajax/libs/prop-types/15.6.0/prop-types.js\"&gt;&lt;/script&gt;\n\n&lt;!-- production version --&gt;\n&lt;script src=\"https://cdnjs.cloudflare.com/ajax/libs/prop-types/15.6.0/prop-types.min.js\"&gt;&lt;/script&gt;\n</pre><p>To load a specific version of&nbsp;<span style=\"background-color: rgb(247, 247, 247);\">prop-types</span>&nbsp;replace&nbsp;<span style=\"background-color: rgb(247, 247, 247);\">15.6.0</span>&nbsp;with the version number.</p><h2><br></h2><h2>Usage</h2><p>PropTypes was originally exposed as part of the React core module, and is commonly used with React components. Here is an example of using PropTypes with a React component, which also documents the different validators provided:</p><pre class=\"ql-syntax\" spellcheck=\"false\">import React from 'react';\nimport PropTypes from 'prop-types';\n\nclass MyComponent extends React.Component {\n  render() {\n    // ... do things with the props\n  }\n}\n\nMyComponent.propTypes = {\n  // You can declare that a prop is a specific JS primitive. By default, these\n  // are all optional.\n  optionalArray: PropTypes.array,\n  optionalBigInt: PropTypes.bigint,\n  optionalBool: PropTypes.bool,\n  optionalFunc: PropTypes.func,\n  optionalNumber: PropTypes.number,\n  optionalObject: PropTypes.object,\n  optionalString: PropTypes.string,\n  optionalSymbol: PropTypes.symbol,\n\n  // Anything that can be rendered: numbers, strings, elements or an array\n  // (or fragment) containing these types.\n  // see https://reactjs.org/docs/rendering-elements.html for more info\n  optionalNode: PropTypes.node,\n\n  // A React element (ie. &lt;MyComponent /&gt;).\n  optionalElement: PropTypes.element,\n\n  // A React element type (eg. MyComponent).\n  // a function, string, or \"element-like\" object (eg. React.Fragment, Suspense, etc.)\n  // see https://github.com/facebook/react/blob/HEAD/packages/shared/isValidElementType.js\n  optionalElementType: PropTypes.elementType,\n\n  // You can also declare that a prop is an instance of a class. This uses\n  // JS's instanceof operator.\n  optionalMessage: PropTypes.instanceOf(Message),\n\n  // You can ensure that your prop is limited to specific values by treating\n  // it as an enum.\n  optionalEnum: PropTypes.oneOf(['News', 'Photos']),\n\n  // An object that could be one of many types\n  optionalUnion: PropTypes.oneOfType([\n    PropTypes.string,\n    PropTypes.number,\n    PropTypes.instanceOf(Message)\n  ]),\n\n  // An array of a certain type\n  optionalArrayOf: PropTypes.arrayOf(PropTypes.number),\n\n  // An object with property values of a certain type\n  optionalObjectOf: PropTypes.objectOf(PropTypes.number),\n\n  // You can chain any of the above with `isRequired` to make sure a warning\n  // is shown if the prop isn't provided.\n\n  // An object taking on a particular shape\n  optionalObjectWithShape: PropTypes.shape({\n    optionalProperty: PropTypes.string,\n    requiredProperty: PropTypes.number.isRequired\n  }),\n\n  // An object with warnings on extra properties\n  optionalObjectWithStrictShape: PropTypes.exact({\n    optionalProperty: PropTypes.string,\n    requiredProperty: PropTypes.number.isRequired\n  }),\n\n  requiredFunc: PropTypes.func.isRequired,\n\n  // A value of any data type\n  requiredAny: PropTypes.any.isRequired,\n\n  // You can also specify a custom validator. It should return an Error\n  // object if the validation fails. Don't `console.warn` or throw, as this\n  // won't work inside `oneOfType`.\n  customProp: function(props, propName, componentName) {\n    if (!/matchme/.test(props[propName])) {\n      return new Error(\n        'Invalid prop `' + propName + '` supplied to' +\n        ' `' + componentName + '`. Validation failed.'\n      );\n    }\n  },\n\n  // You can also supply a custom validator to `arrayOf` and `objectOf`.\n  // It should return an Error object if the validation fails. The validator\n  // will be called for each key in the array or object. The first two\n  // arguments of the validator are the array or object itself, and the\n  // current item's key.\n  customArrayProp: PropTypes.arrayOf(function(propValue, key, componentName, location, propFullName) {\n    if (!/matchme/.test(propValue[key])) {\n      return new Error(\n        'Invalid prop `' + propFullName + '` supplied to' +\n        ' `' + componentName + '`. Validation failed.'\n      );\n    }\n  })\n};\n</pre><p>Refer to the&nbsp;<a href=\"https://facebook.github.io/react/docs/typechecking-with-proptypes.html\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"color: rgb(203, 56, 55); background-color: transparent;\">React documentation</a>&nbsp;for more information.</p>",
+      "parentCategory": "Programming Blog",
+      "subCategory": "Frontend",
+      "author": "jay",
+      "comments": [],
+      "likes": 0,
+      "published": "04/04/2024"
+    },
+    {
+      "id": "3c3a",
+      "title": "Prop-Types 2",
+      "briefDescription": "You can use prop-types to document the intended types of properties passed to components. React (and potentially other libraries—see the checkPropTypes() reference below) will check props passed to your components against those definitions, and warn in development if they don’t match.",
+      "detailedBlog": "<h2>Installation</h2><pre class=\"ql-syntax\" spellcheck=\"false\">npm install --save prop-types\n</pre><h2><br></h2><h2>Importing</h2><pre class=\"ql-syntax\" spellcheck=\"false\">import PropTypes from 'prop-types'; // ES6\nvar PropTypes = require('prop-types'); // ES5 with npm\n</pre><h3><br></h3><h3>CDN</h3><p>If you prefer to exclude&nbsp;<span style=\"background-color: rgb(247, 247, 247);\">prop-types</span>&nbsp;from your application and use it globally via&nbsp;<span style=\"background-color: rgb(247, 247, 247);\">window.PropTypes</span>, the&nbsp;<span style=\"background-color: rgb(247, 247, 247);\">prop-types</span>&nbsp;package provides single-file distributions, which are hosted on the following CDNs:</p><ul><li><a href=\"https://unpkg.com/prop-types/\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"color: rgb(203, 56, 55); background-color: transparent;\"><strong>unpkg</strong></a></li></ul><pre class=\"ql-syntax\" spellcheck=\"false\">&lt;!-- development version --&gt;\n&lt;script src=\"https://unpkg.com/prop-types@15.6/prop-types.js\"&gt;&lt;/script&gt;\n\n&lt;!-- production version --&gt;\n&lt;script src=\"https://unpkg.com/prop-types@15.6/prop-types.min.js\"&gt;&lt;/script&gt;\n</pre><ul><li><a href=\"https://cdnjs.com/libraries/prop-types\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"color: rgb(203, 56, 55); background-color: transparent;\"><strong>cdnjs</strong></a></li></ul><pre class=\"ql-syntax\" spellcheck=\"false\">&lt;!-- development version --&gt;\n&lt;script src=\"https://cdnjs.cloudflare.com/ajax/libs/prop-types/15.6.0/prop-types.js\"&gt;&lt;/script&gt;\n\n&lt;!-- production version --&gt;\n&lt;script src=\"https://cdnjs.cloudflare.com/ajax/libs/prop-types/15.6.0/prop-types.min.js\"&gt;&lt;/script&gt;\n</pre><p>To load a specific version of&nbsp;<span style=\"background-color: rgb(247, 247, 247);\">prop-types</span>&nbsp;replace&nbsp;<span style=\"background-color: rgb(247, 247, 247);\">15.6.0</span>&nbsp;with the version number.</p><h2><br></h2><h2>Usage</h2><p>PropTypes was originally exposed as part of the React core module, and is commonly used with React components. Here is an example of using PropTypes with a React component, which also documents the different validators provided:</p><pre class=\"ql-syntax\" spellcheck=\"false\">import React from 'react';\nimport PropTypes from 'prop-types';\n\nclass MyComponent extends React.Component {\n  render() {\n    // ... do things with the props\n  }\n}\n\nMyComponent.propTypes = {\n  // You can declare that a prop is a specific JS primitive. By default, these\n  // are all optional.\n  optionalArray: PropTypes.array,\n  optionalBigInt: PropTypes.bigint,\n  optionalBool: PropTypes.bool,\n  optionalFunc: PropTypes.func,\n  optionalNumber: PropTypes.number,\n  optionalObject: PropTypes.object,\n  optionalString: PropTypes.string,\n  optionalSymbol: PropTypes.symbol,\n\n  // Anything that can be rendered: numbers, strings, elements or an array\n  // (or fragment) containing these types.\n  // see https://reactjs.org/docs/rendering-elements.html for more info\n  optionalNode: PropTypes.node,\n\n  // A React element (ie. &lt;MyComponent /&gt;).\n  optionalElement: PropTypes.element,\n\n  // A React element type (eg. MyComponent).\n  // a function, string, or \"element-like\" object (eg. React.Fragment, Suspense, etc.)\n  // see https://github.com/facebook/react/blob/HEAD/packages/shared/isValidElementType.js\n  optionalElementType: PropTypes.elementType,\n\n  // You can also declare that a prop is an instance of a class. This uses\n  // JS's instanceof operator.\n  optionalMessage: PropTypes.instanceOf(Message),\n\n  // You can ensure that your prop is limited to specific values by treating\n  // it as an enum.\n  optionalEnum: PropTypes.oneOf(['News', 'Photos']),\n\n  // An object that could be one of many types\n  optionalUnion: PropTypes.oneOfType([\n    PropTypes.string,\n    PropTypes.number,\n    PropTypes.instanceOf(Message)\n  ]),\n\n  // An array of a certain type\n  optionalArrayOf: PropTypes.arrayOf(PropTypes.number),\n\n  // An object with property values of a certain type\n  optionalObjectOf: PropTypes.objectOf(PropTypes.number),\n\n  // You can chain any of the above with `isRequired` to make sure a warning\n  // is shown if the prop isn't provided.\n\n  // An object taking on a particular shape\n  optionalObjectWithShape: PropTypes.shape({\n    optionalProperty: PropTypes.string,\n    requiredProperty: PropTypes.number.isRequired\n  }),\n\n  // An object with warnings on extra properties\n  optionalObjectWithStrictShape: PropTypes.exact({\n    optionalProperty: PropTypes.string,\n    requiredProperty: PropTypes.number.isRequired\n  }),\n\n  requiredFunc: PropTypes.func.isRequired,\n\n  // A value of any data type\n  requiredAny: PropTypes.any.isRequired,\n\n  // You can also specify a custom validator. It should return an Error\n  // object if the validation fails. Don't `console.warn` or throw, as this\n  // won't work inside `oneOfType`.\n  customProp: function(props, propName, componentName) {\n    if (!/matchme/.test(props[propName])) {\n      return new Error(\n        'Invalid prop `' + propName + '` supplied to' +\n        ' `' + componentName + '`. Validation failed.'\n      );\n    }\n  },\n\n  // You can also supply a custom validator to `arrayOf` and `objectOf`.\n  // It should return an Error object if the validation fails. The validator\n  // will be called for each key in the array or object. The first two\n  // arguments of the validator are the array or object itself, and the\n  // current item's key.\n  customArrayProp: PropTypes.arrayOf(function(propValue, key, componentName, location, propFullName) {\n    if (!/matchme/.test(propValue[key])) {\n      return new Error(\n        'Invalid prop `' + propFullName + '` supplied to' +\n        ' `' + componentName + '`. Validation failed.'\n      );\n    }\n  })\n};\n</pre><p>Refer to the&nbsp;<a href=\"https://facebook.github.io/react/docs/typechecking-with-proptypes.html\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"color: rgb(203, 56, 55); background-color: transparent;\">React documentation</a>&nbsp;for more information.</p>",
+      "parentCategory": "Programming Blog",
+      "subCategory": "Frontend",
+      "author": "jay",
+      "comments": [],
+      "likes": 0,
+      "published": "04/04/2024"
+    },
+    {
+      "id": "7ba3",
+      "title": "Prop-Types 3",
+      "briefDescription": "You can use prop-types to document the intended types of properties passed to components. React (and potentially other libraries—see the checkPropTypes() reference below) will check props passed to your components against those definitions, and warn in development if they don’t match.",
+      "detailedBlog": "<h2>Installation</h2><pre class=\"ql-syntax\" spellcheck=\"false\">npm install --save prop-types\n</pre><h2><br></h2><h2>Importing</h2><pre class=\"ql-syntax\" spellcheck=\"false\">import PropTypes from 'prop-types'; // ES6\nvar PropTypes = require('prop-types'); // ES5 with npm\n</pre><h3><br></h3><h3>CDN</h3><p>If you prefer to exclude&nbsp;<span style=\"background-color: rgb(247, 247, 247);\">prop-types</span>&nbsp;from your application and use it globally via&nbsp;<span style=\"background-color: rgb(247, 247, 247);\">window.PropTypes</span>, the&nbsp;<span style=\"background-color: rgb(247, 247, 247);\">prop-types</span>&nbsp;package provides single-file distributions, which are hosted on the following CDNs:</p><ul><li><a href=\"https://unpkg.com/prop-types/\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"color: rgb(203, 56, 55); background-color: transparent;\"><strong>unpkg</strong></a></li></ul><pre class=\"ql-syntax\" spellcheck=\"false\">&lt;!-- development version --&gt;\n&lt;script src=\"https://unpkg.com/prop-types@15.6/prop-types.js\"&gt;&lt;/script&gt;\n\n&lt;!-- production version --&gt;\n&lt;script src=\"https://unpkg.com/prop-types@15.6/prop-types.min.js\"&gt;&lt;/script&gt;\n</pre><ul><li><a href=\"https://cdnjs.com/libraries/prop-types\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"color: rgb(203, 56, 55); background-color: transparent;\"><strong>cdnjs</strong></a></li></ul><pre class=\"ql-syntax\" spellcheck=\"false\">&lt;!-- development version --&gt;\n&lt;script src=\"https://cdnjs.cloudflare.com/ajax/libs/prop-types/15.6.0/prop-types.js\"&gt;&lt;/script&gt;\n\n&lt;!-- production version --&gt;\n&lt;script src=\"https://cdnjs.cloudflare.com/ajax/libs/prop-types/15.6.0/prop-types.min.js\"&gt;&lt;/script&gt;\n</pre><p>To load a specific version of&nbsp;<span style=\"background-color: rgb(247, 247, 247);\">prop-types</span>&nbsp;replace&nbsp;<span style=\"background-color: rgb(247, 247, 247);\">15.6.0</span>&nbsp;with the version number.</p><h2><br></h2><h2>Usage</h2><p>PropTypes was originally exposed as part of the React core module, and is commonly used with React components. Here is an example of using PropTypes with a React component, which also documents the different validators provided:</p><pre class=\"ql-syntax\" spellcheck=\"false\">import React from 'react';\nimport PropTypes from 'prop-types';\n\nclass MyComponent extends React.Component {\n  render() {\n    // ... do things with the props\n  }\n}\n\nMyComponent.propTypes = {\n  // You can declare that a prop is a specific JS primitive. By default, these\n  // are all optional.\n  optionalArray: PropTypes.array,\n  optionalBigInt: PropTypes.bigint,\n  optionalBool: PropTypes.bool,\n  optionalFunc: PropTypes.func,\n  optionalNumber: PropTypes.number,\n  optionalObject: PropTypes.object,\n  optionalString: PropTypes.string,\n  optionalSymbol: PropTypes.symbol,\n\n  // Anything that can be rendered: numbers, strings, elements or an array\n  // (or fragment) containing these types.\n  // see https://reactjs.org/docs/rendering-elements.html for more info\n  optionalNode: PropTypes.node,\n\n  // A React element (ie. &lt;MyComponent /&gt;).\n  optionalElement: PropTypes.element,\n\n  // A React element type (eg. MyComponent).\n  // a function, string, or \"element-like\" object (eg. React.Fragment, Suspense, etc.)\n  // see https://github.com/facebook/react/blob/HEAD/packages/shared/isValidElementType.js\n  optionalElementType: PropTypes.elementType,\n\n  // You can also declare that a prop is an instance of a class. This uses\n  // JS's instanceof operator.\n  optionalMessage: PropTypes.instanceOf(Message),\n\n  // You can ensure that your prop is limited to specific values by treating\n  // it as an enum.\n  optionalEnum: PropTypes.oneOf(['News', 'Photos']),\n\n  // An object that could be one of many types\n  optionalUnion: PropTypes.oneOfType([\n    PropTypes.string,\n    PropTypes.number,\n    PropTypes.instanceOf(Message)\n  ]),\n\n  // An array of a certain type\n  optionalArrayOf: PropTypes.arrayOf(PropTypes.number),\n\n  // An object with property values of a certain type\n  optionalObjectOf: PropTypes.objectOf(PropTypes.number),\n\n  // You can chain any of the above with `isRequired` to make sure a warning\n  // is shown if the prop isn't provided.\n\n  // An object taking on a particular shape\n  optionalObjectWithShape: PropTypes.shape({\n    optionalProperty: PropTypes.string,\n    requiredProperty: PropTypes.number.isRequired\n  }),\n\n  // An object with warnings on extra properties\n  optionalObjectWithStrictShape: PropTypes.exact({\n    optionalProperty: PropTypes.string,\n    requiredProperty: PropTypes.number.isRequired\n  }),\n\n  requiredFunc: PropTypes.func.isRequired,\n\n  // A value of any data type\n  requiredAny: PropTypes.any.isRequired,\n\n  // You can also specify a custom validator. It should return an Error\n  // object if the validation fails. Don't `console.warn` or throw, as this\n  // won't work inside `oneOfType`.\n  customProp: function(props, propName, componentName) {\n    if (!/matchme/.test(props[propName])) {\n      return new Error(\n        'Invalid prop `' + propName + '` supplied to' +\n        ' `' + componentName + '`. Validation failed.'\n      );\n    }\n  },\n\n  // You can also supply a custom validator to `arrayOf` and `objectOf`.\n  // It should return an Error object if the validation fails. The validator\n  // will be called for each key in the array or object. The first two\n  // arguments of the validator are the array or object itself, and the\n  // current item's key.\n  customArrayProp: PropTypes.arrayOf(function(propValue, key, componentName, location, propFullName) {\n    if (!/matchme/.test(propValue[key])) {\n      return new Error(\n        'Invalid prop `' + propFullName + '` supplied to' +\n        ' `' + componentName + '`. Validation failed.'\n      );\n    }\n  })\n};\n</pre><p>Refer to the&nbsp;<a href=\"https://facebook.github.io/react/docs/typechecking-with-proptypes.html\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"color: rgb(203, 56, 55); background-color: transparent;\">React documentation</a>&nbsp;for more information.</p>",
+      "parentCategory": "Programming Blog",
+      "subCategory": "Frontend",
+      "author": "jay",
+      "comments": [],
+      "likes": 0,
+      "published": "04/04/2024"
+    },
+    {
+      "id": "d88b",
+      "title": "Prop-Types 4",
+      "briefDescription": "You can use prop-types to document the intended types of properties passed to components. React (and potentially other libraries—see the checkPropTypes() reference below) will check props passed to your components against those definitions, and warn in development if they don’t match.",
+      "detailedBlog": "<h2>Installation</h2><pre class=\"ql-syntax\" spellcheck=\"false\">npm install --save prop-types\n</pre><h2><br></h2><h2>Importing</h2><pre class=\"ql-syntax\" spellcheck=\"false\">import PropTypes from 'prop-types'; // ES6\nvar PropTypes = require('prop-types'); // ES5 with npm\n</pre><h3><br></h3><h3>CDN</h3><p>If you prefer to exclude&nbsp;<span style=\"background-color: rgb(247, 247, 247);\">prop-types</span>&nbsp;from your application and use it globally via&nbsp;<span style=\"background-color: rgb(247, 247, 247);\">window.PropTypes</span>, the&nbsp;<span style=\"background-color: rgb(247, 247, 247);\">prop-types</span>&nbsp;package provides single-file distributions, which are hosted on the following CDNs:</p><ul><li><a href=\"https://unpkg.com/prop-types/\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"color: rgb(203, 56, 55); background-color: transparent;\"><strong>unpkg</strong></a></li></ul><pre class=\"ql-syntax\" spellcheck=\"false\">&lt;!-- development version --&gt;\n&lt;script src=\"https://unpkg.com/prop-types@15.6/prop-types.js\"&gt;&lt;/script&gt;\n\n&lt;!-- production version --&gt;\n&lt;script src=\"https://unpkg.com/prop-types@15.6/prop-types.min.js\"&gt;&lt;/script&gt;\n</pre><ul><li><a href=\"https://cdnjs.com/libraries/prop-types\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"color: rgb(203, 56, 55); background-color: transparent;\"><strong>cdnjs</strong></a></li></ul><pre class=\"ql-syntax\" spellcheck=\"false\">&lt;!-- development version --&gt;\n&lt;script src=\"https://cdnjs.cloudflare.com/ajax/libs/prop-types/15.6.0/prop-types.js\"&gt;&lt;/script&gt;\n\n&lt;!-- production version --&gt;\n&lt;script src=\"https://cdnjs.cloudflare.com/ajax/libs/prop-types/15.6.0/prop-types.min.js\"&gt;&lt;/script&gt;\n</pre><p>To load a specific version of&nbsp;<span style=\"background-color: rgb(247, 247, 247);\">prop-types</span>&nbsp;replace&nbsp;<span style=\"background-color: rgb(247, 247, 247);\">15.6.0</span>&nbsp;with the version number.</p><h2><br></h2><h2>Usage</h2><p>PropTypes was originally exposed as part of the React core module, and is commonly used with React components. Here is an example of using PropTypes with a React component, which also documents the different validators provided:</p><pre class=\"ql-syntax\" spellcheck=\"false\">import React from 'react';\nimport PropTypes from 'prop-types';\n\nclass MyComponent extends React.Component {\n  render() {\n    // ... do things with the props\n  }\n}\n\nMyComponent.propTypes = {\n  // You can declare that a prop is a specific JS primitive. By default, these\n  // are all optional.\n  optionalArray: PropTypes.array,\n  optionalBigInt: PropTypes.bigint,\n  optionalBool: PropTypes.bool,\n  optionalFunc: PropTypes.func,\n  optionalNumber: PropTypes.number,\n  optionalObject: PropTypes.object,\n  optionalString: PropTypes.string,\n  optionalSymbol: PropTypes.symbol,\n\n  // Anything that can be rendered: numbers, strings, elements or an array\n  // (or fragment) containing these types.\n  // see https://reactjs.org/docs/rendering-elements.html for more info\n  optionalNode: PropTypes.node,\n\n  // A React element (ie. &lt;MyComponent /&gt;).\n  optionalElement: PropTypes.element,\n\n  // A React element type (eg. MyComponent).\n  // a function, string, or \"element-like\" object (eg. React.Fragment, Suspense, etc.)\n  // see https://github.com/facebook/react/blob/HEAD/packages/shared/isValidElementType.js\n  optionalElementType: PropTypes.elementType,\n\n  // You can also declare that a prop is an instance of a class. This uses\n  // JS's instanceof operator.\n  optionalMessage: PropTypes.instanceOf(Message),\n\n  // You can ensure that your prop is limited to specific values by treating\n  // it as an enum.\n  optionalEnum: PropTypes.oneOf(['News', 'Photos']),\n\n  // An object that could be one of many types\n  optionalUnion: PropTypes.oneOfType([\n    PropTypes.string,\n    PropTypes.number,\n    PropTypes.instanceOf(Message)\n  ]),\n\n  // An array of a certain type\n  optionalArrayOf: PropTypes.arrayOf(PropTypes.number),\n\n  // An object with property values of a certain type\n  optionalObjectOf: PropTypes.objectOf(PropTypes.number),\n\n  // You can chain any of the above with `isRequired` to make sure a warning\n  // is shown if the prop isn't provided.\n\n  // An object taking on a particular shape\n  optionalObjectWithShape: PropTypes.shape({\n    optionalProperty: PropTypes.string,\n    requiredProperty: PropTypes.number.isRequired\n  }),\n\n  // An object with warnings on extra properties\n  optionalObjectWithStrictShape: PropTypes.exact({\n    optionalProperty: PropTypes.string,\n    requiredProperty: PropTypes.number.isRequired\n  }),\n\n  requiredFunc: PropTypes.func.isRequired,\n\n  // A value of any data type\n  requiredAny: PropTypes.any.isRequired,\n\n  // You can also specify a custom validator. It should return an Error\n  // object if the validation fails. Don't `console.warn` or throw, as this\n  // won't work inside `oneOfType`.\n  customProp: function(props, propName, componentName) {\n    if (!/matchme/.test(props[propName])) {\n      return new Error(\n        'Invalid prop `' + propName + '` supplied to' +\n        ' `' + componentName + '`. Validation failed.'\n      );\n    }\n  },\n\n  // You can also supply a custom validator to `arrayOf` and `objectOf`.\n  // It should return an Error object if the validation fails. The validator\n  // will be called for each key in the array or object. The first two\n  // arguments of the validator are the array or object itself, and the\n  // current item's key.\n  customArrayProp: PropTypes.arrayOf(function(propValue, key, componentName, location, propFullName) {\n    if (!/matchme/.test(propValue[key])) {\n      return new Error(\n        'Invalid prop `' + propFullName + '` supplied to' +\n        ' `' + componentName + '`. Validation failed.'\n      );\n    }\n  })\n};\n</pre><p>Refer to the&nbsp;<a href=\"https://facebook.github.io/react/docs/typechecking-with-proptypes.html\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"color: rgb(203, 56, 55); background-color: transparent;\">React documentation</a>&nbsp;for more information.</p>",
+      "parentCategory": "Programming Blog",
+      "subCategory": "Frontend",
+      "author": "jay",
+      "comments": [],
+      "likes": 0,
+      "published": "04/04/2024"
+    },
+    {
+      "id": "3f3a",
+      "title": "Prop-Types 5",
+      "briefDescription": "You can use prop-types to document the intended types of properties passed to components. React (and potentially other libraries—see the checkPropTypes() reference below) will check props passed to your components against those definitions, and warn in development if they don’t match.",
+      "detailedBlog": "<h2>Installation</h2><pre class=\"ql-syntax\" spellcheck=\"false\">npm install --save prop-types\n</pre><h2><br></h2><h2>Importing</h2><pre class=\"ql-syntax\" spellcheck=\"false\">import PropTypes from 'prop-types'; // ES6\nvar PropTypes = require('prop-types'); // ES5 with npm\n</pre><h3><br></h3><h3>CDN</h3><p>If you prefer to exclude&nbsp;<span style=\"background-color: rgb(247, 247, 247);\">prop-types</span>&nbsp;from your application and use it globally via&nbsp;<span style=\"background-color: rgb(247, 247, 247);\">window.PropTypes</span>, the&nbsp;<span style=\"background-color: rgb(247, 247, 247);\">prop-types</span>&nbsp;package provides single-file distributions, which are hosted on the following CDNs:</p><ul><li><a href=\"https://unpkg.com/prop-types/\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"color: rgb(203, 56, 55); background-color: transparent;\"><strong>unpkg</strong></a></li></ul><pre class=\"ql-syntax\" spellcheck=\"false\">&lt;!-- development version --&gt;\n&lt;script src=\"https://unpkg.com/prop-types@15.6/prop-types.js\"&gt;&lt;/script&gt;\n\n&lt;!-- production version --&gt;\n&lt;script src=\"https://unpkg.com/prop-types@15.6/prop-types.min.js\"&gt;&lt;/script&gt;\n</pre><ul><li><a href=\"https://cdnjs.com/libraries/prop-types\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"color: rgb(203, 56, 55); background-color: transparent;\"><strong>cdnjs</strong></a></li></ul><pre class=\"ql-syntax\" spellcheck=\"false\">&lt;!-- development version --&gt;\n&lt;script src=\"https://cdnjs.cloudflare.com/ajax/libs/prop-types/15.6.0/prop-types.js\"&gt;&lt;/script&gt;\n\n&lt;!-- production version --&gt;\n&lt;script src=\"https://cdnjs.cloudflare.com/ajax/libs/prop-types/15.6.0/prop-types.min.js\"&gt;&lt;/script&gt;\n</pre><p>To load a specific version of&nbsp;<span style=\"background-color: rgb(247, 247, 247);\">prop-types</span>&nbsp;replace&nbsp;<span style=\"background-color: rgb(247, 247, 247);\">15.6.0</span>&nbsp;with the version number.</p><h2><br></h2><h2>Usage</h2><p>PropTypes was originally exposed as part of the React core module, and is commonly used with React components. Here is an example of using PropTypes with a React component, which also documents the different validators provided:</p><pre class=\"ql-syntax\" spellcheck=\"false\">import React from 'react';\nimport PropTypes from 'prop-types';\n\nclass MyComponent extends React.Component {\n  render() {\n    // ... do things with the props\n  }\n}\n\nMyComponent.propTypes = {\n  // You can declare that a prop is a specific JS primitive. By default, these\n  // are all optional.\n  optionalArray: PropTypes.array,\n  optionalBigInt: PropTypes.bigint,\n  optionalBool: PropTypes.bool,\n  optionalFunc: PropTypes.func,\n  optionalNumber: PropTypes.number,\n  optionalObject: PropTypes.object,\n  optionalString: PropTypes.string,\n  optionalSymbol: PropTypes.symbol,\n\n  // Anything that can be rendered: numbers, strings, elements or an array\n  // (or fragment) containing these types.\n  // see https://reactjs.org/docs/rendering-elements.html for more info\n  optionalNode: PropTypes.node,\n\n  // A React element (ie. &lt;MyComponent /&gt;).\n  optionalElement: PropTypes.element,\n\n  // A React element type (eg. MyComponent).\n  // a function, string, or \"element-like\" object (eg. React.Fragment, Suspense, etc.)\n  // see https://github.com/facebook/react/blob/HEAD/packages/shared/isValidElementType.js\n  optionalElementType: PropTypes.elementType,\n\n  // You can also declare that a prop is an instance of a class. This uses\n  // JS's instanceof operator.\n  optionalMessage: PropTypes.instanceOf(Message),\n\n  // You can ensure that your prop is limited to specific values by treating\n  // it as an enum.\n  optionalEnum: PropTypes.oneOf(['News', 'Photos']),\n\n  // An object that could be one of many types\n  optionalUnion: PropTypes.oneOfType([\n    PropTypes.string,\n    PropTypes.number,\n    PropTypes.instanceOf(Message)\n  ]),\n\n  // An array of a certain type\n  optionalArrayOf: PropTypes.arrayOf(PropTypes.number),\n\n  // An object with property values of a certain type\n  optionalObjectOf: PropTypes.objectOf(PropTypes.number),\n\n  // You can chain any of the above with `isRequired` to make sure a warning\n  // is shown if the prop isn't provided.\n\n  // An object taking on a particular shape\n  optionalObjectWithShape: PropTypes.shape({\n    optionalProperty: PropTypes.string,\n    requiredProperty: PropTypes.number.isRequired\n  }),\n\n  // An object with warnings on extra properties\n  optionalObjectWithStrictShape: PropTypes.exact({\n    optionalProperty: PropTypes.string,\n    requiredProperty: PropTypes.number.isRequired\n  }),\n\n  requiredFunc: PropTypes.func.isRequired,\n\n  // A value of any data type\n  requiredAny: PropTypes.any.isRequired,\n\n  // You can also specify a custom validator. It should return an Error\n  // object if the validation fails. Don't `console.warn` or throw, as this\n  // won't work inside `oneOfType`.\n  customProp: function(props, propName, componentName) {\n    if (!/matchme/.test(props[propName])) {\n      return new Error(\n        'Invalid prop `' + propName + '` supplied to' +\n        ' `' + componentName + '`. Validation failed.'\n      );\n    }\n  },\n\n  // You can also supply a custom validator to `arrayOf` and `objectOf`.\n  // It should return an Error object if the validation fails. The validator\n  // will be called for each key in the array or object. The first two\n  // arguments of the validator are the array or object itself, and the\n  // current item's key.\n  customArrayProp: PropTypes.arrayOf(function(propValue, key, componentName, location, propFullName) {\n    if (!/matchme/.test(propValue[key])) {\n      return new Error(\n        'Invalid prop `' + propFullName + '` supplied to' +\n        ' `' + componentName + '`. Validation failed.'\n      );\n    }\n  })\n};\n</pre><p>Refer to the&nbsp;<a href=\"https://facebook.github.io/react/docs/typechecking-with-proptypes.html\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"color: rgb(203, 56, 55); background-color: transparent;\">React documentation</a>&nbsp;for more information.</p>",
+      "parentCategory": "Programming Blog",
+      "subCategory": "Frontend",
+      "author": "jay",
+      "comments": [],
+      "likes": 0,
+      "published": "04/04/2024"
+    },
+    {
+      "id": "7e9b",
+      "title": "Prop-Types 6",
+      "briefDescription": "You can use prop-types to document the intended types of properties passed to components. React (and potentially other libraries—see the checkPropTypes() reference below) will check props passed to your components against those definitions, and warn in development if they don’t match.",
+      "detailedBlog": "<h2>Installation</h2><pre class=\"ql-syntax\" spellcheck=\"false\">npm install --save prop-types\n</pre><h2><br></h2><h2>Importing</h2><pre class=\"ql-syntax\" spellcheck=\"false\">import PropTypes from 'prop-types'; // ES6\nvar PropTypes = require('prop-types'); // ES5 with npm\n</pre><h3><br></h3><h3>CDN</h3><p>If you prefer to exclude&nbsp;<span style=\"background-color: rgb(247, 247, 247);\">prop-types</span>&nbsp;from your application and use it globally via&nbsp;<span style=\"background-color: rgb(247, 247, 247);\">window.PropTypes</span>, the&nbsp;<span style=\"background-color: rgb(247, 247, 247);\">prop-types</span>&nbsp;package provides single-file distributions, which are hosted on the following CDNs:</p><ul><li><a href=\"https://unpkg.com/prop-types/\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"color: rgb(203, 56, 55); background-color: transparent;\"><strong>unpkg</strong></a></li></ul><pre class=\"ql-syntax\" spellcheck=\"false\">&lt;!-- development version --&gt;\n&lt;script src=\"https://unpkg.com/prop-types@15.6/prop-types.js\"&gt;&lt;/script&gt;\n\n&lt;!-- production version --&gt;\n&lt;script src=\"https://unpkg.com/prop-types@15.6/prop-types.min.js\"&gt;&lt;/script&gt;\n</pre><ul><li><a href=\"https://cdnjs.com/libraries/prop-types\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"color: rgb(203, 56, 55); background-color: transparent;\"><strong>cdnjs</strong></a></li></ul><pre class=\"ql-syntax\" spellcheck=\"false\">&lt;!-- development version --&gt;\n&lt;script src=\"https://cdnjs.cloudflare.com/ajax/libs/prop-types/15.6.0/prop-types.js\"&gt;&lt;/script&gt;\n\n&lt;!-- production version --&gt;\n&lt;script src=\"https://cdnjs.cloudflare.com/ajax/libs/prop-types/15.6.0/prop-types.min.js\"&gt;&lt;/script&gt;\n</pre><p>To load a specific version of&nbsp;<span style=\"background-color: rgb(247, 247, 247);\">prop-types</span>&nbsp;replace&nbsp;<span style=\"background-color: rgb(247, 247, 247);\">15.6.0</span>&nbsp;with the version number.</p><h2><br></h2><h2>Usage</h2><p>PropTypes was originally exposed as part of the React core module, and is commonly used with React components. Here is an example of using PropTypes with a React component, which also documents the different validators provided:</p><pre class=\"ql-syntax\" spellcheck=\"false\">import React from 'react';\nimport PropTypes from 'prop-types';\n\nclass MyComponent extends React.Component {\n  render() {\n    // ... do things with the props\n  }\n}\n\nMyComponent.propTypes = {\n  // You can declare that a prop is a specific JS primitive. By default, these\n  // are all optional.\n  optionalArray: PropTypes.array,\n  optionalBigInt: PropTypes.bigint,\n  optionalBool: PropTypes.bool,\n  optionalFunc: PropTypes.func,\n  optionalNumber: PropTypes.number,\n  optionalObject: PropTypes.object,\n  optionalString: PropTypes.string,\n  optionalSymbol: PropTypes.symbol,\n\n  // Anything that can be rendered: numbers, strings, elements or an array\n  // (or fragment) containing these types.\n  // see https://reactjs.org/docs/rendering-elements.html for more info\n  optionalNode: PropTypes.node,\n\n  // A React element (ie. &lt;MyComponent /&gt;).\n  optionalElement: PropTypes.element,\n\n  // A React element type (eg. MyComponent).\n  // a function, string, or \"element-like\" object (eg. React.Fragment, Suspense, etc.)\n  // see https://github.com/facebook/react/blob/HEAD/packages/shared/isValidElementType.js\n  optionalElementType: PropTypes.elementType,\n\n  // You can also declare that a prop is an instance of a class. This uses\n  // JS's instanceof operator.\n  optionalMessage: PropTypes.instanceOf(Message),\n\n  // You can ensure that your prop is limited to specific values by treating\n  // it as an enum.\n  optionalEnum: PropTypes.oneOf(['News', 'Photos']),\n\n  // An object that could be one of many types\n  optionalUnion: PropTypes.oneOfType([\n    PropTypes.string,\n    PropTypes.number,\n    PropTypes.instanceOf(Message)\n  ]),\n\n  // An array of a certain type\n  optionalArrayOf: PropTypes.arrayOf(PropTypes.number),\n\n  // An object with property values of a certain type\n  optionalObjectOf: PropTypes.objectOf(PropTypes.number),\n\n  // You can chain any of the above with `isRequired` to make sure a warning\n  // is shown if the prop isn't provided.\n\n  // An object taking on a particular shape\n  optionalObjectWithShape: PropTypes.shape({\n    optionalProperty: PropTypes.string,\n    requiredProperty: PropTypes.number.isRequired\n  }),\n\n  // An object with warnings on extra properties\n  optionalObjectWithStrictShape: PropTypes.exact({\n    optionalProperty: PropTypes.string,\n    requiredProperty: PropTypes.number.isRequired\n  }),\n\n  requiredFunc: PropTypes.func.isRequired,\n\n  // A value of any data type\n  requiredAny: PropTypes.any.isRequired,\n\n  // You can also specify a custom validator. It should return an Error\n  // object if the validation fails. Don't `console.warn` or throw, as this\n  // won't work inside `oneOfType`.\n  customProp: function(props, propName, componentName) {\n    if (!/matchme/.test(props[propName])) {\n      return new Error(\n        'Invalid prop `' + propName + '` supplied to' +\n        ' `' + componentName + '`. Validation failed.'\n      );\n    }\n  },\n\n  // You can also supply a custom validator to `arrayOf` and `objectOf`.\n  // It should return an Error object if the validation fails. The validator\n  // will be called for each key in the array or object. The first two\n  // arguments of the validator are the array or object itself, and the\n  // current item's key.\n  customArrayProp: PropTypes.arrayOf(function(propValue, key, componentName, location, propFullName) {\n    if (!/matchme/.test(propValue[key])) {\n      return new Error(\n        'Invalid prop `' + propFullName + '` supplied to' +\n        ' `' + componentName + '`. Validation failed.'\n      );\n    }\n  })\n};\n</pre><p>Refer to the&nbsp;<a href=\"https://facebook.github.io/react/docs/typechecking-with-proptypes.html\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"color: rgb(203, 56, 55); background-color: transparent;\">React documentation</a>&nbsp;for more information.</p>",
+      "parentCategory": "Programming Blog",
+      "subCategory": "Frontend",
+      "author": "jay",
+      "comments": [],
+      "likes": 0,
+      "published": "04/04/2024"
+    },
+    {
+      "id": "a078",
+      "title": "Prop-Types 7",
+      "briefDescription": "You can use prop-types to document the intended types of properties passed to components. React (and potentially other libraries—see the checkPropTypes() reference below) will check props passed to your components against those definitions, and warn in development if they don’t match.",
+      "detailedBlog": "<h2>Installation</h2><pre class=\"ql-syntax\" spellcheck=\"false\">npm install --save prop-types\n</pre><h2><br></h2><h2>Importing</h2><pre class=\"ql-syntax\" spellcheck=\"false\">import PropTypes from 'prop-types'; // ES6\nvar PropTypes = require('prop-types'); // ES5 with npm\n</pre><h3><br></h3><h3>CDN</h3><p>If you prefer to exclude&nbsp;<span style=\"background-color: rgb(247, 247, 247);\">prop-types</span>&nbsp;from your application and use it globally via&nbsp;<span style=\"background-color: rgb(247, 247, 247);\">window.PropTypes</span>, the&nbsp;<span style=\"background-color: rgb(247, 247, 247);\">prop-types</span>&nbsp;package provides single-file distributions, which are hosted on the following CDNs:</p><ul><li><a href=\"https://unpkg.com/prop-types/\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"color: rgb(203, 56, 55); background-color: transparent;\"><strong>unpkg</strong></a></li></ul><pre class=\"ql-syntax\" spellcheck=\"false\">&lt;!-- development version --&gt;\n&lt;script src=\"https://unpkg.com/prop-types@15.6/prop-types.js\"&gt;&lt;/script&gt;\n\n&lt;!-- production version --&gt;\n&lt;script src=\"https://unpkg.com/prop-types@15.6/prop-types.min.js\"&gt;&lt;/script&gt;\n</pre><ul><li><a href=\"https://cdnjs.com/libraries/prop-types\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"color: rgb(203, 56, 55); background-color: transparent;\"><strong>cdnjs</strong></a></li></ul><pre class=\"ql-syntax\" spellcheck=\"false\">&lt;!-- development version --&gt;\n&lt;script src=\"https://cdnjs.cloudflare.com/ajax/libs/prop-types/15.6.0/prop-types.js\"&gt;&lt;/script&gt;\n\n&lt;!-- production version --&gt;\n&lt;script src=\"https://cdnjs.cloudflare.com/ajax/libs/prop-types/15.6.0/prop-types.min.js\"&gt;&lt;/script&gt;\n</pre><p>To load a specific version of&nbsp;<span style=\"background-color: rgb(247, 247, 247);\">prop-types</span>&nbsp;replace&nbsp;<span style=\"background-color: rgb(247, 247, 247);\">15.6.0</span>&nbsp;with the version number.</p><h2><br></h2><h2>Usage</h2><p>PropTypes was originally exposed as part of the React core module, and is commonly used with React components. Here is an example of using PropTypes with a React component, which also documents the different validators provided:</p><pre class=\"ql-syntax\" spellcheck=\"false\">import React from 'react';\nimport PropTypes from 'prop-types';\n\nclass MyComponent extends React.Component {\n  render() {\n    // ... do things with the props\n  }\n}\n\nMyComponent.propTypes = {\n  // You can declare that a prop is a specific JS primitive. By default, these\n  // are all optional.\n  optionalArray: PropTypes.array,\n  optionalBigInt: PropTypes.bigint,\n  optionalBool: PropTypes.bool,\n  optionalFunc: PropTypes.func,\n  optionalNumber: PropTypes.number,\n  optionalObject: PropTypes.object,\n  optionalString: PropTypes.string,\n  optionalSymbol: PropTypes.symbol,\n\n  // Anything that can be rendered: numbers, strings, elements or an array\n  // (or fragment) containing these types.\n  // see https://reactjs.org/docs/rendering-elements.html for more info\n  optionalNode: PropTypes.node,\n\n  // A React element (ie. &lt;MyComponent /&gt;).\n  optionalElement: PropTypes.element,\n\n  // A React element type (eg. MyComponent).\n  // a function, string, or \"element-like\" object (eg. React.Fragment, Suspense, etc.)\n  // see https://github.com/facebook/react/blob/HEAD/packages/shared/isValidElementType.js\n  optionalElementType: PropTypes.elementType,\n\n  // You can also declare that a prop is an instance of a class. This uses\n  // JS's instanceof operator.\n  optionalMessage: PropTypes.instanceOf(Message),\n\n  // You can ensure that your prop is limited to specific values by treating\n  // it as an enum.\n  optionalEnum: PropTypes.oneOf(['News', 'Photos']),\n\n  // An object that could be one of many types\n  optionalUnion: PropTypes.oneOfType([\n    PropTypes.string,\n    PropTypes.number,\n    PropTypes.instanceOf(Message)\n  ]),\n\n  // An array of a certain type\n  optionalArrayOf: PropTypes.arrayOf(PropTypes.number),\n\n  // An object with property values of a certain type\n  optionalObjectOf: PropTypes.objectOf(PropTypes.number),\n\n  // You can chain any of the above with `isRequired` to make sure a warning\n  // is shown if the prop isn't provided.\n\n  // An object taking on a particular shape\n  optionalObjectWithShape: PropTypes.shape({\n    optionalProperty: PropTypes.string,\n    requiredProperty: PropTypes.number.isRequired\n  }),\n\n  // An object with warnings on extra properties\n  optionalObjectWithStrictShape: PropTypes.exact({\n    optionalProperty: PropTypes.string,\n    requiredProperty: PropTypes.number.isRequired\n  }),\n\n  requiredFunc: PropTypes.func.isRequired,\n\n  // A value of any data type\n  requiredAny: PropTypes.any.isRequired,\n\n  // You can also specify a custom validator. It should return an Error\n  // object if the validation fails. Don't `console.warn` or throw, as this\n  // won't work inside `oneOfType`.\n  customProp: function(props, propName, componentName) {\n    if (!/matchme/.test(props[propName])) {\n      return new Error(\n        'Invalid prop `' + propName + '` supplied to' +\n        ' `' + componentName + '`. Validation failed.'\n      );\n    }\n  },\n\n  // You can also supply a custom validator to `arrayOf` and `objectOf`.\n  // It should return an Error object if the validation fails. The validator\n  // will be called for each key in the array or object. The first two\n  // arguments of the validator are the array or object itself, and the\n  // current item's key.\n  customArrayProp: PropTypes.arrayOf(function(propValue, key, componentName, location, propFullName) {\n    if (!/matchme/.test(propValue[key])) {\n      return new Error(\n        'Invalid prop `' + propFullName + '` supplied to' +\n        ' `' + componentName + '`. Validation failed.'\n      );\n    }\n  })\n};\n</pre><p>Refer to the&nbsp;<a href=\"https://facebook.github.io/react/docs/typechecking-with-proptypes.html\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"color: rgb(203, 56, 55); background-color: transparent;\">React documentation</a>&nbsp;for more information.</p>",
+      "parentCategory": "Programming Blog",
+      "subCategory": "Frontend",
+      "author": "jay",
+      "comments": [],
+      "likes": 0,
+      "published": "04/04/2024"
+    },
+    {
+      "id": "dc9d",
+      "title": "Prop-Types 8",
+      "briefDescription": "You can use prop-types to document the intended types of properties passed to components. React (and potentially other libraries—see the checkPropTypes() reference below) will check props passed to your components against those definitions, and warn in development if they don’t match.",
+      "detailedBlog": "<h2>Installation</h2><pre class=\"ql-syntax\" spellcheck=\"false\">npm install --save prop-types\n</pre><h2><br></h2><h2>Importing</h2><pre class=\"ql-syntax\" spellcheck=\"false\">import PropTypes from 'prop-types'; // ES6\nvar PropTypes = require('prop-types'); // ES5 with npm\n</pre><h3><br></h3><h3>CDN</h3><p>If you prefer to exclude&nbsp;<span style=\"background-color: rgb(247, 247, 247);\">prop-types</span>&nbsp;from your application and use it globally via&nbsp;<span style=\"background-color: rgb(247, 247, 247);\">window.PropTypes</span>, the&nbsp;<span style=\"background-color: rgb(247, 247, 247);\">prop-types</span>&nbsp;package provides single-file distributions, which are hosted on the following CDNs:</p><ul><li><a href=\"https://unpkg.com/prop-types/\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"color: rgb(203, 56, 55); background-color: transparent;\"><strong>unpkg</strong></a></li></ul><pre class=\"ql-syntax\" spellcheck=\"false\">&lt;!-- development version --&gt;\n&lt;script src=\"https://unpkg.com/prop-types@15.6/prop-types.js\"&gt;&lt;/script&gt;\n\n&lt;!-- production version --&gt;\n&lt;script src=\"https://unpkg.com/prop-types@15.6/prop-types.min.js\"&gt;&lt;/script&gt;\n</pre><ul><li><a href=\"https://cdnjs.com/libraries/prop-types\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"color: rgb(203, 56, 55); background-color: transparent;\"><strong>cdnjs</strong></a></li></ul><pre class=\"ql-syntax\" spellcheck=\"false\">&lt;!-- development version --&gt;\n&lt;script src=\"https://cdnjs.cloudflare.com/ajax/libs/prop-types/15.6.0/prop-types.js\"&gt;&lt;/script&gt;\n\n&lt;!-- production version --&gt;\n&lt;script src=\"https://cdnjs.cloudflare.com/ajax/libs/prop-types/15.6.0/prop-types.min.js\"&gt;&lt;/script&gt;\n</pre><p>To load a specific version of&nbsp;<span style=\"background-color: rgb(247, 247, 247);\">prop-types</span>&nbsp;replace&nbsp;<span style=\"background-color: rgb(247, 247, 247);\">15.6.0</span>&nbsp;with the version number.</p><h2><br></h2><h2>Usage</h2><p>PropTypes was originally exposed as part of the React core module, and is commonly used with React components. Here is an example of using PropTypes with a React component, which also documents the different validators provided:</p><pre class=\"ql-syntax\" spellcheck=\"false\">import React from 'react';\nimport PropTypes from 'prop-types';\n\nclass MyComponent extends React.Component {\n  render() {\n    // ... do things with the props\n  }\n}\n\nMyComponent.propTypes = {\n  // You can declare that a prop is a specific JS primitive. By default, these\n  // are all optional.\n  optionalArray: PropTypes.array,\n  optionalBigInt: PropTypes.bigint,\n  optionalBool: PropTypes.bool,\n  optionalFunc: PropTypes.func,\n  optionalNumber: PropTypes.number,\n  optionalObject: PropTypes.object,\n  optionalString: PropTypes.string,\n  optionalSymbol: PropTypes.symbol,\n\n  // Anything that can be rendered: numbers, strings, elements or an array\n  // (or fragment) containing these types.\n  // see https://reactjs.org/docs/rendering-elements.html for more info\n  optionalNode: PropTypes.node,\n\n  // A React element (ie. &lt;MyComponent /&gt;).\n  optionalElement: PropTypes.element,\n\n  // A React element type (eg. MyComponent).\n  // a function, string, or \"element-like\" object (eg. React.Fragment, Suspense, etc.)\n  // see https://github.com/facebook/react/blob/HEAD/packages/shared/isValidElementType.js\n  optionalElementType: PropTypes.elementType,\n\n  // You can also declare that a prop is an instance of a class. This uses\n  // JS's instanceof operator.\n  optionalMessage: PropTypes.instanceOf(Message),\n\n  // You can ensure that your prop is limited to specific values by treating\n  // it as an enum.\n  optionalEnum: PropTypes.oneOf(['News', 'Photos']),\n\n  // An object that could be one of many types\n  optionalUnion: PropTypes.oneOfType([\n    PropTypes.string,\n    PropTypes.number,\n    PropTypes.instanceOf(Message)\n  ]),\n\n  // An array of a certain type\n  optionalArrayOf: PropTypes.arrayOf(PropTypes.number),\n\n  // An object with property values of a certain type\n  optionalObjectOf: PropTypes.objectOf(PropTypes.number),\n\n  // You can chain any of the above with `isRequired` to make sure a warning\n  // is shown if the prop isn't provided.\n\n  // An object taking on a particular shape\n  optionalObjectWithShape: PropTypes.shape({\n    optionalProperty: PropTypes.string,\n    requiredProperty: PropTypes.number.isRequired\n  }),\n\n  // An object with warnings on extra properties\n  optionalObjectWithStrictShape: PropTypes.exact({\n    optionalProperty: PropTypes.string,\n    requiredProperty: PropTypes.number.isRequired\n  }),\n\n  requiredFunc: PropTypes.func.isRequired,\n\n  // A value of any data type\n  requiredAny: PropTypes.any.isRequired,\n\n  // You can also specify a custom validator. It should return an Error\n  // object if the validation fails. Don't `console.warn` or throw, as this\n  // won't work inside `oneOfType`.\n  customProp: function(props, propName, componentName) {\n    if (!/matchme/.test(props[propName])) {\n      return new Error(\n        'Invalid prop `' + propName + '` supplied to' +\n        ' `' + componentName + '`. Validation failed.'\n      );\n    }\n  },\n\n  // You can also supply a custom validator to `arrayOf` and `objectOf`.\n  // It should return an Error object if the validation fails. The validator\n  // will be called for each key in the array or object. The first two\n  // arguments of the validator are the array or object itself, and the\n  // current item's key.\n  customArrayProp: PropTypes.arrayOf(function(propValue, key, componentName, location, propFullName) {\n    if (!/matchme/.test(propValue[key])) {\n      return new Error(\n        'Invalid prop `' + propFullName + '` supplied to' +\n        ' `' + componentName + '`. Validation failed.'\n      );\n    }\n  })\n};\n</pre><p>Refer to the&nbsp;<a href=\"https://facebook.github.io/react/docs/typechecking-with-proptypes.html\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"color: rgb(203, 56, 55); background-color: transparent;\">React documentation</a>&nbsp;for more information.</p>",
+      "parentCategory": "Programming Blog",
+      "subCategory": "Frontend",
+      "author": "jay",
+      "comments": [],
+      "likes": 0,
+      "published": "04/04/2024"
+    },
+    {
+      "id": "b6d4",
+      "title": "Prop-Types 9",
+      "briefDescription": "You can use prop-types to document the intended types of properties passed to components. React (and potentially other libraries—see the checkPropTypes() reference below) will check props passed to your components against those definitions, and warn in development if they don’t match.",
+      "detailedBlog": "<h2>Installation</h2><pre class=\"ql-syntax\" spellcheck=\"false\">npm install --save prop-types\n</pre><h2><br></h2><h2>Importing</h2><pre class=\"ql-syntax\" spellcheck=\"false\">import PropTypes from 'prop-types'; // ES6\nvar PropTypes = require('prop-types'); // ES5 with npm\n</pre><h3><br></h3><h3>CDN</h3><p>If you prefer to exclude&nbsp;<span style=\"background-color: rgb(247, 247, 247);\">prop-types</span>&nbsp;from your application and use it globally via&nbsp;<span style=\"background-color: rgb(247, 247, 247);\">window.PropTypes</span>, the&nbsp;<span style=\"background-color: rgb(247, 247, 247);\">prop-types</span>&nbsp;package provides single-file distributions, which are hosted on the following CDNs:</p><ul><li><a href=\"https://unpkg.com/prop-types/\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"color: rgb(203, 56, 55); background-color: transparent;\"><strong>unpkg</strong></a></li></ul><pre class=\"ql-syntax\" spellcheck=\"false\">&lt;!-- development version --&gt;\n&lt;script src=\"https://unpkg.com/prop-types@15.6/prop-types.js\"&gt;&lt;/script&gt;\n\n&lt;!-- production version --&gt;\n&lt;script src=\"https://unpkg.com/prop-types@15.6/prop-types.min.js\"&gt;&lt;/script&gt;\n</pre><ul><li><a href=\"https://cdnjs.com/libraries/prop-types\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"color: rgb(203, 56, 55); background-color: transparent;\"><strong>cdnjs</strong></a></li></ul><pre class=\"ql-syntax\" spellcheck=\"false\">&lt;!-- development version --&gt;\n&lt;script src=\"https://cdnjs.cloudflare.com/ajax/libs/prop-types/15.6.0/prop-types.js\"&gt;&lt;/script&gt;\n\n&lt;!-- production version --&gt;\n&lt;script src=\"https://cdnjs.cloudflare.com/ajax/libs/prop-types/15.6.0/prop-types.min.js\"&gt;&lt;/script&gt;\n</pre><p>To load a specific version of&nbsp;<span style=\"background-color: rgb(247, 247, 247);\">prop-types</span>&nbsp;replace&nbsp;<span style=\"background-color: rgb(247, 247, 247);\">15.6.0</span>&nbsp;with the version number.</p><h2><br></h2><h2>Usage</h2><p>PropTypes was originally exposed as part of the React core module, and is commonly used with React components. Here is an example of using PropTypes with a React component, which also documents the different validators provided:</p><pre class=\"ql-syntax\" spellcheck=\"false\">import React from 'react';\nimport PropTypes from 'prop-types';\n\nclass MyComponent extends React.Component {\n  render() {\n    // ... do things with the props\n  }\n}\n\nMyComponent.propTypes = {\n  // You can declare that a prop is a specific JS primitive. By default, these\n  // are all optional.\n  optionalArray: PropTypes.array,\n  optionalBigInt: PropTypes.bigint,\n  optionalBool: PropTypes.bool,\n  optionalFunc: PropTypes.func,\n  optionalNumber: PropTypes.number,\n  optionalObject: PropTypes.object,\n  optionalString: PropTypes.string,\n  optionalSymbol: PropTypes.symbol,\n\n  // Anything that can be rendered: numbers, strings, elements or an array\n  // (or fragment) containing these types.\n  // see https://reactjs.org/docs/rendering-elements.html for more info\n  optionalNode: PropTypes.node,\n\n  // A React element (ie. &lt;MyComponent /&gt;).\n  optionalElement: PropTypes.element,\n\n  // A React element type (eg. MyComponent).\n  // a function, string, or \"element-like\" object (eg. React.Fragment, Suspense, etc.)\n  // see https://github.com/facebook/react/blob/HEAD/packages/shared/isValidElementType.js\n  optionalElementType: PropTypes.elementType,\n\n  // You can also declare that a prop is an instance of a class. This uses\n  // JS's instanceof operator.\n  optionalMessage: PropTypes.instanceOf(Message),\n\n  // You can ensure that your prop is limited to specific values by treating\n  // it as an enum.\n  optionalEnum: PropTypes.oneOf(['News', 'Photos']),\n\n  // An object that could be one of many types\n  optionalUnion: PropTypes.oneOfType([\n    PropTypes.string,\n    PropTypes.number,\n    PropTypes.instanceOf(Message)\n  ]),\n\n  // An array of a certain type\n  optionalArrayOf: PropTypes.arrayOf(PropTypes.number),\n\n  // An object with property values of a certain type\n  optionalObjectOf: PropTypes.objectOf(PropTypes.number),\n\n  // You can chain any of the above with `isRequired` to make sure a warning\n  // is shown if the prop isn't provided.\n\n  // An object taking on a particular shape\n  optionalObjectWithShape: PropTypes.shape({\n    optionalProperty: PropTypes.string,\n    requiredProperty: PropTypes.number.isRequired\n  }),\n\n  // An object with warnings on extra properties\n  optionalObjectWithStrictShape: PropTypes.exact({\n    optionalProperty: PropTypes.string,\n    requiredProperty: PropTypes.number.isRequired\n  }),\n\n  requiredFunc: PropTypes.func.isRequired,\n\n  // A value of any data type\n  requiredAny: PropTypes.any.isRequired,\n\n  // You can also specify a custom validator. It should return an Error\n  // object if the validation fails. Don't `console.warn` or throw, as this\n  // won't work inside `oneOfType`.\n  customProp: function(props, propName, componentName) {\n    if (!/matchme/.test(props[propName])) {\n      return new Error(\n        'Invalid prop `' + propName + '` supplied to' +\n        ' `' + componentName + '`. Validation failed.'\n      );\n    }\n  },\n\n  // You can also supply a custom validator to `arrayOf` and `objectOf`.\n  // It should return an Error object if the validation fails. The validator\n  // will be called for each key in the array or object. The first two\n  // arguments of the validator are the array or object itself, and the\n  // current item's key.\n  customArrayProp: PropTypes.arrayOf(function(propValue, key, componentName, location, propFullName) {\n    if (!/matchme/.test(propValue[key])) {\n      return new Error(\n        'Invalid prop `' + propFullName + '` supplied to' +\n        ' `' + componentName + '`. Validation failed.'\n      );\n    }\n  })\n};\n</pre><p>Refer to the&nbsp;<a href=\"https://facebook.github.io/react/docs/typechecking-with-proptypes.html\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"color: rgb(203, 56, 55); background-color: transparent;\">React documentation</a>&nbsp;for more information.</p>",
+      "parentCategory": "Programming Blog",
+      "subCategory": "Frontend",
+      "author": "jay",
+      "comments": [],
+      "likes": 0,
+      "published": "04/04/2024"
+    },
+    {
+      "id": "24c8",
+      "title": "Prop-Types 10",
+      "briefDescription": "You can use prop-types to document the intended types of properties passed to components. React (and potentially other libraries—see the checkPropTypes() reference below) will check props passed to your components against those definitions, and warn in development if they don’t match.",
+      "detailedBlog": "<h2>Installation</h2><pre class=\"ql-syntax\" spellcheck=\"false\">npm install --save prop-types\n</pre><h2><br></h2><h2>Importing</h2><pre class=\"ql-syntax\" spellcheck=\"false\">import PropTypes from 'prop-types'; // ES6\nvar PropTypes = require('prop-types'); // ES5 with npm\n</pre><h3><br></h3><h3>CDN</h3><p>If you prefer to exclude&nbsp;<span style=\"background-color: rgb(247, 247, 247);\">prop-types</span>&nbsp;from your application and use it globally via&nbsp;<span style=\"background-color: rgb(247, 247, 247);\">window.PropTypes</span>, the&nbsp;<span style=\"background-color: rgb(247, 247, 247);\">prop-types</span>&nbsp;package provides single-file distributions, which are hosted on the following CDNs:</p><ul><li><a href=\"https://unpkg.com/prop-types/\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"color: rgb(203, 56, 55); background-color: transparent;\"><strong>unpkg</strong></a></li></ul><pre class=\"ql-syntax\" spellcheck=\"false\">&lt;!-- development version --&gt;\n&lt;script src=\"https://unpkg.com/prop-types@15.6/prop-types.js\"&gt;&lt;/script&gt;\n\n&lt;!-- production version --&gt;\n&lt;script src=\"https://unpkg.com/prop-types@15.6/prop-types.min.js\"&gt;&lt;/script&gt;\n</pre><ul><li><a href=\"https://cdnjs.com/libraries/prop-types\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"color: rgb(203, 56, 55); background-color: transparent;\"><strong>cdnjs</strong></a></li></ul><pre class=\"ql-syntax\" spellcheck=\"false\">&lt;!-- development version --&gt;\n&lt;script src=\"https://cdnjs.cloudflare.com/ajax/libs/prop-types/15.6.0/prop-types.js\"&gt;&lt;/script&gt;\n\n&lt;!-- production version --&gt;\n&lt;script src=\"https://cdnjs.cloudflare.com/ajax/libs/prop-types/15.6.0/prop-types.min.js\"&gt;&lt;/script&gt;\n</pre><p>To load a specific version of&nbsp;<span style=\"background-color: rgb(247, 247, 247);\">prop-types</span>&nbsp;replace&nbsp;<span style=\"background-color: rgb(247, 247, 247);\">15.6.0</span>&nbsp;with the version number.</p><h2><br></h2><h2>Usage</h2><p>PropTypes was originally exposed as part of the React core module, and is commonly used with React components. Here is an example of using PropTypes with a React component, which also documents the different validators provided:</p><pre class=\"ql-syntax\" spellcheck=\"false\">import React from 'react';\nimport PropTypes from 'prop-types';\n\nclass MyComponent extends React.Component {\n  render() {\n    // ... do things with the props\n  }\n}\n\nMyComponent.propTypes = {\n  // You can declare that a prop is a specific JS primitive. By default, these\n  // are all optional.\n  optionalArray: PropTypes.array,\n  optionalBigInt: PropTypes.bigint,\n  optionalBool: PropTypes.bool,\n  optionalFunc: PropTypes.func,\n  optionalNumber: PropTypes.number,\n  optionalObject: PropTypes.object,\n  optionalString: PropTypes.string,\n  optionalSymbol: PropTypes.symbol,\n\n  // Anything that can be rendered: numbers, strings, elements or an array\n  // (or fragment) containing these types.\n  // see https://reactjs.org/docs/rendering-elements.html for more info\n  optionalNode: PropTypes.node,\n\n  // A React element (ie. &lt;MyComponent /&gt;).\n  optionalElement: PropTypes.element,\n\n  // A React element type (eg. MyComponent).\n  // a function, string, or \"element-like\" object (eg. React.Fragment, Suspense, etc.)\n  // see https://github.com/facebook/react/blob/HEAD/packages/shared/isValidElementType.js\n  optionalElementType: PropTypes.elementType,\n\n  // You can also declare that a prop is an instance of a class. This uses\n  // JS's instanceof operator.\n  optionalMessage: PropTypes.instanceOf(Message),\n\n  // You can ensure that your prop is limited to specific values by treating\n  // it as an enum.\n  optionalEnum: PropTypes.oneOf(['News', 'Photos']),\n\n  // An object that could be one of many types\n  optionalUnion: PropTypes.oneOfType([\n    PropTypes.string,\n    PropTypes.number,\n    PropTypes.instanceOf(Message)\n  ]),\n\n  // An array of a certain type\n  optionalArrayOf: PropTypes.arrayOf(PropTypes.number),\n\n  // An object with property values of a certain type\n  optionalObjectOf: PropTypes.objectOf(PropTypes.number),\n\n  // You can chain any of the above with `isRequired` to make sure a warning\n  // is shown if the prop isn't provided.\n\n  // An object taking on a particular shape\n  optionalObjectWithShape: PropTypes.shape({\n    optionalProperty: PropTypes.string,\n    requiredProperty: PropTypes.number.isRequired\n  }),\n\n  // An object with warnings on extra properties\n  optionalObjectWithStrictShape: PropTypes.exact({\n    optionalProperty: PropTypes.string,\n    requiredProperty: PropTypes.number.isRequired\n  }),\n\n  requiredFunc: PropTypes.func.isRequired,\n\n  // A value of any data type\n  requiredAny: PropTypes.any.isRequired,\n\n  // You can also specify a custom validator. It should return an Error\n  // object if the validation fails. Don't `console.warn` or throw, as this\n  // won't work inside `oneOfType`.\n  customProp: function(props, propName, componentName) {\n    if (!/matchme/.test(props[propName])) {\n      return new Error(\n        'Invalid prop `' + propName + '` supplied to' +\n        ' `' + componentName + '`. Validation failed.'\n      );\n    }\n  },\n\n  // You can also supply a custom validator to `arrayOf` and `objectOf`.\n  // It should return an Error object if the validation fails. The validator\n  // will be called for each key in the array or object. The first two\n  // arguments of the validator are the array or object itself, and the\n  // current item's key.\n  customArrayProp: PropTypes.arrayOf(function(propValue, key, componentName, location, propFullName) {\n    if (!/matchme/.test(propValue[key])) {\n      return new Error(\n        'Invalid prop `' + propFullName + '` supplied to' +\n        ' `' + componentName + '`. Validation failed.'\n      );\n    }\n  })\n};\n</pre><p>Refer to the&nbsp;<a href=\"https://facebook.github.io/react/docs/typechecking-with-proptypes.html\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"color: rgb(203, 56, 55); background-color: transparent;\">React documentation</a>&nbsp;for more information.</p>",
+      "parentCategory": "Programming Blog",
+      "subCategory": "Frontend",
+      "author": "jay",
+      "comments": [],
+      "likes": 0,
+      "published": "04/04/2024"
+    }
+  ],
   "users": [
     {
       "id": "1",
       "name": "jay",
       "email": "jay@gmail.com",
       "password": "Jay@123",
-      "cpassword": "Jay@123",
       "savedBlogs": [],
-      "publishedBlogs": [],
-      "subAdmin": false
-    },
-    {
-      "id": "2",
-      "name": "jay",
-      "email": "jay1@gmail.com",
-      "password": "Jay@123",
-      "cpassword": "Jay@123",
-      "savedBlogs": [],
-      "publishedBlogs": [],
-      "subAdmin": false
-    },
-    {
-      "id": "3",
-      "name": "jay",
-      "email": "jay2@gmail.com",
-      "password": "Jay@123",
-      "cpassword": "Jay@123",
-      "savedBlogs": [],
-      "publishedBlogs": [],
-      "subAdmin": false
-    },
-    {
-      "id": "4",
-      "name": "jay",
-      "email": "jay3@gmail.com",
-      "password": "Jay@123",
-      "cpassword": "Jay@123",
-      "savedBlogs": [],
-      "publishedBlogs": [],
-      "subAdmin": false
-    },
-    {
-      "id": "5",
-      "name": "jay",
-      "email": "jay4@gmail.com",
-      "password": "Jay@123",
-      "cpassword": "Jay@123",
-      "savedBlogs": [],
-      "publishedBlogs": [],
-      "subAdmin": false
-    },
-    {
-      "id": "6",
-      "name": "jay",
-      "email": "jay5@gmail.com",
-      "password": "Jay@123",
-      "cpassword": "Jay@123",
-      "savedBlogs": [],
-      "publishedBlogs": [],
-      "subAdmin": false
-    },
-    {
-      "id": "7",
-      "name": "dfdfff",
-      "email": "jay6@gmail.com",
-      "password": "Jay@123",
-      "cpassword": "Jay@123",
-      "savedBlogs": [],
-      "publishedBlogs": [],
-      "subAdmin": false
-    },
-    {
-      "id": "8",
-      "name": "jay",
-      "email": "jay7@gmail.com",
-      "password": "Jay@123",
-      "cpassword": "Jay@123",
-      "savedBlogs": [],
-      "publishedBlogs": [],
-      "subAdmin": false
-    },
-    {
-      "id": "9",
-      "name": "jay",
-      "email": "jay9@gmail.com",
-      "password": "Jay@123",
-      "cpassword": "Jay@123",
-      "savedBlogs": [],
-      "publishedBlogs": [],
-      "subAdmin": false
-    },
-    {
-      "id": "10",
-      "name": "jay",
-      "email": "jay11@gmail.com",
-      "password": "Jay@123",
-      "cpassword": "Jay@123",
-      "savedBlogs": [],
-      "publishedBlogs": [],
-      "subAdmin": false
-    },
-    {
-      "id": "11",
-      "name": "jay",
-      "email": "jay12@gmail.com",
-      "password": "Jay@123",
-      "cpassword": "Jay@123",
-      "savedBlogs": [],
-      "publishedBlogs": [],
-      "subAdmin": false
-    },
-    {
-      "id": "12",
-      "name": "jay",
-      "email": "jay13@gmail.com",
-      "password": "Jay@123",
-      "cpassword": "Jay@123",
-      "savedBlogs": [],
-      "publishedBlogs": [],
-      "subAdmin": false
-    },
-    {
-      "id": "13",
-      "name": "jay",
-      "email": "jay14@gmail.com",
-      "password": "Jay@123",
-      "cpassword": "Jay@123",
-      "savedBlogs": [],
-      "publishedBlogs": [],
-      "subAdmin": false
-    },
-    {
-      "id": "14",
-      "name": "jay",
-      "email": "jay15@gmail.com",
-      "password": "Jay@123",
-      "cpassword": "Jay@123",
-      "savedBlogs": [],
-      "publishedBlogs": [],
-      "subAdmin": false
-    },
-    {
-      "id": "15",
-      "name": "jay",
-      "email": "jay16@gmail.com",
-      "password": "Jay@123",
-      "cpassword": "Jay@123",
-      "savedBlogs": [],
-      "publishedBlogs": [],
-      "subAdmin": false
-    },
-    {
-      "id": "16",
-      "name": "jay",
-      "email": "jay17@gmail.com",
-      "password": "Jay@123",
-      "cpassword": "Jay@123",
-      "savedBlogs": [],
-      "publishedBlogs": [],
-      "subAdmin": false
-    },
-    {
-      "id": "17",
-      "name": "jay",
-      "email": "jay18@gmail.com",
-      "password": "Jay@123",
-      "cpassword": "Jay@123",
-      "savedBlogs": [],
-      "publishedBlogs": [],
-      "subAdmin": false
-    },
-    {
-      "id": "18",
-      "name": "jay",
-      "email": "jay19@gmail.com",
-      "password": "Jay@123",
-      "cpassword": "Jay@123",
-      "savedBlogs": [],
-      "publishedBlogs": [],
-      "subAdmin": false
-    },
-    {
-      "id": "19",
-      "name": "Dhruv",
-      "email": "dhruv@gmail.com",
-      "password": "Dhruv@123",
-      "cpassword": "Dhruv@123",
-      "savedBlogs": [],
-      "publishedBlogs": [],
-      "subAdmin": false
-    },
-    {
-      "id": "20",
-      "name": "John Doe",
-      "email": "john@gmail.com",
-      "password": "John@123",
-      "cpassword": "John@123",
-      "savedBlogs": [],
-      "publishedBlogs": [],
-      "subAdmin": false
-    },
-    {
-      "id": "21",
-      "name": "john doe",
-      "email": "john1@gmail.com",
-      "password": "John@123",
-      "cpassword": "John@123",
-      "savedBlogs": [],
-      "publishedBlogs": [],
-      "subAdmin": false
+      "publishedBlogs": [
+        "38e7",
+        "22c1",
+        "3c3a",
+        "7ba3",
+        "d88b",
+        "3f3a",
+        "7e9b",
+        "a078",
+        "dc9d",
+        "b6d4",
+        "24c8"
+      ]
     }
   ],
   "subAdmins": [],
-  "categories": []
+  "admin": [
+    {
+      "id": "1111",
+      "name": "Admin",
+      "email": "admin@gmail.com",
+      "password": "Admin@123",
+      "savedBlogs": [],
+      "publishedBlogs": [
+        "b8bc"
+      ]
+    }
+  ],
+  "categories": [
+    {
+      "parentCategory": "Programming Blog",
+      "subCategories": [
+        "Frontend",
+        "Backend"
+      ],
+      "id": "f39c"
+    },
+    {
+      "parentCategory": "Tech Blog",
+      "subCategories": [
+        "Gadgets",
+        "Software"
+      ],
+      "id": "9d0c"
+    },
+    {
+      "parentCategory": "Fashion Blog",
+      "subCategories": [
+        "StreetWear",
+        "HighFashion"
+      ],
+      "id": "6959"
+    },
+    {
+      "parentCategory": "Travel Blog",
+      "subCategories": [
+        "Adventure",
+        "LuxuryTravel"
+      ],
+      "id": "6a02"
+    },
+    {
+      "parentCategory": "Food Blog",
+      "subCategories": [
+        "Vegan",
+        "Desserts"
+      ],
+      "id": "afd8"
+    },
+    {
+      "parentCategory": "Fitness Blog",
+      "subCategories": [
+        "Yoga",
+        "Weightlifting"
+      ],
+      "id": "734d"
+    }
+  ]
 }
