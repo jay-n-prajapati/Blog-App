@@ -1,4 +1,4 @@
-import { PropTypes } from 'prop-types';
+import PropTypes from 'prop-types';
 import Form from '@/components/common/Form';
 import { Button } from '@/components/ui/button';
 import InputWithLabel from '@/components/common/InputWithLabel';

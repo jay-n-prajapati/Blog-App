@@ -1,11 +1,11 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef} from 'react';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import Toolbar, { formats, modules } from './Toolbar';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { PropTypes } from 'prop-types';
-import InputWithLabel from '@/components/common/InputWithLabel';
+import PropTypes from 'prop-types';
+
 
 const Editor = ({ blog, setBlog }) => {
   const reactQuillRef = useRef(null);
@@ -50,7 +50,7 @@ const Editor = ({ blog, setBlog }) => {
 
 Editor.propTypes = {
   setBlog: PropTypes.func,
-  // blog : PropTypes.
+  blog : PropTypes.object
 };
 
 export default React.memo(Editor);

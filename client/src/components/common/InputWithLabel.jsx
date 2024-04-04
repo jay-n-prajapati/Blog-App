@@ -1,4 +1,4 @@
-import { PropTypes } from 'prop-types';
+import PropTypes from 'prop-types';
 import { Input } from '../ui/input';
 import { Eye } from 'lucide-react';
 import { EyeOff } from 'lucide-react';

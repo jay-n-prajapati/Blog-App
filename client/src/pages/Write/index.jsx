@@ -7,17 +7,16 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { getCategories, postBlog } from '@/utils/axios-instance';
+import { addPublishedBlog, getCategories, postBlog } from '@/utils/axios-instance';
 import { Button } from '@/components/ui/button';
 import Form from '@/components/common/Form';
 import { toast } from 'react-toastify';
-import { getRole } from '@/utils/services/getRoleService';
-import { useSelector } from 'react-redux';
+import useRole from '@/utils/custom-hooks/useRole';
 
 const Write = () => {
   const [categories, setCategories] = useState([]);
   const [parentCategory, setParentCategory] = useState('');
-  const {user , admin , subAdmin} = useSelector(state => state.auth)
+  const { currentUser, endPoint } = useRole();
 
   const [blog, setBlog] = useState({
     title: '',
@@ -40,8 +39,8 @@ const Write = () => {
   }, [parentCategory]);
 
   const fetchCategories = async () => {
-    const { success, data, error } = await getCategories();
-    setCategories(data);
+    const { data, error } = await getCategories();
+    !error ? setCategories(data) : null;
   };
 
   const handleSubmit = async (e) => {
@@ -49,18 +48,21 @@ const Write = () => {
     const currentDate = new Date().toLocaleDateString('en-GB');
     const blogToPost = {
       ...blog,
-      comments : [],
-      likes : 0,
-      published : currentDate
+      author: currentUser.name,
+      comments: [],
+      likes: 0,
+      published: currentDate,
+    };
+    const { data, error } = await postBlog(blogToPost);
+    if (error) {
+      toast.error(`Error : ${error}`);
     }
-    // const {success , data , error} = await postBlog(blogToPost);
-    // console.log(data.id);
-    // if (error) {
-    //   toast.error(`Error : ${error}`)
-    // }
-    // toast.success('Blog published Successfully')
-    const currentUser = getRole(user , admin , subAdmin)
-    console.log(currentUser);
+    toast.success('Blog published Successfully');
+    currentUser.publishedBlogs.push(data.id);
+    const res = await addPublishedBlog(currentUser.id, endPoint, {
+      publishedBlogs: currentUser.publishedBlogs,
+    });
+    console.log(res);
   };
   useEffect(() => {
     fetchCategories();
