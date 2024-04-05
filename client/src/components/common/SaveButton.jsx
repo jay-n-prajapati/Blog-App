@@ -19,7 +19,7 @@ const SaveButton = ({ blog }) => {
     if (!isAuth) {
       toast.warn('First Login To save blog');
       navigate('/auth');
-      return
+      return;
     }
     currentUser.savedBlogs.push(blog.id);
     const { data, error } = await addSavedBlog(currentUser.id, endPoint, {
@@ -32,18 +32,15 @@ const SaveButton = ({ blog }) => {
     }
     setIsSaved(true);
     toast.success('blog saved to Library');
-    console.log(data);
   };
 
   const handleRemove = async () => {
     if (!isAuth) {
       toast.warn('First Login To remove from library');
       navigate('/auth');
-      return
+      return;
     }
-    console.log(currentUser.savedBlogs);
-    const filteredSavedBlogs = currentUser.savedBlogs.filter((blogID) => blogID !== blog.id );
-    console.log(filteredSavedBlogs);
+    const filteredSavedBlogs = currentUser.savedBlogs.filter((blogID) => blogID !== blog.id);
     currentUser.savedBlogs = filteredSavedBlogs;
     const { data, error } = await addSavedBlog(currentUser.id, endPoint, {
       savedBlogs: filteredSavedBlogs,
@@ -54,12 +51,13 @@ const SaveButton = ({ blog }) => {
       return;
     }
     setIsSaved(false);
-    toast.success('blog removed from Library');
-    console.log(data);
+    toast.info('blog removed from Library');
   };
 
   useEffect(() => {
-    blog && currentUser && currentUser.savedBlogs.includes(blog.id) ? setIsSaved(true) : setIsSaved(false);
+    blog && currentUser && currentUser.savedBlogs.includes(blog.id)
+      ? setIsSaved(true)
+      : setIsSaved(false);
   }, [blog, isSaved]);
 
   return (

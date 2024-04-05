@@ -4,8 +4,7 @@ import PrivateRoutesUser from './PrivateRoutes/PrivateRoutesUser/index.jsx';
 import PrivateRoutesAdmin from './PrivateRoutes/PrivateRoutesAdmin/index.jsx';
 import PrivateRoutesSubAdmin from './PrivateRoutes/PrivateRoutesSubAdmin/index.jsx';
 import { useSelector } from 'react-redux';
-import PrivateRouteEditor from './PrivateRoutes/PrivateRouteEditor/index.jsx';
-
+import PrivateRoute from './PrivateRoutes/PrivateRoute/index.jsx';
 
 
 const Landing = React.lazy(() => import('../pages/Home'));
@@ -18,6 +17,9 @@ const ErrorPage = React.lazy(() => import('../pages/ErrorPage/index.jsx'));
 const Write = React.lazy(() => import('@/pages/Write'));
 const Blog = React.lazy(() => import('@/pages/Blog/index.jsx'));
 const NoEditor = React.lazy(() => import('@/pages/NoEditor/index.jsx'));
+const Story = React.lazy(() => import('@/pages/Story/index.jsx'));
+const Profile = React.lazy(() => import('@/pages/Home/Profile/index.jsx'));
+const Library = React.lazy(() => import('@/pages/Home/Library/index.jsx'));
 
 export const Router = () => {
   const { isAuth , user, subAdmin, admin } = useSelector((state) => state.auth);
@@ -39,16 +41,28 @@ export const Router = () => {
           element: <Blog/>,
         },
         {
-          element: <PrivateRouteEditor isAuth={isAuth} />,
+          element: <PrivateRoute isAuth={isAuth} />,
           children: [
             {
               path: 'write',
               element: <Write />,
             },
             {
+              path: 'stories',
+              element: <Story />,
+            },
+            {
+              path: 'profile',
+              element: <Profile />,
+            },
+            {
+              path: 'library',
+              element: <Library />,
+            },
+            {
               path: 'no-editor',
               element: <NoEditor />,
-            }
+            },
           ],
         },
         {

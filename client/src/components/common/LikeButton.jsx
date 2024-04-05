@@ -15,7 +15,7 @@ const LikeButton = ({likes}) => {
 };
 
 LikeButton.propTypes = {
-    likes : PropTypes.string
+    likes : PropTypes.number
 }
 
 export default LikeButton;

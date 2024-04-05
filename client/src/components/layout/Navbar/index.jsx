@@ -3,19 +3,19 @@ import Links from './Links';
 // import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useDispatch, useSelector } from 'react-redux';
-import { links } from './LinkData';
+import { DropDownLinks, links } from './NavData';
 import { LogOut } from 'lucide-react';
 import { removeAuth } from '@/redux/actions/authActions';
 import { toast } from 'react-toastify';
 import useRole from '@/utils/custom-hooks/useRole';
 import CommonAvatar from '@/components/common/Avatar';
-
+import DropDown from './DropDown';
 
 const Navbar = () => {
   // const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
   const { isAuth } = useSelector((state) => state.auth);
-  const { currentUser } = useRole();
+  const { currentUser,role } = useRole();
   const navigate = useNavigate();
 
   const handleLogOut = () => {
@@ -44,19 +44,16 @@ const Navbar = () => {
                 <Button
                   onClick={() => navigate('/auth')}
                   className='rounded-3xl text-[10px] sm:text-[12px] md:text-sm border border-transparent bg-black font-sohne-light px-6 hover:text-black hover:bg-transparent hover:border hover:border-black'
-                  >
+                >
                   Log In
                 </Button>
               </>
             ) : (
               <div className='flex items-center gap-4'>
-                <CommonAvatar userName={currentUser.name} className='size-7 sm:size-9' />
-                <Button
-                  size='icon'
-                  variant='ghost'
-                  className='size-6'
-                  onClick={handleLogOut}
-                >
+                <DropDown links={DropDownLinks[role]} >
+                  <CommonAvatar userName={currentUser.name} className='size-7 sm:size-9' />
+                </DropDown>
+                <Button size='icon' variant='ghost' className='size-6' onClick={handleLogOut}>
                   <LogOut />
                 </Button>
               </div>
