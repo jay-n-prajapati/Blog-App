@@ -7,7 +7,7 @@ const Links = ({ linkToRender = [], children }) => {
       {linkToRender.map((link, idx) => {
         return (
           <li key={idx}>
-            <NavLink to={link.slug} className="p-2 flex items-center gap-2 font-sohne-regular text-primary-text text-[14px]">
+            <NavLink to={link.slug} className="p-2 flex items-center gap-2 font-sohne-regular text-primary-text text-[12px]">
               {link?.icon}
               <span className="hidden sm:block" >{link.label}</span>
             </NavLink>

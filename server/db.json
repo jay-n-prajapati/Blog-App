@@ -64,6 +64,32 @@
       "comments": [],
       "likes": 0,
       "published": "05/04/2024"
+    },
+    {
+      "id": "4f21",
+      "title": "Tooltip",
+      "briefDescription": "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
+      "detailedBlog": "<h2><strong>Installation</strong></h2><p>CLIManual</p><pre class=\"ql-syntax\" spellcheck=\"false\">npx shadcn-ui@latest add tooltip\n</pre><p><br></p><p>Copy</p><h2>Usage</h2><pre class=\"ql-syntax\" spellcheck=\"false\">import {\n  Tooltip,\n  TooltipContent,\n  TooltipProvider,\n  TooltipTrigger,\n} from \"@/components/ui/tooltip\"\n</pre><p>Copy</p><p><br></p><pre class=\"ql-syntax\" spellcheck=\"false\">&lt;TooltipProvider&gt;\n  &lt;Tooltip&gt;\n    &lt;TooltipTrigger&gt;Hover&lt;/TooltipTrigger&gt;\n    &lt;TooltipContent&gt;\n      &lt;p&gt;Add to library&lt;/p&gt;\n    &lt;/TooltipContent&gt;\n  &lt;/Tooltip&gt;\n&lt;/TooltipProvider&gt;\n</pre><p><br></p>",
+      "parentCategory": "Programming Blog",
+      "subCategory": "Frontend",
+      "authorId": "2",
+      "author": "jay Prajapati",
+      "comments": [],
+      "likes": 0,
+      "published": "05/04/2024"
+    },
+    {
+      "id": "7104",
+      "title": "",
+      "briefDescription": "",
+      "detailedBlog": "",
+      "parentCategory": "Fashion Blog",
+      "subCategory": "",
+      "authorId": "1",
+      "author": "jay",
+      "comments": [],
+      "likes": 0,
+      "published": "05/04/2024"
     }
   ],
   "users": [
@@ -85,7 +111,8 @@
         "dc9d",
         "b6d4",
         "24c8",
-        "b8a0"
+        "b8a0",
+        "7104"
       ]
     },
     {
@@ -98,8 +125,7 @@
         "b3c2",
         "98fd",
         "6486",
-        "5b49",
-        "4a1f"
+        "4f21"
       ]
     }
   ],

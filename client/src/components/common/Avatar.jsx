@@ -16,7 +16,7 @@ const CommonAvatar = ({userName , className=''}) => {
   }, [userName]);
   return (
     <>
-      <Avatar className={`border-2 hover:brightness-90 transition-all cursor-pointer ${className}`}>
+      <Avatar className={`border-2 border-green-500 hover:brightness-90 transition-all cursor-pointer ${className}`}>
         <AvatarFallback>{getName()}</AvatarFallback>
       </Avatar>
     </>

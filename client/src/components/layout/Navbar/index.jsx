@@ -49,12 +49,12 @@ const Navbar = () => {
                 </Button>
               </>
             ) : (
-              <div className='flex items-center gap-2'>
-                <CommonAvatar userName={currentUser.name} className='size-8 sm:size-10' />
+              <div className='flex items-center gap-4'>
+                <CommonAvatar userName={currentUser.name} className='size-7 sm:size-9' />
                 <Button
                   size='icon'
-                  className='text-white border border-transparent bg-black font-sohne-light px-6 hover:text-black hover:bg-transparent hover:border hover:border-black p-2 size-8 sm:size-10'
-                  variant='outline'
+                  variant='ghost'
+                  className='size-6'
                   onClick={handleLogOut}
                 >
                   <LogOut />
