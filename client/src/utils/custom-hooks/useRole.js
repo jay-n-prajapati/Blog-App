@@ -1,15 +1,15 @@
 import { useSelector } from 'react-redux';
 
 const useRole = () => {
-  const { user, admin, subAdmin } = useSelector((state) => state.auth);
+  const { isAuth, user, admin, subAdmin } = useSelector((state) => state.auth);
 
   return user
-    ? { currentUser: user, role: 'user', endPoint: 'users' }
+    ? { isAuth, currentUser: user, role: 'user', endPoint: 'users' }
     : admin
-    ? { currentUser: admin, role: 'admin', endPoint: 'admin' }
+    ? { isAuth, currentUser: admin, role: 'admin', endPoint: 'admin' }
     : subAdmin
-    ? { currentUser: subAdmin, role: 'subAdmin', endPoint: 'subAdmins' }
-    : { currentUser: '', role: '', endPoint: '' };
+    ? { isAuth, currentUser: subAdmin, role: 'subAdmin', endPoint: 'subAdmins' }
+    : { isAuth, currentUser: '', role: '', endPoint: '' };
 };
 
 export default useRole;

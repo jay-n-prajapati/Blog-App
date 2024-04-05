@@ -1,11 +1,27 @@
+import BlogCard from '@/components/common/BlogCard';
 import { Button } from '@/components/ui/button';
-import { useEffect } from 'react';
+import { getBlogs } from '@/utils/axios-instance';
+import useRole from '@/utils/custom-hooks/useRole';
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink, useNavigate } from 'react-router-dom';
+import {toast} from 'react-toastify'
 
 const Landing = () => {
   const { user, admin, subAdmin } = useSelector((state) => state.auth);
   const navigate = useNavigate();
+  const [blogs, setBlogs] = useState([]);
+  const { currentUser } = useRole();
+
+  const fetchBlogs = async () => {
+    const { data: blogs, error } = await getBlogs(currentUser.id);
+
+    error ? toast.error(`Error : ${error} `) : setBlogs(blogs);
+  };
+
+  useEffect(() => {
+    fetchBlogs();
+  }, []);
 
   useEffect(() => {
     admin
@@ -36,6 +52,11 @@ const Landing = () => {
         <div className='h-full w-[45%]  hidden md:block'>
           <img src='/images/blogify-landing-img.jpg' alt='landing-img' className='h-full w-full brightness-50' />
         </div>
+      </div>
+      <div>
+      {blogs.map((blog) => {
+        return <BlogCard key={blog.id} blog={blog} />;
+      })}
       </div>
     </div>
   );

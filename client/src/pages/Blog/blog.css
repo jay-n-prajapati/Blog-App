@@ -34,11 +34,12 @@
 .blog-container pre {
     background: #f7f7f7;
     color: rgba(0, 0, 0, 0.9);
-    font-size: 14px;
+    font-size: 12px;
     padding: 1rem;
     border: 1px solid #b2b2b2;
     border-radius: 5px;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    text-wrap: wrap;
 }
 
 
@@ -60,7 +61,7 @@
     }
 
     .blog-container pre {
-        font-size: 12px;
+        font-size: 10px;
         padding: .5rem;
 
     }

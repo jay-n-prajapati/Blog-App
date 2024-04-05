@@ -12,13 +12,13 @@ import { Button } from '@/components/ui/button';
 import Form from '@/components/common/Form';
 import { toast } from 'react-toastify';
 import useRole from '@/utils/custom-hooks/useRole';
-import {useNavigate} from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
 
 const Write = () => {
   const [categories, setCategories] = useState([]);
   const [parentCategory, setParentCategory] = useState('');
   const { currentUser, endPoint } = useRole();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const [blog, setBlog] = useState({
     title: '',
@@ -30,7 +30,7 @@ const Write = () => {
 
   const handleParentCategoryChange = (value) => {
     setParentCategory(value);
-    setBlog({ ...blog, parentCategory: value , authorId : currentUser.id });
+    setBlog({ ...blog, parentCategory: value, authorId: currentUser.id });
   };
 
   const findSubCategory = useCallback(() => {
@@ -47,6 +47,16 @@ const Write = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (
+      !blog.title ||
+      !blog.briefDescription ||
+      !blog.detailedBlog ||
+      !blog.parentCategory ||
+      !blog.subCategory
+    ) {
+      toast.warning("Sorry, Can't Publish Some Fields May Empty");
+      return;
+    }
     const currentDate = new Date().toLocaleDateString('en-GB');
     const blogToPost = {
       ...blog,
@@ -67,11 +77,11 @@ const Write = () => {
     console.log(res);
   };
 
-  useEffect(() =>{
+  useEffect(() => {
     if (window.innerWidth < 920) {
-      navigate('/no-editor')
+      navigate('/no-editor');
     }
-  },[])
+  }, []);
 
   useEffect(() => {
     fetchCategories();

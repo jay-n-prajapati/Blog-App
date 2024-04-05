@@ -3,7 +3,7 @@ export const links = [
     label: 'Write',
     slug: '/write',
     icon: (
-      <svg width='26' height='26' viewBox='0 0 22 22' fill='none' aria-label='Write'>
+      <svg width='24' height='24' viewBox='0 0 22 22' fill='none' aria-label='Write'>
         <path
           d='M14 4a.5.5 0 0 0 0-1v1zm7 6a.5.5 0 0 0-1 0h1zm-7-7H4v1h10V3zM3 4v16h1V4H3zm1 17h16v-1H4v1zm17-1V10h-1v10h1zm-1 1a1 1 0 0 0 1-1h-1v1zM3 20a1 1 0 0 0 1 1v-1H3zM4 3a1 1 0 0 0-1 1h1V3z'
           fill='currentColor'
