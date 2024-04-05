@@ -12,11 +12,13 @@ import { Button } from '@/components/ui/button';
 import Form from '@/components/common/Form';
 import { toast } from 'react-toastify';
 import useRole from '@/utils/custom-hooks/useRole';
+import {useNavigate} from 'react-router-dom'
 
 const Write = () => {
   const [categories, setCategories] = useState([]);
   const [parentCategory, setParentCategory] = useState('');
   const { currentUser, endPoint } = useRole();
+  const navigate = useNavigate()
 
   const [blog, setBlog] = useState({
     title: '',
@@ -28,7 +30,7 @@ const Write = () => {
 
   const handleParentCategoryChange = (value) => {
     setParentCategory(value);
-    setBlog({ ...blog, parentCategory: value });
+    setBlog({ ...blog, parentCategory: value , authorId : currentUser.id });
   };
 
   const findSubCategory = useCallback(() => {
@@ -64,6 +66,13 @@ const Write = () => {
     });
     console.log(res);
   };
+
+  useEffect(() =>{
+    if (window.innerWidth < 920) {
+      navigate('/no-editor')
+    }
+  },[])
+
   useEffect(() => {
     fetchCategories();
   }, []);

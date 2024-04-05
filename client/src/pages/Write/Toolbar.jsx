@@ -3,35 +3,45 @@ import { Quill } from 'react-quill';
 const Size = Quill.import('formats/size');
 Size.whitelist = ['extra-small', 'small', 'medium', 'large'];
 Quill.register(Size, true);
-
+ 
+const BlockEmbed = Quill.import('blots/block/embed');
+class CustomImageBlot extends BlockEmbed {
+  static create(value) {
+    const node = super.create();
+    node.setAttribute('src', value.src);
+    node.setAttribute('alt', value.alt);
+    node.style.width = '70%';
+    node.style.display = 'block';
+    node.style.margin = '0 auto';
+    return node;
+  }
+  static value(node) {
+    return { src: node.getAttribute('src'), alt: node.getAttribute('alt') };
+  }
+}
+CustomImageBlot.blotName = 'image';
+CustomImageBlot.tagName = 'img';
+Quill.register(CustomImageBlot);
 
 const uploadToCloudinary = async (file) => {
-
   const formData = new FormData();
-  formData.append("file", file);
-  formData.append(
-    "upload_preset",
-    import.meta.env.VITE_CLOUDINARY_PRESET
-  );
+  formData.append('file', file);
+  formData.append('upload_preset', import.meta.env.VITE_CLOUDINARY_PRESET);
   const res = await fetch(
-    `https://api.cloudinary.com/v1_1/${
-      import.meta.env.VITE_CLOUDINARY_NAME
-    }/upload`,
-    { method: "POST", body: formData }
+    `https://api.cloudinary.com/v1_1/${import.meta.env.VITE_CLOUDINARY_NAME}/upload`,
+    { method: 'POST', body: formData },
   );
   const data = await res.json();
   const url = data.url;
-  return url
-  
-}
-
+  return url;
+};
 
 let reactQuillRef;
 
 const imageHandler = () => {
-  const input = document.createElement("input");
-  input.setAttribute("type", "file");
-  input.setAttribute("accept", "image/*");
+  const input = document.createElement('input');
+  input.setAttribute('type', 'file');
+  input.setAttribute('accept', 'image/*');
   input.click();
   input.onchange = async () => {
     if (input !== null && input.files !== null) {
@@ -40,12 +50,11 @@ const imageHandler = () => {
       const quill = reactQuillRef.current;
       if (quill) {
         const range = quill.getEditorSelection();
-        range && quill.getEditor().insertEmbed(range.index, "image", url);
+        range && quill.getEditor().insertEmbed(range.index, 'image', { src: url, alt: 'Image' });
       }
     }
   };
-}
-
+};
 
 // Modules object for setting up the Quill editor
 export const modules = {
@@ -80,12 +89,12 @@ export const formats = [
 ];
 
 // Quill Toolbar component
-export const Toolbar = ({quillRef}) => {
+export const Toolbar = ({ quillRef }) => {
 
   reactQuillRef = quillRef;
 
   return (
-    <div id='toolbar' className='flex items-center justify-center flex-wrap'>
+    <div id='toolbar' className='flex items-center justify-center flex-wrap h-auto'>
       <span className='ql-formats'>
         <select className='ql-size' defaultValue='medium'>
           {/* <option value="extra-small">size 1</option> */}
@@ -124,7 +133,6 @@ export const Toolbar = ({quillRef}) => {
       <span className='ql-formats'>
         <button className='ql-link' />
         <button className='ql-image' />
-        <button className='ql-video' />
       </span>
       <span className='ql-formats'>
         <button className='ql-code-block' />
@@ -132,6 +140,6 @@ export const Toolbar = ({quillRef}) => {
       </span>
     </div>
   );
-}
+};
 
 export default Toolbar;

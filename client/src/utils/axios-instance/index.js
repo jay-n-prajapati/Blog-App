@@ -42,5 +42,6 @@ export const getSingleCategories = async (parentCategory) => await instance.get(
 
 export const addPublishedBlog = async (id,endpoint,savedBlogs) => await instance.patch(`/${endpoint}/${id}`,savedBlogs)
 
-export const getBlogs = async () => await instance.get('/blogs')
+export const getSingleBlogs = async (blogId) => await instance.get(`/blogs?id=${blogId}`)
+export const getBlogs = async (authorId) => await instance.get(`/blogs?authorId_ne=${authorId}`)
 export const postBlog = async (payload) => await instance.post('/blogs',payload)
