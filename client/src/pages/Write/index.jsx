@@ -68,7 +68,7 @@ const Write = () => {
   };
 
   useEffect(() =>{
-    if (window.innerWidth < 920) {
+    if (window.innerWidth < 850) {
       navigate('/no-editor')
     }
   },[])
