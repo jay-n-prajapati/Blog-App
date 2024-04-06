@@ -1,4 +1,5 @@
 import BlogCard from '@/components/common/BlogCard';
+import LikeButton from '@/components/common/LikeButton';
 import { getBlogs } from '@/utils/axios-instance';
 import useRole from '@/utils/custom-hooks/useRole';
 import { useEffect, useState } from 'react';
@@ -20,7 +21,9 @@ const UserHome = () => {
   return (
     <div>
       {blogs.map((blog) => {
-        return <BlogCard key={blog.id} blog={blog} />;
+        return <BlogCard key={blog.id} blog={blog}>
+          <LikeButton likes={blog.likes} />
+        </BlogCard>;
       })}
     </div>
   );

@@ -18,8 +18,8 @@ const Write = React.lazy(() => import('@/pages/Write'));
 const Blog = React.lazy(() => import('@/pages/Blog/index.jsx'));
 const NoEditor = React.lazy(() => import('@/pages/NoEditor/index.jsx'));
 const Story = React.lazy(() => import('@/pages/Story/index.jsx'));
-const Profile = React.lazy(() => import('@/pages/Home/Profile/index.jsx'));
-const Library = React.lazy(() => import('@/pages/Home/Library/index.jsx'));
+const Profile = React.lazy(() => import('@/pages/Profile/index.jsx'));
+const Library = React.lazy(() => import('@/pages/Library/index.jsx'));
 
 export const Router = () => {
   const { isAuth , user, subAdmin, admin } = useSelector((state) => state.auth);

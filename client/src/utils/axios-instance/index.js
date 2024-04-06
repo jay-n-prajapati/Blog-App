@@ -29,12 +29,12 @@ instance.interceptors.response.use(
 
 
 
-
 export const findUser = (endpoint,email) => instance.get(`${endpoint}?email=${email}`);
 export const getUsers = async () => await instance.get('/users')
+export const getUser = async (id) => await instance.get(`/users/${id}`)
 export const addUser = async (payload) => await instance.post('/users',payload)
-export const addPublishedBlog = async (id,endpoint,publishedBlogs) => await instance.patch(`/${endpoint}/${id}`,publishedBlogs)
-export const addSavedBlog = async (id,endpoint,savedBlog) => await instance.patch(`/${endpoint}/${id}`,savedBlog)
+export const updateUser = async (id,endpoint,payload) => await instance.patch(`/${endpoint}/${id}`,payload)
+
 
 export const getSubAdmin = async () => await instance.get('/subAdmins')
 export const addSubAdmin = async (payload) => await instance.post('/subAdmins',payload)
@@ -44,5 +44,8 @@ export const getSingleCategories = async (parentCategory) => await instance.get(
 
 
 export const getSingleBlogs = async (blogId) => await instance.get(`/blogs?id=${blogId}`)
+export const getUsersBlogs = async (authorId) => await instance.get(`/blogs?authorId=${authorId}`)
 export const getBlogs = async (authorId) => await instance.get(`/blogs?authorId_ne=${authorId}`)
 export const postBlog = async (payload) => await instance.post('/blogs',payload)
+export const updateBlog = async (blogId , payload) => await instance.patch(`/blogs/${blogId}`,payload)
+export const deleteBlog = async (blogId) => await instance.delete(`/blogs/${blogId}`)
