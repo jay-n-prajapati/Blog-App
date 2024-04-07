@@ -8,7 +8,7 @@ const InputWithLabel = ({
   value,
   label,
   labelFor,
-  type,
+  type='text',
   onChange,
   onBlur,
   placeholder,
@@ -66,7 +66,6 @@ InputWithLabel.propTypes = {
   type: PropTypes.string,
   onChange: PropTypes.func,
   onBlur: PropTypes.func,
-  // props : PropTypes.any
 };
 
 export default InputWithLabel;

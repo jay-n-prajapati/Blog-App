@@ -23,14 +23,17 @@ const SaveButton = ({ blog }) => {
     }
     currentUser.savedBlogs.push(blog.id);
     blog.savedBy.push(currentUser.id);
-    const { data, error } = await updateUser(currentUser.id, endPoint, {
+    const { success, error } = await updateUser(currentUser.id, endPoint, {
       savedBlogs: currentUser.savedBlogs,
     });
-    const { data: updateBlogData, error: updateBlogError } = await updateBlog(blog.id, {
+    if (!success) {
+      toast.error(`Error : ${error}`);
+    }
+    const { success: updateSuccess, error: updateBlogError } = await updateBlog(blog.id, {
       savedBy: blog.savedBy,
     });
-    if (error) {
-      toast.error(`Error : ${error}`);
+    if (!updateSuccess) {
+      toast.error(`Error : ${updateBlogError}`);
       return;
     }
     setIsSaved(true);
@@ -46,19 +49,19 @@ const SaveButton = ({ blog }) => {
     }
     const filteredSavedBlogs = currentUser.savedBlogs.filter((blogID) => blogID !== blog.id);
     currentUser.savedBlogs = filteredSavedBlogs;
-    const { data, error } = await updateUser(currentUser.id, endPoint, {
+    const { success, error } = await updateUser(currentUser.id, endPoint, {
       savedBlogs: filteredSavedBlogs,
     });
-    if (error) {
+    if (!success) {
       toast.error(`Error : ${error}`);
       return;
     }
     const filteredSavedBy = blog.savedBy.filter((authorId) => authorId !== currentUser.id);
-    const { data: updateData, error: updateErr } = await updateBlog(blog.id, {
+    const { success: updateSuccess, error: updateErr } = await updateBlog(blog.id, {
       savedBy: filteredSavedBy,
     });
 
-    if (updateErr) {
+    if (!updateSuccess) {
       toast.error(`Error : ${updateErr}`);
       return;
     }

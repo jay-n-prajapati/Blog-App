@@ -64,6 +64,7 @@ const Signup = ({ setContent }) => {
       id: String(getId()),
       name : values.name,
       email : values.email,
+      bio : '',
       password : values.password,
       savedBlogs: [],
       publishedBlogs: [],
