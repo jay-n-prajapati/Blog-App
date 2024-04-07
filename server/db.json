@@ -1,95 +1,74 @@
 {
   "blogs": [
     {
-      "id": "b8a0",
-      "title": "How to implement your design system in a Flutter app (1/2)",
-      "briefDescription": "When it comes to writing clean code, we often think first about implementing the best design and architectural patterns for the features of our app. This is definitely a good practice, and I can’t encourage you enough to do it.",
-      "detailedBlog": "<img src=\"https://miro.medium.com/v2/resize:fit:1050/0*Za8UCY6kucBIH8Zx\" alt=\"\" style=\"width: 70%; display: block; margin: 0px auto;\"><p><br></p><p>Photo by&nbsp;<a href=\"https://unsplash.com/@amayli?utm_source=medium&amp;utm_medium=referral\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"color: inherit;\">Amélie Mourichon</a>&nbsp;on&nbsp;<a href=\"https://unsplash.com/?utm_source=medium&amp;utm_medium=referral\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"color: inherit;\">Unsplash</a></p><p>When it comes to writing clean code, we often think first about implementing the best design and architectural patterns for the features of our app. This is definitely a good practice, and I can’t encourage you enough to do it.</p><p>But what about the frontend code? How could you properly implement a design system in your app? And what is a design system? What is its purpose and value?</p><p><em>This article was partly inspired by the work of Aloïs Deniel, which you can find&nbsp;</em><a href=\"https://www.youtube.com/watch?v=lTy8odHcS5s\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"color: inherit;\"><em>here</em></a><em>.</em></p><h1>A design system? What exactly is a design system?</h1><p>First things first.</p><p><br></p><p>A design system is a collection of reusable components, style guides (fonts, colors, dimensions, …) and standards that are organized to promote consistency and efficiency in the design of digital products. It serves as a centralized resource for designers and developers to ensure coherence in visual appearance, behavior, and user experience across various platforms and applications.</p><p>For a mobile app, a design system is usually divided into 3 categories (and I will stick to this use case for the rest of this article):</p><ol><li>The&nbsp;<em>atomic</em>&nbsp;level: in this level, you will find everything related to the very basics of the design system, such as the colors, the fonts, the shadows, common spacings, the radius of the cards (if any), the icons, and so on.</li><li>The&nbsp;<em>molecular&nbsp;</em>level: in this level, you will find the most basic and common widgets, such as buttons, checkboxes, radio boxes, dividers, input fields, and so on.</li><li>The&nbsp;<em>cellular&nbsp;</em>level: in this level, you will find more complex widgets, such as appbars, complex cards, or even custom widgets (using&nbsp;<span style=\"background-color: rgb(242, 242, 242);\">CustomPainter</span>for example), … that can be shared accross the app or even specific to one page.</li></ol><h1>OK so I can just go with Material Design or Cupertino Design then.</h1><p><br></p>",
-      "parentCategory": "Programming Blog",
-      "subCategory": "Frontend",
-      "authorId": "1",
-      "author": "jay",
+      "id": "773c",
+      "title": "2024 Guide to Infinite Scrolling in React/Next.js2024 Guide to Infinite Scrolling in React/Next.js",
+      "briefDescription": "2024 Guide to Infinite Scrolling in React/Next.js2024 Guide to Infinite Scrolling in React/Next.js2024 Guide to Infinite Scrolling in React/Next.js2024 Guide to Infinite Scrolling in React/Next.js2024 Guide to Infinite Scrolling in React/Next.js2024 Guide to Infinite Scrolling in React/Next.js2024 Guide to Infinite Scrolling in React/Next.js",
+      "detailedBlog": "<h1><strong>2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><h1><strong>2024 Guide to Infinite Scrolling in React/Next.js2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><h1><strong>2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><h1><strong>2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><h1><strong>2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><h1><strong>2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><h1><strong>2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><h1><strong>2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><h1><strong>2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><h1><strong>2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><h1><strong>2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><h1><strong>2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><h1><strong>2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><h1><strong>2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><p><br></p>",
+      "parentCategory": "Fitness Blog",
+      "subCategory": "Weightlifting",
+      "authorId": "3",
+      "author": "Arpan Sheladiya",
       "comments": [],
       "likes": 0,
-      "published": "05/04/2024"
+      "published": "07/04/2024",
+      "savedBy": []
     },
     {
-      "id": "b3c2",
-      "title": "How to implement your design system in a Flutter app (1/2)",
-      "briefDescription": "When it comes to writing clean code, we often think first about implementing the best design and architectural patterns for the features of our app. This is definitely a good practice, and I can’t encourage you enough to do it.\n",
-      "detailedBlog": "<img src=\"https://miro.medium.com/v2/resize:fit:1050/0*Za8UCY6kucBIH8Zx\" alt=\"\" style=\"width: 70%; display: block; margin: 0px auto;\"><p><br></p><p>Photo by&nbsp;<a href=\"https://unsplash.com/@amayli?utm_source=medium&amp;utm_medium=referral\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"color: inherit;\">Amélie Mourichon</a>&nbsp;on&nbsp;<a href=\"https://unsplash.com/?utm_source=medium&amp;utm_medium=referral\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"color: inherit;\">Unsplash</a></p><p>When it comes to writing clean code, we often think first about implementing the best design and architectural patterns for the features of our app. This is definitely a good practice, and I can’t encourage you enough to do it.</p><p>But what about the frontend code? How could you properly implement a design system in your app? And what is a design system? What is its purpose and value?</p><p><em>This article was partly inspired by the work of Aloïs Deniel, which you can find&nbsp;</em><a href=\"https://www.youtube.com/watch?v=lTy8odHcS5s\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"color: inherit;\"><em>here</em></a><em>.</em></p><h1>A design system? What exactly is a design system?</h1><p>First things first.</p><p><br></p><p>A design system is a collection of reusable components, style guides (fonts, colors, dimensions, …) and standards that are organized to promote consistency and efficiency in the design of digital products. It serves as a centralized resource for designers and developers to ensure coherence in visual appearance, behavior, and user experience across various platforms and applications.</p><p>For a mobile app, a design system is usually divided into 3 categories (and I will stick to this use case for the rest of this article):</p><ol><li>The&nbsp;<em>atomic</em>&nbsp;level: in this level, you will find everything related to the very basics of the design system, such as the colors, the fonts, the shadows, common spacings, the radius of the cards (if any), the icons, and so on.</li><li>The&nbsp;<em>molecular&nbsp;</em>level: in this level, you will find the most basic and common widgets, such as buttons, checkboxes, radio boxes, dividers, input fields, and so on.</li><li>The&nbsp;<em>cellular&nbsp;</em>level: in this level, you will find more complex widgets, such as appbars, complex cards, or even custom widgets (using&nbsp;<span style=\"background-color: rgb(242, 242, 242);\">CustomPainter</span>for example), … that can be shared accross the app or even specific to one page.</li></ol><h1>OK so I can just go with Material Design or Cupertino Design then.</h1><p>Well, yes… but actually no.</p><p><br></p><p>Sure, apps can be design using default theming provided by the Flutter SDK. But you’ll get stuck pretty quickly, and your app will most likely look like a basic app made by a beginner student as an exercise.</p><p>For example, you can customize the headlines styles of the text theme of the default theme, but you’ll be limited to 3 levels: large, medium, small. Which can be too restrictive.</p>",
-      "parentCategory": "Programming Blog",
-      "subCategory": "Backend",
-      "authorId": "2",
-      "author": "jay Prajapati",
+      "id": "b478",
+      "title": "2024 Guide to Infinite Scrolling in React/Next.js",
+      "briefDescription": "2024 Guide to Infinite Scrolling in React/Next.js2024 Guide to Infinite Scrolling in React/Next.js2024 Guide to Infinite Scrolling in React/Next.js",
+      "detailedBlog": "<h1><strong>2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><h1><strong>2024 Guide to Infinite Scrolling in React/Next.js2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><h1><strong>2024 Guide to Infinite Scrolling in React/Next.js2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><h1><strong>2024 Guide to Infinite Scrolling in React/Next.js2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><h1><strong>2024 Guide to Infinite Scrolling in React/Next.js2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><h1><strong>2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><h1><strong>2024 Guide to Infinite Scrolling in React/Next.js2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><h1><strong>2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><p><br></p>",
+      "parentCategory": "Fitness Blog",
+      "subCategory": "Weightlifting",
+      "authorId": "3",
+      "author": "Arpan Sheladiya",
       "comments": [],
       "likes": 0,
-      "published": "05/04/2024"
+      "published": "07/04/2024",
+      "savedBy": []
     },
     {
-      "id": "98fd",
-      "title": "How to implement your design system in a Flutter app (1/2) new",
-      "briefDescription": "When it comes to writing clean code, we often think first about implementing the best design and architectural patterns for the features of our app. This is definitely a good practice, and I can’t encourage you enough to do it.\n",
-      "detailedBlog": "<img src=\"https://miro.medium.com/v2/resize:fit:1050/0*Za8UCY6kucBIH8Zx\" alt=\"\" style=\"width: 70%; display: block; margin: 0px auto;\"><p><br></p><p>Photo by&nbsp;<a href=\"https://unsplash.com/@amayli?utm_source=medium&amp;utm_medium=referral\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"color: inherit;\">Amélie Mourichon</a>&nbsp;on&nbsp;<a href=\"https://unsplash.com/?utm_source=medium&amp;utm_medium=referral\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"color: inherit;\">Unsplash</a></p><p>When it comes to writing clean code, we often think first about implementing the best design and architectural patterns for the features of our app. This is definitely a good practice, and I can’t encourage you enough to do it.</p><p>But what about the frontend code? How could you properly implement a design system in your app? And what is a design system? What is its purpose and value?</p><p><em>This article was partly inspired by the work of Aloïs Deniel, which you can find&nbsp;</em><a href=\"https://www.youtube.com/watch?v=lTy8odHcS5s\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"color: inherit;\"><em>here</em></a><em>.</em></p><h1>A design system? What exactly is a design system?</h1><p>First things first.</p><p><br></p><p>A design system is a collection of reusable components, style guides (fonts, colors, dimensions, …) and standards that are organized to promote consistency and efficiency in the design of digital products. It serves as a centralized resource for designers and developers to ensure coherence in visual appearance, behavior, and user experience across various platforms and applications.</p><p>For a mobile app, a design system is usually divided into 3 categories (and I will stick to this use case for the rest of this article):</p><ol><li>The&nbsp;<em>atomic</em>&nbsp;level: in this level, you will find everything related to the very basics of the design system, such as the colors, the fonts, the shadows, common spacings, the radius of the cards (if any), the icons, and so on.</li><li>The&nbsp;<em>molecular&nbsp;</em>level: in this level, you will find the most basic and common widgets, such as buttons, checkboxes, radio boxes, dividers, input fields, and so on.</li><li>The&nbsp;<em>cellular&nbsp;</em>level: in this level, you will find more complex widgets, such as appbars, complex cards, or even custom widgets (using&nbsp;<span style=\"background-color: rgb(242, 242, 242);\">CustomPainter</span>for example), … that can be shared accross the app or even specific to one page.</li></ol><h1>OK so I can just go with Material Design or Cupertino Design then.</h1><p>Well, yes… but actually no.</p><p><br></p><p>Sure, apps can be design using default theming provided by the Flutter SDK. But you’ll get stuck pretty quickly, and your app will most likely look like a basic app made by a beginner student as an exercise.</p><p>For example, you can customize the headlines styles of the text theme of the default theme, but you’ll be limited to 3 levels: large, medium, small. Which can be too restrictive.</p>",
-      "parentCategory": "Programming Blog",
-      "subCategory": "Backend",
-      "authorId": "2",
-      "author": "jay Prajapati",
+      "id": "4399",
+      "title": "2024 Guide to Infinite Scrolling in React/Next.js",
+      "briefDescription": "2024 Guide to Infinite Scrolling in React/Next.js2024 Guide to Infinite Scrolling in React/Next.js",
+      "detailedBlog": "<h1><strong>2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><h1><strong>2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><h1><strong>2024 Guide to Infinite Scrolling in React/Next.js2024 Guide to Infinite Scrolling in React/Next.js2024 Guide to Infinite Scrolling in React/Next.js2024 Guide to Infinite Scrolling in React/Next.js2024 Guide to Infinite Scrolling in React/Next.js2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><h1><strong>2024 Guide to Infinite Scrolling in React/Next.js2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><h1><strong>2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><h1><strong>2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><h1><strong>2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><h1><strong>2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><h1><strong>2024 Guide to Infinite Scrolling in React/Next.js2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><h1><strong>2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><h1><strong>2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><p><br></p>",
+      "parentCategory": "Fitness Blog",
+      "subCategory": "Weightlifting",
+      "authorId": "3",
+      "author": "Arpan Sheladiya",
       "comments": [],
       "likes": 0,
-      "published": "05/04/2024"
+      "published": "07/04/2024",
+      "savedBy": []
     },
     {
-      "id": "6486",
-      "title": "How to implement your design system in a Flutter app (1/2) new 2",
-      "briefDescription": "When it comes to writing clean code, we often think first about implementing the best design and architectural patterns for the features of our app. This is definitely a good practice, and I can’t encourage you enough to do it.\n",
-      "detailedBlog": "<img src=\"https://miro.medium.com/v2/resize:fit:1050/0*Za8UCY6kucBIH8Zx\" alt=\"\" style=\"width: 70%; display: block; margin: 0px auto;\"><p><br></p><p>Photo by&nbsp;<a href=\"https://unsplash.com/@amayli?utm_source=medium&amp;utm_medium=referral\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"color: inherit;\">Amélie Mourichon</a>&nbsp;on&nbsp;<a href=\"https://unsplash.com/?utm_source=medium&amp;utm_medium=referral\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"color: inherit;\">Unsplash</a></p><p>When it comes to writing clean code, we often think first about implementing the best design and architectural patterns for the features of our app. This is definitely a good practice, and I can’t encourage you enough to do it.</p><p>But what about the frontend code? How could you properly implement a design system in your app? And what is a design system? What is its purpose and value?</p><p><em>This article was partly inspired by the work of Aloïs Deniel, which you can find&nbsp;</em><a href=\"https://www.youtube.com/watch?v=lTy8odHcS5s\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"color: inherit;\"><em>here</em></a><em>.</em></p><h1>A design system? What exactly is a design system?</h1><p>First things first.</p><p><br></p><p>A design system is a collection of reusable components, style guides (fonts, colors, dimensions, …) and standards that are organized to promote consistency and efficiency in the design of digital products. It serves as a centralized resource for designers and developers to ensure coherence in visual appearance, behavior, and user experience across various platforms and applications.</p><p>For a mobile app, a design system is usually divided into 3 categories (and I will stick to this use case for the rest of this article):</p><ol><li>The&nbsp;<em>atomic</em>&nbsp;level: in this level, you will find everything related to the very basics of the design system, such as the colors, the fonts, the shadows, common spacings, the radius of the cards (if any), the icons, and so on.</li><li>The&nbsp;<em>molecular&nbsp;</em>level: in this level, you will find the most basic and common widgets, such as buttons, checkboxes, radio boxes, dividers, input fields, and so on.</li><li>The&nbsp;<em>cellular&nbsp;</em>level: in this level, you will find more complex widgets, such as appbars, complex cards, or even custom widgets (using&nbsp;<span style=\"background-color: rgb(242, 242, 242);\">CustomPainter</span>for example), … that can be shared accross the app or even specific to one page.</li></ol><h1>OK so I can just go with Material Design or Cupertino Design then.</h1><p>Well, yes… but actually no.</p><p><br></p><p>Sure, apps can be design using default theming provided by the Flutter SDK. But you’ll get stuck pretty quickly, and your app will most likely look like a basic app made by a beginner student as an exercise.</p><p>For example, you can customize the headlines styles of the text theme of the default theme, but you’ll be limited to 3 levels: large, medium, small. Which can be too restrictive.</p>",
-      "parentCategory": "Programming Blog",
-      "subCategory": "Backend",
-      "authorId": "2",
-      "author": "jay Prajapati",
+      "id": "2a20",
+      "title": "2024 Guide to Infinite Scrolling in React/Next.js",
+      "briefDescription": "2024 Guide to Infinite Scrolling in React/Next.js2024 Guide to Infinite Scrolling in React/Next.js",
+      "detailedBlog": "<h1><strong>2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><h1><strong>2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><h1><strong>2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><h1><strong>2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><h1><strong>2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><h1><strong>2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><h1><strong>2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><h1><strong>2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><h1><strong>2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><h1><strong>2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><h1><strong>2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><h1><strong>2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><p><br></p>",
+      "parentCategory": "Fitness Blog",
+      "subCategory": "Weightlifting",
+      "authorId": "3",
+      "author": "Arpan Sheladiya",
       "comments": [],
       "likes": 0,
-      "published": "05/04/2024"
+      "published": "07/04/2024",
+      "savedBy": []
     },
     {
-      "id": "4a1f",
-      "title": "Next.js Full-Stack Web App (2024)",
-      "briefDescription": "Hey guys 😃, are you planning to build a full-stack web application? If so, you’ve landed on the perfect blog post! I’m happy to introduce you to a Next.js full-stack starter template that I have designed to streamline the process of creating a modern, feature-rich web application and eliminate the time spent on setting up the boilerplate needed to kick off your project.",
-      "detailedBlog": "<img src=\"https://miro.medium.com/v2/resize:fit:1500/1*9Nzd3X2P1H_wvcE1Vq9KFw.png\" alt=\"\" style=\"width: 70%; display: block; margin: 0px auto;\"><p><br></p><p>Next.js Full-stack web app starter template 2024</p><p>Hey guys 😃, are you planning to build a full-stack web application? If so, you’ve landed on the perfect blog post! I’m happy to introduce you to a Next.js full-stack starter template that I have designed to streamline the process of creating a modern, feature-rich web application and eliminate the time spent on setting up the boilerplate needed to kick off your project.</p><p>This starter template is tailored for Next.js 14, the latest version. Whether you’re a seasoned developer or just starting out, this starter template along with Next Js capabilities, offers an intuitive framework that simplifies the development process for building dynamic and interactive full-stack web applications.</p><blockquote><em>With this starter template, you can focus on whats important and kickstart your project faster. 🚀</em></blockquote><p><br></p><p>The link to the starter template GitHub repository can be found below:</p><h2><a href=\"https://github.com/wdevon99/Next-js-starter?source=post_page-----04c92bebd70d--------------------------------\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"color: inherit;\"><strong>GitHub - wdevon99/Next-js-starter: Full-stack starter template 2024</strong></a></h2><p><a href=\"https://github.com/wdevon99/Next-js-starter?source=post_page-----04c92bebd70d--------------------------------\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"color: inherit;\">Full-stack starter template 2024. Contribute to wdevon99/Next-js-starter development by creating an account on GitHub.</a></p><p><a href=\"https://github.com/wdevon99/Next-js-starter?source=post_page-----04c92bebd70d--------------------------------\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"color: inherit;\">github.com</a></p><p><br></p><h2>How to use this template? 🤔</h2><p>Getting started with this Next.js Full-stack starter template is super straight forward. Simply head over to the GitHub repository linked above and follow the steps outlined in the&nbsp;<em>README</em>&nbsp;file. There, you’ll find detailed setup instructions along with any prerequisites necessary to get the project up and running.</p><h1>Main Features 🚀</h1><p>In this section, lets dive into the features of this template. The main features of this template are as follows:</p><ul><li>Scalable project structure 📈</li><li>TypeScript enabled ✅</li><li>Pre-configured Ant-Design component library 🐜</li><li>Structured styling with SASS modules and global variables 💅</li><li>Social authentication and route guarding 🔐</li><li>Sample APIs with database integration 🗂️</li><li>Custom alias imports 📥</li></ul><img src=\"https://miro.medium.com/v2/resize:fit:1050/1*W0A__XMEgxdQBaeqtRRq-g.png\" alt=\"\" style=\"width: 70%; display: block; margin: 0px auto;\"><p><br></p><p>Tech-stack used for this template</p><h2>Scalable project structure 📈</h2><p>Having a well organized project structure is super important for the scalability and maintainability of any codebase. By structuring the project folders and files logically, developers can easily locate and modify specific components, services, or any other files. The following screenshot shows the folder structure of the template. In this section, we will have a look at the purpose of each of the folder.</p><img src=\"https://miro.medium.com/v2/resize:fit:1050/1*9yaPOmTn-sdQV15iLTMwiw.png\" alt=\"\" style=\"width: 70%; display: block; margin: 0px auto;\"><p><br></p><p>Folder structure</p><p><strong>“Root level”&nbsp;</strong>folders:</p><ul><li><strong>Public —&nbsp;</strong>To store any public assets such as images and fonts.</li><li><strong>Src —&nbsp;</strong>All the main source files and folders are grouped inside the src.</li></ul><p><strong>“Src level”&nbsp;</strong>folders:</p><ul><li><strong>App —</strong>&nbsp;Contains the page routes and API routes.</li><li><strong>Components —&nbsp;</strong>Atomic design pattern is used in this folder to maintain components in a structured manner.</li><li><strong>Constants —&nbsp;</strong>To store all common/shared constants.</li><li><strong>Layouts —&nbsp;</strong>All layouts including the main layout is placed in this folder.</li><li><strong>Models —&nbsp;</strong>To store database schema models.</li><li><strong>Providers —&nbsp;</strong>All providers such as the auth provides and theme provider is placed in this folder.</li><li><strong>Services —&nbsp;</strong>Service layer is maintained in this folder which has a set of functions to call the APIs.</li><li><strong>Styles —&nbsp;</strong>Global styles and style variables are placed in this folder.</li><li><strong>Types —&nbsp;</strong>Typescript types are place in this folder.</li><li><strong>Utils —</strong>&nbsp;Utility functions or helpers can be placed in the utils folder.</li></ul><h2>Typescript enabled ✅</h2><p>Typescript is enabled in this project for a better developer experience and to maintain type safety. You can use JavaScript as well if you prefer, since the allow “<em>allowJs</em>” flags is set to&nbsp;<em>true</em>. If you do not want to allow Javascript usage, you can set it to&nbsp;<em>false</em>.</p><p>The global types are defined in&nbsp;<strong><em>src/types/global.d.ts&nbsp;</em></strong>file<strong><em>.</em></strong></p><p><br></p><p><br></p><p>src/types/global.d.ts</p><h2>Pre-configured Ant Design component library 🐜</h2><p>The Ant Design&nbsp;<em>(AntD)</em>&nbsp;component library is set up and pre-configured in this template. AntD is filled with stylish and practical components which can be used as the main building blocks for your web application. It saves you the hassle of designing every element from scratch and help you to cut down on development time.</p><img src=\"https://miro.medium.com/v2/resize:fit:1050/1*FghCMzilkx_AOYXKKid-2Q.png\" alt=\"\" style=\"width: 70%; display: block; margin: 0px auto;\"><p><br></p><h2><a href=\"https://ant.design/?source=post_page-----04c92bebd70d--------------------------------\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"color: inherit;\"><strong>Ant Design - The world's second most popular React UI framework</strong></a></h2><p><a href=\"https://ant.design/?source=post_page-----04c92bebd70d--------------------------------\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"color: inherit;\">An enterprise-class UI design language and React UI library with a set of high-quality React components, one of best…</a></p><p><a href=\"https://ant.design/?source=post_page-----04c92bebd70d--------------------------------\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"color: inherit;\">ant.design</a></p><p><br></p><p>The&nbsp;<strong><em>AntdConfigProvider.tsx</em></strong><em>&nbsp;</em>handles the top level configuration of the AntD library. The primary colour for the library is configured as a global style variable. To customize the primary color, all you have to do is to modify the hex of the&nbsp;<strong><em>$primary-color</em>&nbsp;</strong>variable<em>&nbsp;in s</em><strong><em>rc/styles/variables.module.sass.</em></strong></p><p><br></p><p><br></p><h2>Structured styling with SASS modules and global variables 💅</h2><p>This template has structured styling using SASS modules and global variables. SASS modules allow for encapsulated styling, making it easier to manage stylesheets by keeping styles scoped to individual components.</p><p>Global variables streamline the process of defining and reusing common styles across your project, promoting consistency in your styles. With SASS modules and global variables, you can maintain clean and organized styles.</p><p><br></p><h2>Social authentication and route guarding 🔐</h2><p>Social authentication enables users to sign in to your web application using their existing social media accounts, such as Google, Facebook, or Twitter. To achieve social authentication, this template is integrated with the&nbsp;</p><p><strong><em>NextAuth.js</em></strong>&nbsp;authentication library.</p><h2><a href=\"https://next-auth.js.org/?source=post_page-----04c92bebd70d--------------------------------\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"color: inherit;\"><strong>NextAuth.js</strong></a></h2><p><a href=\"https://next-auth.js.org/?source=post_page-----04c92bebd70d--------------------------------\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"color: inherit;\">Authentication for Next.js</a></p><p><a href=\"https://next-auth.js.org/?source=post_page-----04c92bebd70d--------------------------------\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"color: inherit;\">next-auth.js.org</a></p><p><br></p><p>This template is pre-configured with two social auth providers, Google and Github, but you have the freedom to extend it to use any other platform you prefer. To add a new provider, all you have to do is configure a new provider here,&nbsp;<strong><em>src/app/api/auth/[…nextauth]/route.ts.</em></strong></p><p><br></p><p><br></p><p>src/app/api/auth/[…nextauth]/route.ts</p><p><strong>Route guarding:&nbsp;</strong>Route guarding allows us to protect certain routes within our application, ensuring that only authenticated users can access private routes and endpoints. Route guarding is implemented using a middleware approach. By intercepting requests, the middleware verifies the user’s authentication status before allowing access. You can extend this middleware to perform role-based access control as well.</p><p><br></p><p><br></p><p>src/middleware.ts</p><h2>Sample APIs with database integration 💽</h2><p>The template consist of few sample API endpoints covering basic CRUD (Create, Read, Update, Delete) operations for a TODO list. These APIs serve as a practical demonstration of how to implement API endpoints in this project.</p><p><br></p><pre class=\"ql-syntax\" spellcheck=\"false\">/**\n\t *\n\t * Define all global types in this file.\n\t *\n\t*/\n\t\n\n\ttype User = {\n\t  email: string;\n\t  image: string;\n\t  username: string;\n\t};\n\t\n\n\ttype Todo = {\n\t  _id: string;\n\t  todoTitle: string;\n\t  todoDescription: string;\n\t  isComplete: boolean;\n\t  creator: User;\n\t};\n</pre>",
-      "parentCategory": "Programming Blog",
-      "subCategory": "Backend",
-      "authorId": "2",
-      "author": "jay Prajapati",
+      "id": "e104",
+      "title": "2024 Guide to Infinite Scrolling in React/Next.js2024 Guide to Infinite Scrolling in React/Next.js",
+      "briefDescription": "2024 Guide to Infinite Scrolling in React/Next.js2024 Guide to Infinite Scrolling in React/Next.js2024 Guide to Infinite Scrolling in React/Next.js",
+      "detailedBlog": "<h1><strong>2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><h1><strong>2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><h1><strong>2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><h1><strong>2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><h1><strong>2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><p><br></p>",
+      "parentCategory": "Food Blog",
+      "subCategory": "Desserts",
+      "authorId": "3",
+      "author": "Arpan Sheladiya",
       "comments": [],
       "likes": 0,
-      "published": "05/04/2024"
-    },
-    {
-      "id": "4f21",
-      "title": "Tooltip",
-      "briefDescription": "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
-      "detailedBlog": "<h2><strong>Installation</strong></h2><p>CLIManual</p><pre class=\"ql-syntax\" spellcheck=\"false\">npx shadcn-ui@latest add tooltip\n</pre><p><br></p><p>Copy</p><h2>Usage</h2><pre class=\"ql-syntax\" spellcheck=\"false\">import {\n  Tooltip,\n  TooltipContent,\n  TooltipProvider,\n  TooltipTrigger,\n} from \"@/components/ui/tooltip\"\n</pre><p>Copy</p><p><br></p><pre class=\"ql-syntax\" spellcheck=\"false\">&lt;TooltipProvider&gt;\n  &lt;Tooltip&gt;\n    &lt;TooltipTrigger&gt;Hover&lt;/TooltipTrigger&gt;\n    &lt;TooltipContent&gt;\n      &lt;p&gt;Add to library&lt;/p&gt;\n    &lt;/TooltipContent&gt;\n  &lt;/Tooltip&gt;\n&lt;/TooltipProvider&gt;\n</pre><p><br></p>",
-      "parentCategory": "Programming Blog",
-      "subCategory": "Frontend",
-      "authorId": "2",
-      "author": "jay Prajapati",
-      "comments": [],
-      "likes": 0,
-      "published": "05/04/2024"
-    },
-    {
-      "id": "7104",
-      "title": "",
-      "briefDescription": "",
-      "detailedBlog": "",
-      "parentCategory": "Fashion Blog",
-      "subCategory": "",
-      "authorId": "1",
-      "author": "jay",
-      "comments": [],
-      "likes": 0,
-      "published": "05/04/2024"
+      "published": "07/04/2024",
+      "savedBy": []
     }
   ],
   "users": [
@@ -98,22 +77,13 @@
       "name": "jay",
       "email": "jay@gmail.com",
       "password": "Jay@123",
-      "savedBlogs": [],
-      "publishedBlogs": [
-        "38e7",
-        "22c1",
-        "3c3a",
-        "7ba3",
-        "d88b",
-        "3f3a",
-        "7e9b",
-        "a078",
-        "dc9d",
-        "b6d4",
-        "24c8",
-        "b8a0",
-        "7104"
-      ]
+      "savedBlogs": [
+        "b87b",
+        "d195",
+        "3fde",
+        "e275"
+      ],
+      "publishedBlogs": []
     },
     {
       "id": "2",
@@ -121,11 +91,20 @@
       "email": "jay1@gmail.com",
       "password": "Jay@123",
       "savedBlogs": [],
+      "publishedBlogs": []
+    },
+    {
+      "id": "3",
+      "name": "Arpan Sheladiya",
+      "email": "arpan@gmail.com",
+      "password": "Arpan@123",
+      "savedBlogs": [],
       "publishedBlogs": [
-        "b3c2",
-        "98fd",
-        "6486",
-        "4f21"
+        "773c",
+        "b478",
+        "4399",
+        "2a20",
+        "e104"
       ]
     }
   ],
@@ -135,11 +114,10 @@
       "name": "Sub Admin1",
       "email": "subadmin@gmail.com",
       "password": "Subadmin@123",
+      "parentCategory": "",
+      "subCategories": [],
       "savedBlogs": [],
-      "publishedBlogs": [
-        "a334",
-        "1bc0"
-      ]
+      "publishedBlogs": []
     }
   ],
   "admin": [
@@ -149,9 +127,7 @@
       "email": "admin@gmail.com",
       "password": "Admin@123",
       "savedBlogs": [],
-      "publishedBlogs": [
-        "b8bc"
-      ]
+      "publishedBlogs": []
     }
   ],
   "categories": [

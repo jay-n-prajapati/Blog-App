@@ -3,7 +3,7 @@ import { Button } from '../ui/button';
 import { CustomTooltip } from './Tooltip';
 import { useDispatch } from 'react-redux';
 import { setAuth } from '@/redux/actions/authActions';
-import { addSavedBlog } from '@/utils/axios-instance';
+import { updateBlog, updateUser } from '@/utils/axios-instance';
 import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import PropTypes from 'prop-types';
@@ -19,11 +19,15 @@ const SaveButton = ({ blog }) => {
     if (!isAuth) {
       toast.warn('First Login To save blog');
       navigate('/auth');
-      return
+      return;
     }
     currentUser.savedBlogs.push(blog.id);
-    const { data, error } = await addSavedBlog(currentUser.id, endPoint, {
+    blog.savedBy.push(currentUser.id);
+    const { data, error } = await updateUser(currentUser.id, endPoint, {
       savedBlogs: currentUser.savedBlogs,
+    });
+    const { data: updateBlogData, error: updateBlogError } = await updateBlog(blog.id, {
+      savedBy: blog.savedBy,
     });
     dispatch(setAuth(role, currentUser));
     if (error) {
@@ -32,34 +36,43 @@ const SaveButton = ({ blog }) => {
     }
     setIsSaved(true);
     toast.success('blog saved to Library');
-    console.log(data);
   };
 
   const handleRemove = async () => {
     if (!isAuth) {
       toast.warn('First Login To remove from library');
       navigate('/auth');
-      return
+      return;
     }
-    console.log(currentUser.savedBlogs);
-    const filteredSavedBlogs = currentUser.savedBlogs.filter((blogID) => blogID !== blog.id );
-    console.log(filteredSavedBlogs);
+    const filteredSavedBlogs = currentUser.savedBlogs.filter((blogID) => blogID !== blog.id);
     currentUser.savedBlogs = filteredSavedBlogs;
-    const { data, error } = await addSavedBlog(currentUser.id, endPoint, {
+    const { data, error } = await updateUser(currentUser.id, endPoint, {
       savedBlogs: filteredSavedBlogs,
     });
-    dispatch(setAuth(role, currentUser));
     if (error) {
       toast.error(`Error : ${error}`);
       return;
     }
+    dispatch(setAuth(role, currentUser));
+
+    const filteredSavedBy = blog.savedBy.filter((authorId) => authorId !== currentUser.id);
+    const { data: updateData, error: updateErr } = await updateBlog(blog.id, {
+      savedBy: filteredSavedBy,
+    });
+
+    if (updateErr) {
+      toast.error(`Error : ${updateErr}`);
+      return;
+    }
+
     setIsSaved(false);
-    toast.success('blog removed from Library');
-    console.log(data);
+    toast.info('blog removed from Library');
   };
 
   useEffect(() => {
-    blog && currentUser && currentUser.savedBlogs.includes(blog.id) ? setIsSaved(true) : setIsSaved(false);
+    blog && currentUser && currentUser.savedBlogs.includes(blog.id)
+      ? setIsSaved(true)
+      : setIsSaved(false);
   }, [blog, isSaved]);
 
   return (

@@ -1,13 +1,10 @@
 import PropTypes from 'prop-types';
 import CommonAvatar from './Avatar';
-import { Button } from '../ui/button';
-import { Heart } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import SaveButton from './SaveButton';
-import LikeButton from './LikeButton';
 
-const BlogCard = ({ blog }) => {
-  const { id, title, briefDescription, author, subCategory, published, likes } = blog;
+const BlogCard = ({ blog, children }) => {
+  const { id, title, briefDescription, author, subCategory, published } = blog;
   const navigate = useNavigate();
   const handleClick = () => {
     navigate(`/blog/${id}`);
@@ -25,12 +22,14 @@ const BlogCard = ({ blog }) => {
       <div className='flex flex-col items-center justify-between'>
         <div className='flex gap-4 cursor-pointer my-2' onClick={handleClick}>
           <div className='flex flex-col justify-center gap-2 w-2/3'>
-            <h2 className=' text-lg sm:text-xl text-pretty line-clamp-2 font-sohne-semibold'>
+            <h2 className=' text-sm sm:text-xl text-pretty line-clamp-2 font-sohne-semibold'>
               {title}
             </h2>
-            <p className='text-xs sm:text-sm text-secondary-text line-clamp-3'>
-              {briefDescription}
-            </p>
+            <div className='hidden xsm:block'>
+              <p className='text-xs sm:text-sm text-secondary-text line-clamp-3'>
+                {briefDescription}
+              </p>
+            </div>
           </div>
           <div className='w-1/3 p-1'>
             <img src='/images/placeholder-img.jpg' alt='' className='w-full' />
@@ -43,8 +42,8 @@ const BlogCard = ({ blog }) => {
             </span>
           </div>
           <div className='flex gap-5'>
-            <LikeButton likes={blog?.likes} />
             <SaveButton blog={blog} />
+            {children}
           </div>
         </div>
       </div>
@@ -54,6 +53,7 @@ const BlogCard = ({ blog }) => {
 
 BlogCard.propTypes = {
   blog: PropTypes.object,
+  children: PropTypes.node,
 };
 
 export default BlogCard;

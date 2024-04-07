@@ -7,18 +7,21 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { addPublishedBlog, getCategories, postBlog } from '@/utils/axios-instance';
+import { getCategories, postBlog, updateUser } from '@/utils/axios-instance';
 import { Button } from '@/components/ui/button';
 import Form from '@/components/common/Form';
 import { toast } from 'react-toastify';
 import useRole from '@/utils/custom-hooks/useRole';
 import { useNavigate } from 'react-router-dom';
+import {useDispatch} from 'react-redux'
+import { setAuth } from '@/redux/actions/authActions';
 
 const Write = () => {
   const [categories, setCategories] = useState([]);
   const [parentCategory, setParentCategory] = useState('');
-  const { currentUser, endPoint } = useRole();
+  const { currentUser, endPoint , role } = useRole();
   const navigate = useNavigate();
+  const dispatch = useDispatch()
 
   const [blog, setBlog] = useState({
     title: '',
@@ -64,17 +67,20 @@ const Write = () => {
       comments: [],
       likes: 0,
       published: currentDate,
+      savedBy : []
     };
+
     const { data, error } = await postBlog(blogToPost);
     if (error) {
       toast.error(`Error : ${error}`);
     }
     toast.success('Blog published Successfully');
     currentUser.publishedBlogs.push(data.id);
-    const res = await addPublishedBlog(currentUser.id, endPoint, {
+    const res = await updateUser(currentUser.id, endPoint, {
       publishedBlogs: currentUser.publishedBlogs,
     });
-    console.log(res);
+    navigate('/stories')
+    dispatch(setAuth(role,currentUser))
   };
 
   useEffect(() => {
