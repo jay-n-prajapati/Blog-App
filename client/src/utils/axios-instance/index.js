@@ -18,7 +18,6 @@ instance.interceptors.response.use(
     };
   },
   (error) => {
-    console.error("Global error interceptor:", error);
     return Promise.reject({
       success: false,
       data: [],

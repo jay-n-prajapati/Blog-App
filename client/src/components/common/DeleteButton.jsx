@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { setAuth } from '@/redux/actions/authActions';
 import { deleteBlog, getUser, updateUser } from '@/utils/axios-instance';
-import {toast} from 'react-toastify'
+import { toast } from 'react-toastify';
 
 const DeleteButton = ({ blog }) => {
   const { currentUser, endPoint, role } = useRole();
@@ -14,33 +14,37 @@ const DeleteButton = ({ blog }) => {
   const handleDelete = async () => {
     const filteredBlogs = currentUser.publishedBlogs.filter((blogId) => blogId !== blog.id);
     currentUser.publishedBlogs = filteredBlogs;
-    const {data,error} = await updateUser(currentUser.id,endPoint,{publishedBlogs : currentUser.publishedBlogs})
+    const { error } = await updateUser(currentUser.id, endPoint, {
+      publishedBlogs: currentUser.publishedBlogs,
+    });
     if (error) {
-      toast.error(`Error : ${error}`)
-      return
+      toast.error(`Error : ${error}`);
+      return;
     }
-
-    blog.savedBy.forEach( async (userId) => {
-        const {data:userData , error:userErr} = await getUser(userId);
-        if (userErr) {
-          toast.error(`Error : ${userErr}`)
-          return
-        }
-        const filteredSavedBlogs = userData.savedBlogs.filter((blogId) => blogId !== blog.id)
-        const {error:updateErr} = await updateUser(userId,'users',{savedBlogs : filteredSavedBlogs})
-        if (updateErr) {
-          toast.error(`Error : ${updateErr}`)
-          return
-        }
+    
+    blog.savedBy.forEach(async (userId) => {
+      const { data: userData, error: userErr } = await getUser(userId);
+      if (userErr) {
+        toast.error(`Error : ${userErr}`);
+        return;
+      }
+      const filteredSavedBlogs = userData.savedBlogs.filter((blogId) => blogId !== blog.id);
+      const { error: updateErr } = await updateUser(userId, 'users', {        // issue may be occur here
+        savedBlogs: filteredSavedBlogs,
+      });
+      if (updateErr) {
+        toast.error(`Error : ${updateErr}`);
+        return;
+      }
     });
 
-    const { data: deletedData, error: deleteErr } = await deleteBlog(blog.id);
+    const { error: deleteErr } = await deleteBlog(blog.id);
     if (deleteErr) {
-      toast.error(`Error : ${deleteErr}`)
-      return
+      toast.error(`Error : ${deleteErr}`);
+      return;
     }
-    dispatch(setAuth(role, currentUser));
     console.log('deleted');
+    dispatch(setAuth(role, currentUser));
   };
 
   return (

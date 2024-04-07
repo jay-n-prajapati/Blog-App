@@ -6,11 +6,10 @@ import useRole from '@/utils/custom-hooks/useRole';
 import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import {useSelector} from 'react-redux'
+
 
 const Story = () => {
-  const { currentUser , role } = useRole();
-  const user = useSelector(state => state.auth.user)
+  const { currentUser } = useRole();
   const [userBlogs, setUserBlogs] = useState([]);
   const fetchUserBlogs = async () => {
     const { data, error } = await getUsersBlogs(currentUser.id);
@@ -18,13 +17,12 @@ const Story = () => {
       toast.error(`Error : ${error}`);
       return;
     }
-    setUserBlogs((prev) => [...prev, ...data]);
+    setUserBlogs(data);
   };
 
   useEffect(() => {
-    console.log('mounted..')
     fetchUserBlogs();
-  }, []);
+  }, [currentUser.publishedBlogs]);
 
   return (
     <div className='p-6'>
@@ -49,7 +47,7 @@ const Story = () => {
               </p>
             </div>
           ) : (
-            <>
+            <div className='flex flex-col gap-4'>
               {userBlogs.map((blog, idx) => {
                 return (
                   <BlogCard blog={blog} key={idx}>
@@ -57,7 +55,7 @@ const Story = () => {
                   </BlogCard>
                 );
               })}
-            </>
+            </div>
           )}
         </div>
       </div>

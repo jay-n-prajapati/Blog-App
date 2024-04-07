@@ -1,20 +1,74 @@
 {
   "blogs": [
     {
-      "id": "3fde",
-      "title": "2024 Guide to Infinite Scrolling in React/Next.js",
-      "briefDescription": "2024 Guide to Infinite Scrolling in React/Next.js2024 Guide to Infinite Scrolling in React/Next.js2024 Guide to Infinite Scrolling in React/Next.js",
-      "detailedBlog": "<h1><strong>2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><h1><strong>2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><h1><strong>2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><h1><strong>2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><h1><strong>2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><h1><strong>2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><h1><strong>2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><p><br></p>",
+      "id": "773c",
+      "title": "2024 Guide to Infinite Scrolling in React/Next.js2024 Guide to Infinite Scrolling in React/Next.js",
+      "briefDescription": "2024 Guide to Infinite Scrolling in React/Next.js2024 Guide to Infinite Scrolling in React/Next.js2024 Guide to Infinite Scrolling in React/Next.js2024 Guide to Infinite Scrolling in React/Next.js2024 Guide to Infinite Scrolling in React/Next.js2024 Guide to Infinite Scrolling in React/Next.js2024 Guide to Infinite Scrolling in React/Next.js",
+      "detailedBlog": "<h1><strong>2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><h1><strong>2024 Guide to Infinite Scrolling in React/Next.js2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><h1><strong>2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><h1><strong>2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><h1><strong>2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><h1><strong>2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><h1><strong>2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><h1><strong>2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><h1><strong>2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><h1><strong>2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><h1><strong>2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><h1><strong>2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><h1><strong>2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><h1><strong>2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><p><br></p>",
       "parentCategory": "Fitness Blog",
       "subCategory": "Weightlifting",
       "authorId": "3",
       "author": "Arpan Sheladiya",
       "comments": [],
       "likes": 0,
-      "published": "06/04/2024",
-      "savedBy": [
-        "1"
-      ]
+      "published": "07/04/2024",
+      "savedBy": []
+    },
+    {
+      "id": "b478",
+      "title": "2024 Guide to Infinite Scrolling in React/Next.js",
+      "briefDescription": "2024 Guide to Infinite Scrolling in React/Next.js2024 Guide to Infinite Scrolling in React/Next.js2024 Guide to Infinite Scrolling in React/Next.js",
+      "detailedBlog": "<h1><strong>2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><h1><strong>2024 Guide to Infinite Scrolling in React/Next.js2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><h1><strong>2024 Guide to Infinite Scrolling in React/Next.js2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><h1><strong>2024 Guide to Infinite Scrolling in React/Next.js2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><h1><strong>2024 Guide to Infinite Scrolling in React/Next.js2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><h1><strong>2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><h1><strong>2024 Guide to Infinite Scrolling in React/Next.js2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><h1><strong>2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><p><br></p>",
+      "parentCategory": "Fitness Blog",
+      "subCategory": "Weightlifting",
+      "authorId": "3",
+      "author": "Arpan Sheladiya",
+      "comments": [],
+      "likes": 0,
+      "published": "07/04/2024",
+      "savedBy": []
+    },
+    {
+      "id": "4399",
+      "title": "2024 Guide to Infinite Scrolling in React/Next.js",
+      "briefDescription": "2024 Guide to Infinite Scrolling in React/Next.js2024 Guide to Infinite Scrolling in React/Next.js",
+      "detailedBlog": "<h1><strong>2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><h1><strong>2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><h1><strong>2024 Guide to Infinite Scrolling in React/Next.js2024 Guide to Infinite Scrolling in React/Next.js2024 Guide to Infinite Scrolling in React/Next.js2024 Guide to Infinite Scrolling in React/Next.js2024 Guide to Infinite Scrolling in React/Next.js2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><h1><strong>2024 Guide to Infinite Scrolling in React/Next.js2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><h1><strong>2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><h1><strong>2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><h1><strong>2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><h1><strong>2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><h1><strong>2024 Guide to Infinite Scrolling in React/Next.js2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><h1><strong>2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><h1><strong>2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><p><br></p>",
+      "parentCategory": "Fitness Blog",
+      "subCategory": "Weightlifting",
+      "authorId": "3",
+      "author": "Arpan Sheladiya",
+      "comments": [],
+      "likes": 0,
+      "published": "07/04/2024",
+      "savedBy": []
+    },
+    {
+      "id": "2a20",
+      "title": "2024 Guide to Infinite Scrolling in React/Next.js",
+      "briefDescription": "2024 Guide to Infinite Scrolling in React/Next.js2024 Guide to Infinite Scrolling in React/Next.js",
+      "detailedBlog": "<h1><strong>2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><h1><strong>2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><h1><strong>2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><h1><strong>2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><h1><strong>2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><h1><strong>2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><h1><strong>2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><h1><strong>2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><h1><strong>2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><h1><strong>2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><h1><strong>2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><h1><strong>2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><p><br></p>",
+      "parentCategory": "Fitness Blog",
+      "subCategory": "Weightlifting",
+      "authorId": "3",
+      "author": "Arpan Sheladiya",
+      "comments": [],
+      "likes": 0,
+      "published": "07/04/2024",
+      "savedBy": []
+    },
+    {
+      "id": "e104",
+      "title": "2024 Guide to Infinite Scrolling in React/Next.js2024 Guide to Infinite Scrolling in React/Next.js",
+      "briefDescription": "2024 Guide to Infinite Scrolling in React/Next.js2024 Guide to Infinite Scrolling in React/Next.js2024 Guide to Infinite Scrolling in React/Next.js",
+      "detailedBlog": "<h1><strong>2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><h1><strong>2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><h1><strong>2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><h1><strong>2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><h1><strong>2024 Guide to Infinite Scrolling in React/Next.js</strong></h1><p><br></p>",
+      "parentCategory": "Food Blog",
+      "subCategory": "Desserts",
+      "authorId": "3",
+      "author": "Arpan Sheladiya",
+      "comments": [],
+      "likes": 0,
+      "published": "07/04/2024",
+      "savedBy": []
     }
   ],
   "users": [
@@ -46,7 +100,11 @@
       "password": "Arpan@123",
       "savedBlogs": [],
       "publishedBlogs": [
-        "3fde"
+        "773c",
+        "b478",
+        "4399",
+        "2a20",
+        "e104"
       ]
     }
   ],
@@ -56,6 +114,8 @@
       "name": "Sub Admin1",
       "email": "subadmin@gmail.com",
       "password": "Subadmin@123",
+      "parentCategory": "",
+      "subCategories": [],
       "savedBlogs": [],
       "publishedBlogs": []
     }
