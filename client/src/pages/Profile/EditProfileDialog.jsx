@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 import {
   Dialog,
-  DialogClose,
   DialogContent,
   DialogHeader,
   DialogTitle,

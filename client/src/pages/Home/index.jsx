@@ -8,7 +8,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import {toast} from 'react-toastify'
 
 const Landing = () => {
-  const { user, admin, subAdmin } = useSelector((state) => state.auth);
+  const { isAuth  } = useSelector((state) => state.auth);
   const navigate = useNavigate();
   const [blogs, setBlogs] = useState([]);
   const { currentUser } = useRole();
@@ -24,13 +24,7 @@ const Landing = () => {
   }, []);
 
   useEffect(() => {
-    admin
-      ? navigate('/admin-users')
-      : subAdmin
-      ? navigate('/subAdmin-blogs')
-      : user
-      ? navigate('/home')
-      : null;
+      isAuth ? navigate('/home') : null
   }, []);
 
   return (

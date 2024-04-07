@@ -26,7 +26,9 @@
       "comments": [],
       "likes": 0,
       "published": "07/04/2024",
-      "savedBy": []
+      "savedBy": [
+        "1111"
+      ]
     },
     {
       "id": "dc5e",
@@ -80,7 +82,7 @@
   "subAdmins": [
     {
       "id": "2222",
-      "name": "Sub Admin1",
+      "name": "Blogify Sub Team",
       "email": "subadmin@gmail.com",
       "bio": "",
       "password": "Subadmin@123",
@@ -93,11 +95,13 @@
   "admin": [
     {
       "id": "1111",
-      "name": "Admin",
+      "name": "Blogify Team",
       "email": "admin@gmail.com",
       "bio": "",
       "password": "Admin@123",
-      "savedBlogs": [],
+      "savedBlogs": [
+        "b478"
+      ],
       "publishedBlogs": []
     }
   ],

@@ -78,7 +78,7 @@ const Signin = ({ setContent }) => {
       } else if (subAdmin[0].password === values.password) {
         dispatch(setAuth(role, subAdmin[0]));
         toast.success(`${role} logged in successfully`);
-        navigate('/subAdmin-home');
+        navigate('/home');
       } else {
         toast.error('Invalid Credentials , Try Again');
       }
@@ -91,7 +91,7 @@ const Signin = ({ setContent }) => {
       if (values.email === admin[0].email && values.password === admin[0].password) {
         dispatch(setAuth(role, admin[0]));
         toast.success('Admin logged in successfully!');
-        navigate('/admin-home');
+        navigate('/home');
       } else {
         toast.error('Invalid credential !!');
       }

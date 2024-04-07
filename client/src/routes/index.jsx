@@ -8,9 +8,7 @@ import PrivateRoute from './PrivateRoutes/PrivateRoute/index.jsx';
 
 
 const Landing = React.lazy(() => import('../pages/Home'));
-const UserHome = React.lazy(() => import('@/pages/Home/UserHome/index.jsx'));
-const AdminHome = React.lazy(() => import('@/pages/Home/AdminHome/index.jsx'));
-const SubAdminHome = React.lazy(() => import('@/pages/Home/SubAdminHome/index.jsx'));
+const UserHome = React.lazy(() => import('@/pages/Home/Home.jsx'));
 const Auth = React.lazy(() => import('@/pages/Authantication/index.jsx'));
 const Layout = React.lazy(() => import('../components/layout/Layout.jsx'));
 const ErrorPage = React.lazy(() => import('../pages/ErrorPage/index.jsx'));
@@ -20,9 +18,11 @@ const NoEditor = React.lazy(() => import('@/pages/NoEditor/index.jsx'));
 const Story = React.lazy(() => import('@/pages/Story/index.jsx'));
 const Profile = React.lazy(() => import('@/pages/Profile/index.jsx'));
 const Library = React.lazy(() => import('@/pages/Library/index.jsx'));
+const AdminDashBoard = React.lazy(() => import('@/pages/Dashboard/Admin/index.jsx'));
+const SubAdminDashboard = React.lazy(() => import('@/pages/Dashboard/SubAdmin/index.jsx'));
 
 export const Router = () => {
-  const { isAuth , user, subAdmin, admin } = useSelector((state) => state.auth);
+  const { isAuth, user, subAdmin, admin } = useSelector((state) => state.auth);
   return createBrowserRouter([
     {
       path: '/',
@@ -38,11 +38,15 @@ export const Router = () => {
         },
         {
           path: '/blog/:id',
-          element: <Blog/>,
+          element: <Blog />,
         },
         {
           element: <PrivateRoute isAuth={isAuth} />,
           children: [
+            {
+              path: 'home',
+              element: <UserHome />,
+            },
             {
               path: 'write',
               element: <Write />,
@@ -67,29 +71,24 @@ export const Router = () => {
         },
         {
           element: <PrivateRoutesUser isUserAuth={user ? true : false} />,
-          children: [
-            {
-              path: 'home',
-              element: <UserHome />,
-            }
-          ],
+          children: [],
         },
         {
           element: <PrivateRoutesAdmin isAdminAuth={admin ? true : false} />,
           children: [
             {
-              path: 'admin-home',
-              element: <AdminHome />,
-            }
+              path: 'adminDashboard',
+              element: <AdminDashBoard />,
+            },
           ],
         },
         {
           element: <PrivateRoutesSubAdmin isSubAdminAuth={subAdmin ? true : false} />,
           children: [
             {
-              path: 'subAdmin-home',
-              element: <SubAdminHome />,
-            }
+              path: 'subAdminDashboard',
+              element: <SubAdminDashboard />,
+            },
           ],
         },
       ],

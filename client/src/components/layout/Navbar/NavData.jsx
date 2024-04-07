@@ -21,7 +21,7 @@ export const DropDownLinks = {
   user: [
     {
       label: 'Home',
-      slug: '/',
+      slug: '/home',
       icon: (
         <svg
           xmlns='http://www.w3.org/2000/svg'
@@ -83,7 +83,7 @@ export const DropDownLinks = {
   admin: [
     {
       label: 'Home',
-      slug: '/',
+      slug: '/home',
       icon: (
         <svg
           xmlns='http://www.w3.org/2000/svg'
@@ -138,6 +138,29 @@ export const DropDownLinks = {
             stroke='currentColor'
           ></path>
           <path d='M8 8.5h8M8 15.5h5M8 12h8' stroke='currentColor'></path>
+        </svg>
+      ),
+    },
+    {
+      label: 'Dashboard',
+      slug: '/adminDashboard',
+      icon: (
+        <svg
+          xmlns='http://www.w3.org/2000/svg'
+          width='24'
+          height='24'
+          viewBox='0 0 24 24'
+          fill='none'
+          stroke='currentColor'
+          strokeWidth='1'
+          strokeLinecap='round'
+          strokeLinejoin='round'
+          className='lucide lucide-layout-dashboard'
+        >
+          <rect width='7' height='9' x='3' y='3' rx='1' />
+          <rect width='7' height='5' x='14' y='3' rx='1' />
+          <rect width='7' height='9' x='14' y='12' rx='1' />
+          <rect width='7' height='5' x='3' y='16' rx='1' />
         </svg>
       ),
     },
@@ -145,7 +168,7 @@ export const DropDownLinks = {
   subAdmin: [
     {
       label: 'Home',
-      slug: '/',
+      slug: '/home',
       icon: (
         <svg
           xmlns='http://www.w3.org/2000/svg'
@@ -200,6 +223,29 @@ export const DropDownLinks = {
             stroke='currentColor'
           ></path>
           <path d='M8 8.5h8M8 15.5h5M8 12h8' stroke='currentColor'></path>
+        </svg>
+      ),
+    },
+    {
+      label: 'Dashboard',
+      slug: '/subAdminDashboard',
+      icon: (
+        <svg
+          xmlns='http://www.w3.org/2000/svg'
+          width='24'
+          height='24'
+          viewBox='0 0 24 24'
+          fill='none'
+          stroke='currentColor'
+          strokeWidth='1'
+          strokeLinecap='round'
+          strokeLinejoin='round'
+          className='lucide lucide-layout-dashboard'
+        >
+          <rect width='7' height='9' x='3' y='3' rx='1' />
+          <rect width='7' height='5' x='14' y='3' rx='1' />
+          <rect width='7' height='9' x='14' y='12' rx='1' />
+          <rect width='7' height='5' x='3' y='16' rx='1' />
         </svg>
       ),
     },
