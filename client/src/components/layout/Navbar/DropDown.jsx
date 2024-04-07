@@ -7,15 +7,26 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import PropTypes from 'prop-types';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
 const DropDown = ({ children, links }) => {
   const [open , setOpen] = useState(false)
+  const dropDownRef = useRef(null);
+
+  const closeHandler = (e) => {
+    if ( dropDownRef && !dropDownRef?.current?.contains(e.target)) {
+      setOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", closeHandler);
+  });
   return (
-    <DropdownMenu className='outline-none ring-0' open={open} >
+    <DropdownMenu className='outline-none ring-0' open={open}>
       <DropdownMenuTrigger onClick={() => setOpen(true)}>{children}</DropdownMenuTrigger>
-      <DropdownMenuContent>
+      <DropdownMenuContent ref={dropDownRef} >
         <DropdownMenuLabel>Menu</DropdownMenuLabel>
         <DropdownMenuSeparator/>
         {links.map((link, idx) => (

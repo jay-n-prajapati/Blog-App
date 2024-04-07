@@ -42,8 +42,8 @@ const BlogCard = ({ blog, children }) => {
             </span>
           </div>
           <div className='flex gap-5'>
-            <SaveButton blog={blog} />
             {children}
+            <SaveButton blog={blog} />
           </div>
         </div>
       </div>

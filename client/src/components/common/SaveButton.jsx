@@ -29,12 +29,12 @@ const SaveButton = ({ blog }) => {
     const { data: updateBlogData, error: updateBlogError } = await updateBlog(blog.id, {
       savedBy: blog.savedBy,
     });
-    dispatch(setAuth(role, currentUser));
     if (error) {
       toast.error(`Error : ${error}`);
       return;
     }
     setIsSaved(true);
+    dispatch(setAuth(role, currentUser));
     toast.success('blog saved to Library');
   };
 
@@ -53,8 +53,6 @@ const SaveButton = ({ blog }) => {
       toast.error(`Error : ${error}`);
       return;
     }
-    dispatch(setAuth(role, currentUser));
-
     const filteredSavedBy = blog.savedBy.filter((authorId) => authorId !== currentUser.id);
     const { data: updateData, error: updateErr } = await updateBlog(blog.id, {
       savedBy: filteredSavedBy,
@@ -66,6 +64,7 @@ const SaveButton = ({ blog }) => {
     }
 
     setIsSaved(false);
+    dispatch(setAuth(role, currentUser));
     toast.info('blog removed from Library');
   };
 
