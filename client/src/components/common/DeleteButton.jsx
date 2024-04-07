@@ -1,6 +1,5 @@
 import useRole from '@/utils/custom-hooks/useRole';
 import { Button } from '../ui/button';
-import { CustomTooltip } from './Tooltip';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { setAuth } from '@/redux/actions/authActions';
@@ -16,7 +15,6 @@ import {
   DialogClose,
 } from '../ui/dialog';
 import { LoaderCircle } from 'lucide-react';
-import { useState } from 'react';
 import { setLoader } from '@/redux/actions/appActions';
 import { useSelector } from 'react-redux';
 
@@ -29,17 +27,17 @@ const DeleteButton = ({ blog }) => {
     dispatch(setLoader(true));
     const filteredBlogs = currentUser.publishedBlogs.filter((blogId) => blogId !== blog.id);
     currentUser.publishedBlogs = filteredBlogs;
-    const { error } = await updateUser(currentUser.id, endPoint, {
+    const {success , error } = await updateUser(currentUser.id, endPoint, {
       publishedBlogs: currentUser.publishedBlogs,
     });
-    if (error) {
+    if (!success) {
       toast.error(`Error : ${error}`);
       return;
     }
 
     blog.savedBy.forEach(async (userId) => {
-      const { data: userData, error: userErr } = await getUser(userId);
-      if (userErr) {
+      const { success:getSuccess , data: userData, error: userErr } = await getUser(userId);
+      if (!getSuccess) {
         toast.error(`Error : ${userErr}`);
         return;
       }
@@ -54,8 +52,8 @@ const DeleteButton = ({ blog }) => {
       }
     });
 
-    const { error: deleteErr } = await deleteBlog(blog.id);
-    if (deleteErr) {
+    const { success:deleteSuccess , error: deleteErr } = await deleteBlog(blog.id);
+    if (!deleteSuccess) {
       toast.error(`Error : ${deleteErr}`);
       return;
     }

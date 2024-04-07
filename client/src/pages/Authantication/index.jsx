@@ -1,48 +1,49 @@
-import PropTypes  from 'prop-types';
+import PropTypes from 'prop-types';
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
-  DialogTrigger
+  DialogTrigger,
+  DialogDescription
 } from '@/components/ui/dialog';
 import { useEffect, useState } from 'react';
 import Signup from './Signup';
 import Signin from './Signin';
 import { useNavigate } from 'react-router-dom';
-import { DialogDescription } from '@radix-ui/react-dialog';
 import { useSelector } from 'react-redux';
 
-
-const Auth = ({ children , formType ='' , defaultOpen = false }) => {
+const Auth = ({ children, formType = '', defaultOpen = false }) => {
   const [content, setContent] = useState(formType);
-  const {isAuth} = useSelector(state => state.auth)
+  const { isAuth } = useSelector((state) => state.auth);
   const navigate = useNavigate();
 
-  const handleChange =(open) =>{
+  const handleChange = (open) => {
     if (!open) {
-        navigate('/')
+      navigate('/');
     }
-  }
+  };
 
-  useEffect(() =>{
-    isAuth ? navigate(-1) : null
-  },[])
+  useEffect(() => {
+    isAuth ? navigate(-1) : null;
+  }, []);
 
   return (
     <Dialog defaultOpen={defaultOpen} onOpenChange={handleChange}>
       <DialogTrigger asChild>{children}</DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle className="text-center text-3xl font-sohne-light">{
-            content === 'signup' ? 'Join Blogify.' : 'Welcome Back.'
-          }</DialogTitle>
+          <DialogTitle className='text-center text-3xl font-sohne-light'>
+            {content === 'signup' ? 'Join Blogify.' : 'Welcome Back.'}
+          </DialogTitle>
           <DialogDescription className='text-center text-primary-text text-[14px]'>
-            {
-                content === 'signup' ? 'SignUp here' : 'LogIn here'
-            }
+            {content === 'signup' ? 'SignUp here' : 'LogIn here'}
           </DialogDescription>
-          {content === 'signup' ? <Signup setContent={setContent} /> : <Signin setContent={setContent} />}
+          {content === 'signup' ? (
+            <Signup setContent={setContent} />
+          ) : (
+            <Signin setContent={setContent} />
+          )}
         </DialogHeader>
       </DialogContent>
     </Dialog>
@@ -51,8 +52,8 @@ const Auth = ({ children , formType ='' , defaultOpen = false }) => {
 
 Auth.propTypes = {
   children: PropTypes.node,
-  formType : PropTypes.string,
-  defaultOpen : PropTypes.bool
+  formType: PropTypes.string,
+  defaultOpen: PropTypes.bool,
 };
 
 export default Auth;

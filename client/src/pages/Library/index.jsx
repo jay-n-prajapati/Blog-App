@@ -1,9 +1,7 @@
 import BlogCard from '@/components/common/BlogCard';
-import DeleteButton from '@/components/common/DeleteButton';
 import LikeButton from '@/components/common/LikeButton';
-import SaveButton from '@/components/common/SaveButton';
 import { Button } from '@/components/ui/button';
-import { getSingleBlogs, getUsersBlogs } from '@/utils/axios-instance';
+import { getSingleBlogs} from '@/utils/axios-instance';
 import useRole from '@/utils/custom-hooks/useRole';
 import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
