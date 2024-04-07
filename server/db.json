@@ -77,6 +77,105 @@
         "773c",
         "b478"
       ]
+    },
+    {
+      "id": "4",
+      "name": "Jaydeep Narola",
+      "email": "jaydeep@gmail.com",
+      "bio": "",
+      "password": "Jaydip@123",
+      "savedBlogs": [],
+      "publishedBlogs": []
+    },
+    {
+      "id": "5",
+      "name": "om savaj",
+      "email": "om@gmail.com",
+      "bio": "",
+      "password": "Om@123",
+      "savedBlogs": [],
+      "publishedBlogs": []
+    },
+    {
+      "id": "6",
+      "name": "Chirag rajpurohit",
+      "email": "chirag@gmail.com",
+      "bio": "",
+      "password": "Chirag@123",
+      "savedBlogs": [],
+      "publishedBlogs": []
+    },
+    {
+      "id": "7",
+      "name": "niral trapasiya",
+      "email": "niral@gmail.com",
+      "bio": "",
+      "password": "Niral@123",
+      "savedBlogs": [],
+      "publishedBlogs": []
+    },
+    {
+      "id": "8",
+      "name": "Jay kakadiya",
+      "email": "jayk@gmail.com",
+      "bio": "",
+      "password": "Jay@123",
+      "savedBlogs": [],
+      "publishedBlogs": []
+    },
+    {
+      "id": "9",
+      "name": "siddharth movaliya",
+      "email": "sid@gmail.com",
+      "bio": "",
+      "password": "Sid@123",
+      "savedBlogs": [],
+      "publishedBlogs": []
+    },
+    {
+      "id": "10",
+      "name": "vedant sathvara",
+      "email": "vedant@gmail.com",
+      "bio": "",
+      "password": "Vedant@123",
+      "savedBlogs": [],
+      "publishedBlogs": []
+    },
+    {
+      "id": "11",
+      "name": "Yash rana",
+      "email": "yash@gmail.com",
+      "bio": "",
+      "password": "Yash@123",
+      "savedBlogs": [],
+      "publishedBlogs": []
+    },
+    {
+      "id": "12",
+      "name": "dhruwang jariwala",
+      "email": "dhruvang@gmail.com",
+      "bio": "",
+      "password": "Dhruvang@123",
+      "savedBlogs": [],
+      "publishedBlogs": []
+    },
+    {
+      "id": "13",
+      "name": "dhruv prajapati",
+      "email": "dhruv@gmail.com",
+      "bio": "",
+      "password": "Dhruv@123",
+      "savedBlogs": [],
+      "publishedBlogs": []
+    },
+    {
+      "id": "14",
+      "name": "meet bhimali",
+      "email": "meet@gmail.com",
+      "bio": "",
+      "password": "Meet@123",
+      "savedBlogs": [],
+      "publishedBlogs": []
     }
   ],
   "subAdmins": [
