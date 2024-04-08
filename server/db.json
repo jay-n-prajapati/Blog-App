@@ -66,17 +66,24 @@
   ],
   "subAdmins": [
     {
-      "id": "2222",
-      "name": "Blogify Sub Team",
+      "id": "fe87",
+      "name": "Blogify SubTeam",
       "email": "subadmin@gmail.com",
       "bio": "",
-      "password": "Subadmin@123",
+      "password": "SubAdmin@123",
       "parentCategory": "Programming Blog",
-      "subCategories": [
-        "Frontend",
-        "Backend",
-        "Fullstack"
-      ],
+      "subCategories": [],
+      "savedBlogs": [],
+      "publishedBlogs": []
+    },
+    {
+      "id": "d3b7",
+      "name": "Blogify SubTeam",
+      "email": "subadmin1@gmail.com",
+      "bio": "",
+      "password": "SubAdmin@123",
+      "parentCategory": "Tech Blog",
+      "subCategories": [],
       "savedBlogs": [],
       "publishedBlogs": []
     }

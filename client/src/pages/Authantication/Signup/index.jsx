@@ -6,10 +6,8 @@ import * as yup from 'yup';
 import { useFormik } from 'formik';
 import { addUser, getUsers } from '@/utils/axios-instance';
 import { useEffect, useState } from 'react';
-import { v4 as uuidv4 } from 'uuid';
 import { toast } from 'react-toastify';
 import { useDispatch, useSelector } from 'react-redux';
-import Loader from '@/components/common/Loader';
 import { setLoader } from '@/redux/actions/appActions';
 import { useNavigate } from 'react-router-dom';
 import { Loader2 } from 'lucide-react';
@@ -54,14 +52,10 @@ const Signup = ({ setContent }) => {
       validationSchema: signUpSchema,
       onSubmit: onSubmit,
     });
-  const getId = () => {
-    return users.length === 0 ? '1' : Number(users[users.length - 1].id) + 1;
-  };
 
   // registering user
   async function onSubmit() {
     const newUser = {
-      id: String(getId()),
       name : values.name,
       email : values.email,
       bio : '',
@@ -153,7 +147,7 @@ const Signup = ({ setContent }) => {
             <InputWithLabel
               label='Confirm Password'
               labelFor='cpassword'
-              type='text'
+              type='password'
               value={values.cpassword}
               placeholder='John@123'
               onChange={handleChange}

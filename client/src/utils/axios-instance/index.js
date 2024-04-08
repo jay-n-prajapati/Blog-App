@@ -35,7 +35,8 @@ export const deleteUser = async (id) => await instance.delete(`/users/${id}`);
 export const addUser = async (payload) => await instance.post('/users', payload);
 export const updateUser = async (id, endpoint, payload) =>await instance.patch(`/${endpoint}/${id}`, payload);
 
-export const getSubAdmin = async () => await instance.get('/subAdmins');
+export const getSubAdmins = async () => await instance.get('/subAdmins');
+export const getSubAdmin = async (email) => await instance.get(`/subAdmins?email=${email}`);
 export const addSubAdmin = async (payload) => await instance.post('/subAdmins', payload);
 
 export const getCategories = async () => await instance.get('/categories');

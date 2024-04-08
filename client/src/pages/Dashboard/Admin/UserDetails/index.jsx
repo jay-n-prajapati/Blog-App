@@ -2,7 +2,6 @@ import DataTable from '@/components/common/DataTable';
 import { getUsers } from '@/utils/axios-instance';
 import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
-// import { usersColumn } from './UsersColumn';
 import CommonAvatar from '@/components/common/Avatar';
 import { ArrowDownUp } from 'lucide-react';
 import DeleteUserButton from './DeleteUserButton';
