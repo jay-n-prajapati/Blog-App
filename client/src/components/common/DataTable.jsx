@@ -44,7 +44,7 @@ const DataTable = ({ data, columns }) => {
     <div className='rounded-md border p-2'>
       <div className='py-4'>
         <Input
-          className='text-base'
+          className='text-xs sm:text-sm md:text-base'
           placeholder='search here...'
           value={filtering}
           onChange={(e) => setFiltering(e.target.value)}
@@ -59,7 +59,7 @@ const DataTable = ({ data, columns }) => {
                   return (
                     <TableHead
                       key={header.id}
-                      className='cursor-pointer'
+                      className='cursor-pointer text-xs sm:text-sm'
                       onClick={header.column.getToggleSortingHandler()}
                     >
                       {header.isPlaceholder
@@ -76,7 +76,7 @@ const DataTable = ({ data, columns }) => {
               table.getRowModel().rows.map((row) => (
                 <TableRow key={row.id} data-state={row.getIsSelected() && 'selected'}>
                   {row.getVisibleCells().map((cell) => (
-                    <TableCell key={cell.id}>
+                    <TableCell key={cell.id} className='text-xs sm:text-sm'>
                       {flexRender(cell.column.columnDef.cell, cell.getContext())}
                     </TableCell>
                   ))}
@@ -95,65 +95,71 @@ const DataTable = ({ data, columns }) => {
           </TableBody>
         </Table>
       </div>
-      <div className='flex items-center justify-end gap-2 py-3'>
-        <div className='flex'>
-          <Select onValueChange={(value) => table.setPageSize(Number(value))}>
-            <SelectTrigger className='text-primary-text text-[10px] sm:text-xs md:text-sm'>
-              <SelectValue placeholder='Select rows' />
-            </SelectTrigger>
-            <SelectContent>
-              {[5, 10, 15, 20, 30].map((option, idx) => (
-                <SelectItem
-                  key={idx}
-                  value={option}
-                  className='text-primary-text text-[10px] sm:text-xs md:text-sm'
-                >
-                  {option}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-        </div>
-        <div className='flex items-center gap-2'>
-          <Button
-            variant='link'
-            size='icon'
-            onClick={() => table.firstPage()}
-            disabled={!table.getCanPreviousPage()}
-          >
-            <ChevronsLeft />
-          </Button>
-          <Button
-            variant='link'
-            size='icon'
-            onClick={() => table.previousPage()}
-            disabled={!table.getCanPreviousPage()}
-          >
-            <ChevronLeft />
-          </Button>
-          <div className='text-xs md:text-sm'>
-            <strong>
-              {table.getState().pagination.pageIndex + 1} of {table.getPageCount()}
-            </strong>
+      {data.length <= 10 ? null : (
+        <div className='flex items-center justify-end gap-2 py-3'>
+          <div className='flex'>
+            <Select onValueChange={(value) => table.setPageSize(Number(value))}>
+              <SelectTrigger className='text-primary-text h-8 text-[10px] sm:text-xs md:text-sm'>
+                <SelectValue placeholder='Select rows' />
+              </SelectTrigger>
+              <SelectContent>
+                {[5, 10, 15, 20, 30].map((option, idx) => (
+                  <SelectItem
+                    key={idx}
+                    value={option}
+                    className='text-primary-text text-[10px] sm:text-xs md:text-sm'
+                  >
+                    {option}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
           </div>
-          <Button
-            variant='link'
-            size='icon'
-            onClick={() => table.nextPage()}
-            disabled={!table.getCanNextPage()}
-          >
-            <ChevronRight />
-          </Button>
-          <Button
-            variant='link'
-            size='icon'
-            onClick={() => table.lastPage()}
-            disabled={!table.getCanNextPage()}
-          >
-            <ChevronsRight />
-          </Button>
+          <div className='flex items-center'>
+            <Button
+              variant='link'
+              size='icon'
+              onClick={() => table.firstPage()}
+              disabled={!table.getCanPreviousPage()}
+              className='size-6 sm:size-8'
+            >
+              <ChevronsLeft />
+            </Button>
+            <Button
+              variant='link'
+              size='icon'
+              onClick={() => table.previousPage()}
+              disabled={!table.getCanPreviousPage()}
+              className='size-6 sm:size-8'
+            >
+              <ChevronLeft />
+            </Button>
+            <div className='text-xs md:text-sm min-w-fit'>
+              <strong>
+                {table.getState().pagination.pageIndex + 1} of {table.getPageCount()}
+              </strong>
+            </div>
+            <Button
+              variant='link'
+              size='icon'
+              onClick={() => table.nextPage()}
+              disabled={!table.getCanNextPage()}
+              className='size-6 sm:size-8'
+            >
+              <ChevronRight />
+            </Button>
+            <Button
+              variant='link'
+              size='icon'
+              onClick={() => table.lastPage()}
+              disabled={!table.getCanNextPage()}
+              className='size-6 sm:size-8'
+            >
+              <ChevronsRight />
+            </Button>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };

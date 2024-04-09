@@ -17,7 +17,7 @@ const Story = () => {
       try {
         const { data } = await getSingleBlogs(blogId);
         fetchedBlogs.push(...data);
-      } catch (error) {
+      } catch ({error}) {
         toast.error(`Error : ${error}`);
       }
     }

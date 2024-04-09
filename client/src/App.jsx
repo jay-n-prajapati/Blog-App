@@ -12,7 +12,7 @@ const App = () => {
     <>
         <Suspense fallback={<Loader />}>
           <ToastContainer
-            autoClose={2000}
+            autoClose={1500}
             closeOnClick
             pauseOnFocusLoss={false}
             pauseOnHover

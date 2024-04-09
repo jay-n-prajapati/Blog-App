@@ -1,5 +1,5 @@
 import BlogCard from '@/components/common/BlogCard';
-import DeleteButton from '@/components/common/DeleteButton';
+import DeleteButton from '@/components/common/DeleteBlogButton';
 import { Button } from '@/components/ui/button';
 import { getUsersBlogs } from '@/utils/axios-instance';
 import useRole from '@/utils/custom-hooks/useRole';
