@@ -140,7 +140,10 @@
       "password": "SubAdmin@123",
       "parentCategory": "Fitness Blog",
       "bio": "",
-      "subCategories": [],
+      "subCategories": [
+        "yoga",
+        "fitness"
+      ],
       "savedBlogs": [],
       "publishedBlogs": []
     },
@@ -225,36 +228,36 @@
   "categories": [
     {
       "parentCategory": "Fitness Blog",
+      "id": "734d",
       "subCategories": [
-        "Yoga",
-        "Weightlifting"
-      ],
-      "id": "734d"
+        "yoga",
+        "fitness"
+      ]
     },
     {
       "id": "6976",
       "parentCategory": "AI Blog",
-      "subcategories": []
+      "subCategories": []
     },
     {
       "id": "da8d",
       "parentCategory": "Educational Blog",
-      "subcategories": []
+      "subCategories": []
     },
     {
       "id": "5bf9",
       "parentCategory": "Financial Blog",
-      "subcategories": []
+      "subCategories": []
     },
     {
       "id": "86b4",
       "parentCategory": "Sports Blog",
-      "subcategories": []
+      "subCategories": []
     },
     {
       "id": "36d3",
       "parentCategory": "Political Blogs",
-      "subcategories": []
+      "subCategories": []
     }
   ]
 }
