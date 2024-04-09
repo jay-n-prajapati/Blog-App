@@ -25,7 +25,7 @@ const Auth = ({ children, formType = '', defaultOpen = false }) => {
   };
 
   useEffect(() => {
-    isAuth ? navigate(-1) : null;
+    isAuth ? navigate('/home') : null;
   }, []);
 
   return (
