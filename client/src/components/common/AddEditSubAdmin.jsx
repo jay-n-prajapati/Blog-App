@@ -27,7 +27,7 @@ import { setLoader } from '@/redux/actions/appActions';
 import PropTypes from 'prop-types';
 
 const passwordRules = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{4,}$/;
-const signUpSchema = yup.object({
+const Schema = yup.object({
   name: yup
     .string()
     .required('* required')
@@ -51,12 +51,12 @@ const signUpSchema = yup.object({
 
 const AddEditSubAdmin = ({
   children,
-  subAdmin,
-  setSubAdmins,
   initialValues,
   isEditMode = false,
   open = false,
   handleOpen,
+  render,
+  setRender,
 }) => {
   const { loader } = useSelector((state) => state.app);
   const [categories, setCategories] = useState([]);
@@ -81,7 +81,7 @@ const AddEditSubAdmin = ({
           cpassword: '',
           parentCategory: '',
         },
-    validationSchema: signUpSchema,
+    validationSchema: Schema,
     onSubmit: isEditMode ? onEditSubmit : onAddSubmit,
   });
 
@@ -93,7 +93,7 @@ const AddEditSubAdmin = ({
         handleReset();
         return;
       }
-    } catch (error) {
+    } catch ({ error }) {
       toast.error(error);
     }
     const newSubAdmin = {
@@ -106,16 +106,14 @@ const AddEditSubAdmin = ({
       savedBlogs: [],
       publishedBlogs: [],
     };
-
     try {
       dispatch(setLoader(true));
       await addSubAdmin(newSubAdmin);
       toast.success('Registered Successfully');
-      setSubAdmins((prev) => [...prev, newSubAdmin]);
       handleReset();
       handleOpen(false);
-    } catch (error) {
-      dispatch(setLoader(false));
+      setRender(!render);
+    } catch ({ error }) {
       toast.error(`Error : ${error}`);
     } finally {
       dispatch(setLoader(false));
@@ -125,6 +123,7 @@ const AddEditSubAdmin = ({
   async function onEditSubmit() {
     try {
       const updateSubAdmin = {
+        id: initialValues.id,
         name: values.name,
         email: values.email,
         password: values.password,
@@ -134,20 +133,23 @@ const AddEditSubAdmin = ({
         savedBlogs: [],
         publishedBlogs: [],
       };
-      await updateUser(subAdmin.id, 'subAdmins', updateSubAdmin);
+      await updateUser(initialValues.id, 'subAdmins', updateSubAdmin);
       toast.success(`Updated Successfully`);
-      setSubAdmins((prev) => [...prev, updateSubAdmin]);
+      setRender(!render);
       handleReset();
       handleOpen(false);
-    } catch (error) {
+    } catch ({ error }) {
       toast.error(`Error : ${error}`);
     }
-    console.log('edited', values);
   }
 
   const fetchCategories = async () => {
-    const { data } = await getCategories();
-    setCategories(data);
+    try {
+      const { data } = await getCategories();
+      setCategories(data);
+    } catch ({ error }) {
+      toast.error(`Error : ${error}`);
+    }
   };
 
   useEffect(() => {
@@ -242,7 +244,9 @@ const AddEditSubAdmin = ({
                 value={values.category}
               >
                 <SelectTrigger className='w-full mb-2 text-primary-text text-[12px] md:text-sm'>
-                  <SelectValue placeholder='Select Category to Assign' />
+                  <SelectValue
+                    placeholder={isEditMode ? values.parentCategory : `Select Category to Assign`}
+                  />
                 </SelectTrigger>
                 <SelectContent>
                   {categories.map((option, idx) => (
@@ -301,6 +305,8 @@ AddEditSubAdmin.propTypes = {
   children: PropTypes.node,
   open: PropTypes.bool,
   handleOpen: PropTypes.func,
+  setRender: PropTypes.func,
+  render: PropTypes.bool,
 };
 
 export default React.memo(AddEditSubAdmin);

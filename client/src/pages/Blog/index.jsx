@@ -6,7 +6,6 @@ import parse from 'html-react-parser';
 import './blog.css';
 import CommonAvatar from '@/components/common/Avatar';
 
-
 import SaveButton from '@/components/common/SaveButton';
 import LikeButton from '@/components/common/LikeButton';
 
@@ -15,8 +14,12 @@ const Blog = () => {
   const [blog, setBlog] = useState(null);
 
   const fetchSingleBlog = async () => {
-    const { data, error } = await getSingleBlogs(id);
-    !error ? setBlog(...data) : toast.error(`Error : ${error}`);
+    try {
+      const { data } = await getSingleBlogs(id);
+      setBlog(...data);
+    } catch ({ error }) {
+      toast.error(`Error : ${error}`);
+    }
   };
 
   useEffect(() => {

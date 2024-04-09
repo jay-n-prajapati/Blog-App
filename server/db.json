@@ -114,7 +114,7 @@
     {
       "id": "fe87",
       "name": "Blogify SubTeam",
-      "email": "subadmin@gmail.com",
+      "email": "subadmin2@gmail.com",
       "bio": "",
       "password": "SubAdmin@123",
       "parentCategory": "Programming Blog",
@@ -125,7 +125,7 @@
     {
       "id": "1375",
       "name": "Blogify SubTeam",
-      "email": "subadmin2@gmail.com",
+      "email": "subadmin3@gmail.com",
       "bio": "",
       "password": "SubAdmin@123",
       "parentCategory": "Tech Blog",
@@ -134,11 +134,77 @@
       "publishedBlogs": []
     },
     {
-      "id": "10f3",
+      "id": "ef66",
       "name": "Blogify SubTeam",
-      "email": "subadmin3@gmail.com",
+      "email": "subadmin4@gmail.com",
       "password": "SubAdmin@123",
-      "parentCategory": "Travel Blog",
+      "parentCategory": "Fitness Blog",
+      "bio": "",
+      "subCategories": [],
+      "savedBlogs": [],
+      "publishedBlogs": []
+    },
+    {
+      "id": "1ea0",
+      "name": "Blogify SubTeam",
+      "email": "subadmin5@gmail.com",
+      "password": "SubAdmin@123",
+      "parentCategory": "Traveling Blog",
+      "bio": "",
+      "subCategories": [],
+      "savedBlogs": [],
+      "publishedBlogs": []
+    },
+    {
+      "id": "4694",
+      "name": "Blogify SubTeam",
+      "email": "subadmin6@gmail.com",
+      "password": "SubAdmin@123",
+      "parentCategory": "AI Blog",
+      "bio": "",
+      "subCategories": [],
+      "savedBlogs": [],
+      "publishedBlogs": []
+    },
+    {
+      "id": "3af7",
+      "name": "Blogify SubTeam",
+      "email": "subadmin8@gmail.com",
+      "password": "SubAdmin@123",
+      "parentCategory": "Fashion Blog",
+      "bio": "",
+      "subCategories": [],
+      "savedBlogs": [],
+      "publishedBlogs": []
+    },
+    {
+      "id": "cc52",
+      "name": "Blogify SubTeam",
+      "email": "subadmin9@gmail.com",
+      "password": "SubAdmin@123",
+      "parentCategory": "Educational Blog",
+      "bio": "",
+      "subCategories": [],
+      "savedBlogs": [],
+      "publishedBlogs": []
+    },
+    {
+      "id": "656c",
+      "name": "Blogify SubTeam",
+      "email": "subadmin10@gmail.com",
+      "password": "SubAdmin@123",
+      "parentCategory": "Food Blog",
+      "bio": "",
+      "subCategories": [],
+      "savedBlogs": [],
+      "publishedBlogs": []
+    },
+    {
+      "id": "71e0",
+      "name": "Blogify SubTeam",
+      "email": "subadmin7@gmail.com",
+      "password": "SubAdmin@123",
+      "parentCategory": "Sports Blog",
       "bio": "",
       "subCategories": [],
       "savedBlogs": [],
@@ -158,52 +224,37 @@
   ],
   "categories": [
     {
-      "parentCategory": "Programming Blog",
-      "subCategories": [
-        "Frontend",
-        "Backend"
-      ],
-      "id": "f39c"
-    },
-    {
-      "parentCategory": "Tech Blog",
-      "subCategories": [
-        "Gadgets",
-        "Software"
-      ],
-      "id": "9d0c"
-    },
-    {
-      "parentCategory": "Fashion Blog",
-      "subCategories": [
-        "StreetWear",
-        "HighFashion"
-      ],
-      "id": "6959"
-    },
-    {
-      "parentCategory": "Travel Blog",
-      "subCategories": [
-        "Adventure",
-        "LuxuryTravel"
-      ],
-      "id": "6a02"
-    },
-    {
-      "parentCategory": "Food Blog",
-      "subCategories": [
-        "Vegan",
-        "Desserts"
-      ],
-      "id": "afd8"
-    },
-    {
       "parentCategory": "Fitness Blog",
       "subCategories": [
         "Yoga",
         "Weightlifting"
       ],
       "id": "734d"
+    },
+    {
+      "id": "6976",
+      "parentCategory": "AI Blog",
+      "subcategories": []
+    },
+    {
+      "id": "da8d",
+      "parentCategory": "Educational Blog",
+      "subcategories": []
+    },
+    {
+      "id": "5bf9",
+      "parentCategory": "Financial Blog",
+      "subcategories": []
+    },
+    {
+      "id": "86b4",
+      "parentCategory": "Sports Blog",
+      "subcategories": []
+    },
+    {
+      "id": "36d3",
+      "parentCategory": "Political Blogs",
+      "subcategories": []
     }
   ]
 }

@@ -5,9 +5,9 @@ import { useDispatch } from 'react-redux';
 import { setLoader } from '@/redux/actions/appActions';
 import { removeFromSavedBlogs } from '@/utils/services/services';
 import { deleteBlog, deleteSubAdmin, getSingleBlogs } from '@/utils/axios-instance';
+import React from 'react';
 
 const DeleteSubAdmin = ({ subAdmin, subAdmins, setSubAdmins }) => {
-
   const dispatch = useDispatch();
   const handleDelete = async () => {
 
@@ -58,4 +58,4 @@ DeleteSubAdmin.propTypes = {
   setSubAdmins: PropTypes.func,
 };
 
-export default DeleteSubAdmin;
+export default React.memo(DeleteSubAdmin);

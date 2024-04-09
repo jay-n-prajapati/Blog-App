@@ -1,12 +1,12 @@
-import AddEditSubAdmin from '@/components/common/AddEditSubAdmin';
+import AddEditCategory from '@/components/common/AddEditCategory';
 import { Button } from '@/components/ui/button';
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 
-const EditSubAdmin = ({ isEditMode, initialValues , setRender , render }) => {
+const EditCategory = ({isEditMode, initialValues , setRender , render }) => {
   const [open, setOpen] = useState(false);
   return (
-    <AddEditSubAdmin
+    <AddEditCategory
       isEditMode={isEditMode}
       initialValues={initialValues}
       open={open}
@@ -31,17 +31,15 @@ const EditSubAdmin = ({ isEditMode, initialValues , setRender , render }) => {
           <path d='m15 5 4 4' />
         </svg>
       </Button>
-    </AddEditSubAdmin>
+    </AddEditCategory>
   );
 };
 
-EditSubAdmin.propTypes = {
-  subAdmin: PropTypes.object,
-  setSubAdmins: PropTypes.func,
+EditCategory.propTypes = {
   isEditMode: PropTypes.bool,
   initialValues: PropTypes.object,
   setRender: PropTypes.func,
   render: PropTypes.bool,
 };
 
-export default React.memo(EditSubAdmin);
+export default React.memo(EditCategory);

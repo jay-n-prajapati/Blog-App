@@ -14,7 +14,7 @@ export const removeFromSavedBlogs = async (blog) => {
       await updateUser(userId, 'users', {
         savedBlogs: filteredSavedBlogs,
       });
-    } catch (error) {
+    } catch ({error}) {
       toast.error(`Error : ${error}`);
     }
   }

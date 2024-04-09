@@ -14,9 +14,13 @@ const Landing = () => {
   const { currentUser } = useRole();
 
   const fetchBlogs = async () => {
-    const { data: blogs, error } = await getBlogs(currentUser.id);
-
-    error ? toast.error(`Error : ${error} `) : setBlogs(blogs);
+    try {
+      
+      const {blogs} = await getBlogs(currentUser.id);
+      setBlogs(blogs);
+    } catch ({error}) {
+      toast.error(`Error : ${error}`)
+    }
   };
 
   useEffect(() => {

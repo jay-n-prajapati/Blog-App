@@ -2,16 +2,15 @@ import AddEditSubAdmin from '@/components/common/AddEditSubAdmin';
 import { Button } from '@/components/ui/button';
 import { Plus } from 'lucide-react';
 import PropTypes from 'prop-types';
-import { useState } from 'react';
+import React, { useState } from 'react';
 
-const AddSubAdmin = ({ setSubAdmins }) => {
-
-  const [open , setOpen] = useState(false)
+const AddSubAdmin = ({ setRender, render }) => {
+  const [open, setOpen] = useState(false);
 
   return (
-    <AddEditSubAdmin setSubAdmins={setSubAdmins} open={open} handleOpen={setOpen}>
-      <Button size='sm' onClick={() =>setOpen(true)}>
-        <Plus/>
+    <AddEditSubAdmin open={open} handleOpen={setOpen} setRender={setRender} render={render}>
+      <Button size='sm' onClick={() => setOpen(true)}>
+        <Plus />
         Add New
       </Button>
     </AddEditSubAdmin>
@@ -19,9 +18,8 @@ const AddSubAdmin = ({ setSubAdmins }) => {
 };
 
 AddSubAdmin.propTypes = {
-  setSubAdmins: PropTypes.func,
-  isEditMode: PropTypes.bool,
-  initialValues: PropTypes.object,
+  setRender: PropTypes.func,
+  render: PropTypes.bool,
 };
 
-export default AddSubAdmin;
+export default React.memo(AddSubAdmin);

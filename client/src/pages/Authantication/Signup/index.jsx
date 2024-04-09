@@ -70,12 +70,11 @@ const Signup = ({ setContent }) => {
     }
     try {
       dispatch(setLoader(true));
-      const res = await addUser(newUser);
+      await addUser(newUser);
       dispatch(setAuth('user', newUser));
       toast.success('Registered Successfully');
       navigate('/home');
-    } catch (error) {
-      dispatch(setLoader(false));
+    } catch ({error}) {
       toast.error(`Error : ${error}`);
     } finally {
       dispatch(setLoader(false));

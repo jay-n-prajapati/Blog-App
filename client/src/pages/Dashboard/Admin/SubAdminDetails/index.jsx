@@ -16,6 +16,7 @@ import DeleteSubAdmin from './DeleteSubAdmin';
 
 const SubAdminDetails = () => {
   const [subAdmins, setSubAdmins] = useState([]);
+  const [render, setRender] = useState(false);
   const subAdminColumn = [
     {
       header: (
@@ -88,10 +89,10 @@ const SubAdminDetails = () => {
         return (
           <div className='flex gap-3'>
             <EditSubAdminButton
-              subAdmin={row.original}
-              setSubAdmins={setSubAdmins}
               isEditMode={true}
               initialValues={row.original}
+              setRender={setRender}
+              render={render}
             />
             <DeleteSubAdmin
               subAdmin={row.original}
@@ -115,11 +116,11 @@ const SubAdminDetails = () => {
 
   useEffect(() => {
     fetchUsers();
-  }, []);
+  }, [render]);
   return (
     <div>
       <div className='my-4 flex justify-end'>
-        <AddSubAdmin setSubAdmins={setSubAdmins} />
+        <AddSubAdmin setRender={setRender} render={render} />
       </div>
       <DataTable data={subAdmins} columns={subAdminColumn} />
     </div>
