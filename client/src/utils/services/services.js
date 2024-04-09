@@ -9,7 +9,6 @@ export const removeFromSavedBlogs = async (blog) => {
       return;
     }
     const filteredSavedBlogs = userData.savedBlogs.filter((blogId) => blogId !== blog.id);
-    console.log('jay', filteredSavedBlogs);
     try {
       // issue may be occur here
       await updateUser(userId, 'users', {

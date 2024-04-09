@@ -13,6 +13,48 @@
       "likes": 0,
       "published": "08/04/2024",
       "savedBy": []
+    },
+    {
+      "id": "4fd9",
+      "title": "Introduction to the JavaScript Constructor / Prototype pattern",
+      "briefDescription": "Introduction to the JavaScript Constructor / Prototype patternIntroduction to the JavaScript Constructor / Prototype patternIntroduction to the JavaScript Constructor / Prototype patternIntroduction to the JavaScript Constructor / Prototype patternIntroduction to the JavaScript Constructor / Prototype pattern",
+      "detailedBlog": "<h2>Introduction to the JavaScript Constructor / Prototype pattern</h2><h2>Introduction to the JavaScript Constructor / Prototype pattern</h2><h2>Introduction to the JavaScript Constructor / Prototype pattern</h2><h2>Introduction to the JavaScript Constructor / Prototype patternIntroduction to the JavaScript Constructor / Prototype pattern</h2><h2>Introduction to the JavaScript Constructor / Prototype pattern</h2><h2>Introduction to the JavaScript Constructor / Prototype pattern</h2><h2>Introduction to the JavaScript Constructor / Prototype pattern</h2><h2>Introduction to the JavaScript Constructor / Prototype pattern</h2><h2>Introduction to the JavaScript Constructor / Prototype pattern</h2><h2>Introduction to the JavaScript Constructor / Prototype pattern</h2><h2>Introduction to the JavaScript Constructor / Prototype pattern</h2><h2>Introduction to the JavaScript Constructor / Prototype pattern</h2><h2>Introduction to the JavaScript Constructor / Prototype pattern</h2><h2>Introduction to the JavaScript Constructor / Prototype pattern</h2><h2>Introduction to the JavaScript Constructor / Prototype pattern</h2><h2>Introduction to the JavaScript Constructor / Prototype pattern</h2><h2>Introduction to the JavaScript Constructor / Prototype pattern</h2><h2>Introduction to the JavaScript Constructor / Prototype pattern</h2><h2>Introduction to the JavaScript Constructor / Prototype pattern</h2><h2>Introduction to the JavaScript Constructor / Prototype pattern</h2><h2>Introduction to the JavaScript Constructor / Prototype pattern</h2><h2>Introduction to the JavaScript Constructor / Prototype pattern</h2><h2>Introduction to the JavaScript Constructor / Prototype pattern</h2><h2>Introduction to the JavaScript Constructor / Prototype pattern</h2><h2>Introduction to the JavaScript Constructor / Prototype pattern</h2><h2>Introduction to the JavaScript Constructor / Prototype pattern</h2><h2>Introduction to the JavaScript Constructor / Prototype pattern</h2><h2>Introduction to the JavaScript Constructor / Prototype pattern</h2><h2>Introduction to the JavaScript Constructor / Prototype pattern</h2><h2>Introduction to the JavaScript Constructor / Prototype pattern</h2><h2>Introduction to the JavaScript Constructor / Prototype pattern</h2><h2>Introduction to the JavaScript Constructor / Prototype pattern</h2><h2>Introduction to the JavaScript Constructor / Prototype pattern</h2><h2>Introduction to the JavaScript Constructor / Prototype pattern</h2><p><br></p>",
+      "parentCategory": "Programming Blog",
+      "subCategory": "Frontend",
+      "authorId": "14",
+      "author": "jay Prajapati",
+      "comments": [],
+      "likes": 0,
+      "published": "09/04/2024",
+      "savedBy": []
+    },
+    {
+      "id": "58ec",
+      "title": "Introduction to the JavaScript Constructor / Prototype pattern",
+      "briefDescription": "Introduction to the JavaScript Constructor / Prototype patternIntroduction to the JavaScript Constructor / Prototype patternIntroduction to the JavaScript Constructor / Prototype patternIntroduction to the JavaScript Constructor / Prototype pattern",
+      "detailedBlog": "<h2>Introduction to the JavaScript Constructor / Prototype pattern</h2><h2>Introduction to the JavaScript Constructor / Prototype pattern</h2><h2>Introduction to the JavaScript Constructor / Prototype patternIntroduction to the JavaScript Constructor / Prototype pattern</h2><h2>Introduction to the JavaScript Constructor / Prototype patternIntroduction to the JavaScript Constructor / Prototype pattern</h2><h2>Introduction to the JavaScript Constructor / Prototype pattern</h2><h2>Introduction to the JavaScript Constructor / Prototype pattern</h2><h2>Introduction to the JavaScript Constructor / Prototype pattern</h2><h2>Introduction to the JavaScript Constructor / Prototype pattern</h2><h2>Introduction to the JavaScript Constructor / Prototype pattern</h2><h2>Introduction to the JavaScript Constructor / Prototype pattern</h2><h2>Introduction to the JavaScript Constructor / Prototype pattern</h2><h2>Introduction to the JavaScript Constructor / Prototype pattern</h2><p><br></p>",
+      "parentCategory": "Programming Blog",
+      "subCategory": "Backend",
+      "authorId": "14",
+      "author": "jay Prajapati",
+      "comments": [],
+      "likes": 0,
+      "published": "09/04/2024",
+      "savedBy": []
+    },
+    {
+      "id": "2ff7",
+      "title": "Introduction to the JavaScript Constructor / Prototype pattern",
+      "briefDescription": "Introduction to the JavaScript Constructor / Prototype patternIntroduction to the JavaScript Constructor / Prototype patternIntroduction to the JavaScript Constructor / Prototype patternIntroduction to the JavaScript Constructor / Prototype patternIntroduction to the JavaScript Constructor / Prototype patternIntroduction to the JavaScript Constructor / Prototype pattern",
+      "detailedBlog": "<h2>Introduction to the JavaScript Constructor / Prototype pattern</h2><h2>Introduction to the JavaScript Constructor / Prototype pattern</h2><h2>Introduction to the JavaScript Constructor / Prototype patternIntroduction to the JavaScript Constructor / Prototype pattern</h2><h2>Introduction to the JavaScript Constructor / Prototype patternIntroduction to the JavaScript Constructor / Prototype pattern</h2><h2>Introduction to the JavaScript Constructor / Prototype pattern</h2><h2>Introduction to the JavaScript Constructor / Prototype pattern</h2><h2>Introduction to the JavaScript Constructor / Prototype pattern</h2><h2>Introduction to the JavaScript Constructor / Prototype pattern</h2><h2>Introduction to the JavaScript Constructor / Prototype pattern</h2><h2>Introduction to the JavaScript Constructor / Prototype pattern</h2><h2>Introduction to the JavaScript Constructor / Prototype pattern</h2><h2>Introduction to the JavaScript Constructor / Prototype pattern</h2><h2>Introduction to the JavaScript Constructor / Prototype pattern</h2><h2>Introduction to the JavaScript Constructor / Prototype pattern</h2><h2>Introduction to the JavaScript Constructor / Prototype pattern</h2><h2>Introduction to the JavaScript Constructor / Prototype pattern</h2><p><br></p>",
+      "parentCategory": "Programming Blog",
+      "subCategory": "Frontend",
+      "authorId": "14",
+      "author": "jay Prajapati",
+      "comments": [],
+      "likes": 0,
+      "published": "09/04/2024",
+      "savedBy": []
     }
   ],
   "users": [
@@ -61,7 +103,11 @@
       "bio": "",
       "password": "Jay@123",
       "savedBlogs": [],
-      "publishedBlogs": []
+      "publishedBlogs": [
+        "4fd9",
+        "58ec",
+        "2ff7"
+      ]
     }
   ],
   "subAdmins": [

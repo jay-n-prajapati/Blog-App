@@ -2,7 +2,7 @@ import useRole from '@/utils/custom-hooks/useRole';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { setAuth } from '@/redux/actions/authActions';
-import { deleteBlog, getUser, updateUser } from '@/utils/axios-instance';
+import { deleteBlog, updateUser } from '@/utils/axios-instance';
 import { toast } from 'react-toastify';
 import { setLoader } from '@/redux/actions/appActions';
 import DeleteWithModal from './DeleteWithModal';

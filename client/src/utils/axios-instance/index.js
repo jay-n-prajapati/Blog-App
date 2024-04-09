@@ -48,6 +48,8 @@ export const getAllBlogs = async () => await instance.get(`/blogs`);
 export const getSingleBlogs = async (blogId) => await instance.get(`/blogs?id=${blogId}`);
 export const getUsersBlogs = async (authorId) => await instance.get(`/blogs?authorId=${authorId}`);
 export const getBlogs = async (authorId) => await instance.get(`/blogs?authorId_ne=${authorId}`);
+export const getSpecificCategoryBlogs = async (category) => await instance.get(`/blogs?parentCategory=${category}`);
+
 export const postBlog = async (payload) => await instance.post('/blogs', payload);
 export const updateBlog = async (blogId, payload) => await instance.patch(`/blogs/${blogId}`, payload);
 export const deleteBlog = async (blogId) => await instance.delete(`/blogs/${blogId}`);

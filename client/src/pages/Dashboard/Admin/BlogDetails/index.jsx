@@ -1,17 +1,14 @@
-import DataTable from '@/components/common/DataTable';
 import { getBlogs } from '@/utils/axios-instance';
+import useRole from '@/utils/custom-hooks/useRole';
 import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
-import useRole from '@/utils/custom-hooks/useRole';
-import { blogsColumn } from './BlogColumn';
+import BlogDetails from '../../BlogsTable';
 
-
-const BlogDetails = () => {
+const BlogIndex = () => {
   const [blogs, setBlogs] = useState([]);
-  const {currentUser} = useRole()
-
+  const { currentUser } = useRole();
   const fetchBlogs = async () => {
-    const { success, data, error } = await getBlogs(currentUser.id)
+    const { success, data, error } = await getBlogs(currentUser.id);
     if (!success) {
       toast.error(`Error : ${error}`);
       return;
@@ -22,11 +19,12 @@ const BlogDetails = () => {
   useEffect(() => {
     fetchBlogs();
   }, []);
+
   return (
-    <div>
-      <DataTable data={blogs} columns={blogsColumn} />
-    </div>
+    <>
+      <BlogDetails data={blogs} setData={setBlogs} />
+    </>
   );
 };
 
-export default BlogDetails;
+export default BlogIndex;
