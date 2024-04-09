@@ -1,5 +1,5 @@
 import { ArrowDownUp } from 'lucide-react';
-import DeleteUserButton from '../UserDetails/DeleteUserButton';
+import DeleteUserButton from '../UserDetails/DeleteUser';
 import {
   Select,
   SelectContent,
@@ -22,7 +22,6 @@ export const categoryColumn = [
     header: (
       <div className='flex gap-1 items-center'>
         Sub Categories
-        <ArrowDownUp className='ml-2 h-4 w-4' />
       </div>
     ),
     accessorKey: 'subCategories',

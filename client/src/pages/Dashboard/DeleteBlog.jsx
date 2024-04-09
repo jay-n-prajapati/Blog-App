@@ -8,9 +8,9 @@ import DeleteWithModal from '@/components/common/DeleteWithModal';
 
 const DeleteBlog = ({ blog, blogs, setBlogs }) => {
   const dispatch = useDispatch();
+
   const handleDelete = async () => {
     dispatch(setLoader(true));
-
     try {
       const {
         success: getUserSuccess,

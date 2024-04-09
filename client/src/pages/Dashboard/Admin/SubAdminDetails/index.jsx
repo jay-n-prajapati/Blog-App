@@ -2,7 +2,6 @@ import DataTable from '@/components/common/DataTable';
 import { getSubAdmins } from '@/utils/axios-instance';
 import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
-import { Button } from '@/components/ui/button';
 import {
   Select,
   SelectContent,
@@ -11,8 +10,9 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { ArrowDownUp } from 'lucide-react';
-import DeleteSubAdminButton from './DeleteSubAdminButton';
 import AddSubAdmin from './AddSubAdmin';
+import EditSubAdminButton from './EditSubAdmin';
+import DeleteSubAdmin from './DeleteSubAdmin';
 
 const SubAdminDetails = () => {
   const [subAdmins, setSubAdmins] = useState([]);
@@ -87,24 +87,13 @@ const SubAdminDetails = () => {
       cell: ({ row }) => {
         return (
           <div className='flex gap-3'>
-            <Button variant='link' className={`px-0`} size='sm'>
-              <svg
-                xmlns='http://www.w3.org/2000/svg'
-                width='22'
-                height='22'
-                viewBox='0 0 24 24'
-                fill='none'
-                stroke='currentColor'
-                strokeWidth='1'
-                strokeLinecap='round'
-                strokeLinejoin='round'
-                className='lucide lucide-pencil'
-              >
-                <path d='M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z' />
-                <path d='m15 5 4 4' />
-              </svg>
-            </Button>
-            <DeleteSubAdminButton
+            <EditSubAdminButton
+              subAdmin={row.original}
+              setSubAdmins={setSubAdmins}
+              isEditMode={true}
+              initialValues={row.original}
+            />
+            <DeleteSubAdmin
               subAdmin={row.original}
               subAdmins={subAdmins}
               setSubAdmins={setSubAdmins}
@@ -116,12 +105,12 @@ const SubAdminDetails = () => {
   ];
 
   const fetchUsers = async () => {
-    const { success, data, error } = await getSubAdmins();
-    if (!success) {
+    try {
+      const { data } = await getSubAdmins();
+      setSubAdmins(data);
+    } catch (error) {
       toast.error(`Error : ${error}`);
-      return;
     }
-    setSubAdmins(data);
   };
 
   useEffect(() => {

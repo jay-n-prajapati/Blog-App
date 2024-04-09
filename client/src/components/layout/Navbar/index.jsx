@@ -9,7 +9,7 @@ import { removeAuth } from '@/redux/actions/authActions';
 import { toast } from 'react-toastify';
 import useRole from '@/utils/custom-hooks/useRole';
 import CommonAvatar from '@/components/common/Avatar';
-import DropDown from './DropDown';
+import DropDown from './DropDownMenu';
 
 const Navbar = () => {
   // const [open, setOpen] = useState(false);
@@ -51,7 +51,7 @@ const Navbar = () => {
             ) : (
               <div className='flex items-center gap-4'>
                 <DropDown links={DropDownLinks[role]} >
-                  <CommonAvatar userName={currentUser.name} className='size-7 sm:size-9' />
+                  <CommonAvatar userName={currentUser.name} className='size-7 sm:size-9 cursor-pointer' />
                 </DropDown>
                 <Button size='icon' variant='ghost' className='size-6' onClick={handleLogOut}>
                   <LogOut />

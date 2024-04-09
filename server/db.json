@@ -123,12 +123,23 @@
       "publishedBlogs": []
     },
     {
-      "id": "d3b7",
+      "id": "1375",
       "name": "Blogify SubTeam",
-      "email": "subadmin1@gmail.com",
+      "email": "subadmin2@gmail.com",
       "bio": "",
       "password": "SubAdmin@123",
       "parentCategory": "Tech Blog",
+      "subCategories": [],
+      "savedBlogs": [],
+      "publishedBlogs": []
+    },
+    {
+      "id": "10f3",
+      "name": "Blogify SubTeam",
+      "email": "subadmin3@gmail.com",
+      "password": "SubAdmin@123",
+      "parentCategory": "Travel Blog",
+      "bio": "",
       "subCategories": [],
       "savedBlogs": [],
       "publishedBlogs": []

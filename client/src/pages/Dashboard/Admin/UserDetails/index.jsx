@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import CommonAvatar from '@/components/common/Avatar';
 import { ArrowDownUp } from 'lucide-react';
-import DeleteUserButton from './DeleteUserButton';
+import DeleteUser from './DeleteUser';
 
 
 const UserDetails = () => {
@@ -79,7 +79,7 @@ const UserDetails = () => {
         return (
           
           <div>
-            <DeleteUserButton users={users} setUsers={setUsers} currentUser={row.original} />
+            <DeleteUser users={users} setUsers={setUsers} currentUser={row.original} />
           </div>
         );
       },
