@@ -1,5 +1,6 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import BlogIndex from './BlogDetails';
+import CategoryDetails from './CategoryDetails';
 
 
 
@@ -34,7 +35,7 @@ const SubAdminDashBoard = () => {
               <BlogIndex />
             </TabsContent>
             <TabsContent value='categories'>
-              {/* <CategoryDetails /> */}
+              <CategoryDetails />
             </TabsContent>
           </div>
         </Tabs>
