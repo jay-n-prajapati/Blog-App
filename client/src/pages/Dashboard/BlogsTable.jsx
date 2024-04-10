@@ -58,6 +58,9 @@ const BlogDetails = ({ data , setData }) => {
         </div>
       ),
       accessorKey: 'subCategory',
+      cell : ({row}) =>{
+        return <div>{row.original.subCategory ? row.original.subCategory : <strong>Not Exist</strong>}</div>
+      }
     },
     {
       header: (

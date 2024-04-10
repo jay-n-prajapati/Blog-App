@@ -10,24 +10,25 @@ const UserHome = () => {
   const [blogs, setBlogs] = useState([]);
   const [category, setCategory] = useState([]);
   const [page, setPage] = useState(1);
-  const [hasMore, setHasMore] = useState(true);
+  const [hasMore, setHasMore] = useState(false);
   const { currentUser } = useRole();
 
   const fetchBlogs = async () => {
     try {
       const { data: blogs } = await getBlogsWithPage(currentUser.id, page);
       if (blogs && blogs.data.length > 0 && blogs.next !== null) {
-        setBlogs((prevBlogs) => [...prevBlogs, ...blogs.data]);
-        setPage((prevPage) => prevPage + 1);
         setHasMore(true);
       } else {
         setHasMore(false);
       }
+      setBlogs((prevBlogs) => [...prevBlogs, ...blogs.data]);
+      setPage((prevPage) => prevPage + 1);
     } catch ({ error }) {
       toast.error(`Error : ${error}`);
       setHasMore(false);
     }
   };
+
   const fetchCategories = async () => {
     try {
       const { data } = await getCategories();
@@ -54,23 +55,19 @@ const UserHome = () => {
           >
             <div className='flex flex-col gap-4'>
               {blogs.map((blog) => {
-                return (
-                  <BlogCard key={blog.id} blog={blog}>
-                    {/* <LikeButton likes={blog.likes} /> */}
-                  </BlogCard>
-                );
+                return <BlogCard key={blog.id} blog={blog} />;
               })}
             </div>
           </InfiniteScroll>
         </div>
         <div className='hidden px-4 sm:block sm:w-[31%] fixed right-6'>
           <div>
-            <h1 className='text-lg font-bold'>Topics</h1>
+            <h1 className='text-lg font-bold'>Recommended Topics</h1>
             <div className='flex flex-wrap gap-2 mt-4'>
               {category.map((curr) => {
                 return (
                   <NavLink
-                    to={`/blogs/${curr.parentCategory}`}
+                    to={`/blogs/category/${curr.parentCategory}`}
                     key={curr.id}
                     className='text-xs p-2 px-4 bg-[#f2f2f2] rounded-2xl'
                   >

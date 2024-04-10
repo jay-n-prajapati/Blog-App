@@ -1,17 +1,17 @@
 import PropTypes from 'prop-types';
 import CommonAvatar from './Avatar';
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import SaveButton from './SaveButton';
 
 const BlogCard = ({ blog, children }) => {
-  const { id, title, briefDescription, author, subCategory, published } = blog;
+  const { id, title, briefDescription, author, parentCategory, subCategory, published } = blog;
   const navigate = useNavigate();
   const handleClick = () => {
     navigate(`/blog/${id}`);
   };
 
   return (
-    <div className='border border-b p-2 px-5 max-w-[45rem]'>
+    <div className='border border-b p-2 px-5 max-w-[50rem]'>
       <div className='flex items-center gap-6'>
         <div className='flex items-center gap-2'>
           <CommonAvatar userName={author} className='h-7 w-7' />
@@ -37,9 +37,17 @@ const BlogCard = ({ blog, children }) => {
         </div>
         <div className='w-full flex items-center justify-between'>
           <div className='flex gap-4'>
-            <span className='text-[10px] sm:text-xs bg-[#f2f2f2] text-[#6b6b6b] px-3 py-1 rounded-xl'>
-              {subCategory}
-            </span>
+            <NavLink
+              to={
+                subCategory.length !== 0
+                  ? `/blogs/subCategory/${subCategory}`
+                  : `/blogs/category/${parentCategory}`
+              }
+            >
+              <span className='text-[10px] sm:text-xs bg-[#f2f2f2] text-[#6b6b6b] px-3 py-1 rounded-xl'>
+                {subCategory.length !== 0 ? subCategory : parentCategory}
+              </span>
+            </NavLink>
           </div>
           <div className='flex gap-5'>
             {children}

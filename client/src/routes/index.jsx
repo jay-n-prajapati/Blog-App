@@ -20,6 +20,7 @@ const Library = React.lazy(() => import('@/pages/Library/index.jsx'));
 const AdminDashBoard = React.lazy(() => import('@/pages/Dashboard/Admin/index.jsx'));
 const SubAdminDashboard = React.lazy(() => import('@/pages/Dashboard/SubAdmin/index.jsx'));
 const SpecificBlogs = React.lazy(() => import('@/pages/SpecificBlogs/index.jsx'));
+const SpecificSubBlogs = React.lazy(() => import('@/pages/SpecificSubBlogs/index.jsx'));
 
 export const Router = () => {
   const { isAuth, user, subAdmin, admin } = useSelector((state) => state.auth);
@@ -64,8 +65,12 @@ export const Router = () => {
               element: <Library />,
             },
             {
-              path: 'blogs/:category',
+              path: 'blogs/category/:category',
               element: <SpecificBlogs />,
+            },
+            {
+              path: 'blogs/subCategory/:subCategory',
+              element: <SpecificSubBlogs />,
             },
             {
               path: 'no-editor',

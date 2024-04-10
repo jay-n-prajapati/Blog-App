@@ -1,8 +1,10 @@
 import BlogCard from '@/components/common/BlogCard';
 import LikeButton from '@/components/common/LikeButton';
 import { Button } from '@/components/ui/button';
-import { getSingleBlogs} from '@/utils/axios-instance';
+import { Input } from '@/components/ui/input';
+import { getSingleBlogs } from '@/utils/axios-instance';
 import useRole from '@/utils/custom-hooks/useRole';
+import useSearch from '@/utils/custom-hooks/useSearch';
 import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { toast } from 'react-toastify';
@@ -10,6 +12,12 @@ import { toast } from 'react-toastify';
 const Story = () => {
   const { currentUser } = useRole();
   const [savedBlogs, setSavedBlogs] = useState([]);
+  const { filteredData, searchQuery, setSearchQuery } = useSearch(savedBlogs, [
+    'title',
+    'briefDescription',
+    'parentCategory',
+    'subCategory',
+  ]);
 
   const fetchSavedSBlogs = async () => {
     const fetchedBlogs = [];
@@ -17,7 +25,7 @@ const Story = () => {
       try {
         const { data } = await getSingleBlogs(blogId);
         fetchedBlogs.push(...data);
-      } catch ({error}) {
+      } catch ({ error }) {
         toast.error(`Error : ${error}`);
       }
     }
@@ -51,13 +59,23 @@ const Story = () => {
             </div>
           ) : (
             <div className='flex flex-col gap-4'>
-              {savedBlogs.map((blog, idx) => {
-                return (
-                  <BlogCard blog={blog} key={idx}>
-                    <LikeButton likes={blog.likes} />
-                  </BlogCard>
-                );
-              })}
+              <div>
+                <Input
+                  placeholder='search stories here..'
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className='text-xs sm:text-sm'
+                />
+              </div>
+              {filteredData.length === 0 ? (
+                <div>No data found..</div>
+              ) : (
+                <div className='flex flex-col gap-3'>
+                  {filteredData.map((blog) => {
+                    return <BlogCard key={blog.id} blog={blog} />;
+                  })}
+                </div>
+              )}
             </div>
           )}
         </div>
