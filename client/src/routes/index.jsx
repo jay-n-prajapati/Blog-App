@@ -1,11 +1,10 @@
 import React from 'react';
 import { createBrowserRouter } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import PrivateRoutesUser from './PrivateRoutes/PrivateRoutesUser/index.jsx';
 import PrivateRoutesAdmin from './PrivateRoutes/PrivateRoutesAdmin/index.jsx';
 import PrivateRoutesSubAdmin from './PrivateRoutes/PrivateRoutesSubAdmin/index.jsx';
-import { useSelector } from 'react-redux';
 import PrivateRoute from './PrivateRoutes/PrivateRoute/index.jsx';
-
 
 const Landing = React.lazy(() => import('../pages/Home'));
 const UserHome = React.lazy(() => import('@/pages/Home/Home.jsx'));
@@ -20,6 +19,7 @@ const Profile = React.lazy(() => import('@/pages/Profile/index.jsx'));
 const Library = React.lazy(() => import('@/pages/Library/index.jsx'));
 const AdminDashBoard = React.lazy(() => import('@/pages/Dashboard/Admin/index.jsx'));
 const SubAdminDashboard = React.lazy(() => import('@/pages/Dashboard/SubAdmin/index.jsx'));
+const SpecificBlogs = React.lazy(() => import('@/pages/SpecificBlogs/index.jsx'));
 
 export const Router = () => {
   const { isAuth, user, subAdmin, admin } = useSelector((state) => state.auth);
@@ -62,6 +62,10 @@ export const Router = () => {
             {
               path: 'library',
               element: <Library />,
+            },
+            {
+              path: 'blogs/:category',
+              element: <SpecificBlogs />,
             },
             {
               path: 'no-editor',

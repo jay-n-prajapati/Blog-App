@@ -31,7 +31,7 @@ const AddEditSubCategory = ({
   const { loader } = useSelector((state) => state.app);
   const {currentUser , endPoint , role} = useRole()
   const dispatch = useDispatch()
-  const { values, errors, touched, handleBlur, handleSubmit, handleReset, setFieldValue } =
+  const { values, handleBlur, handleSubmit, handleReset, setFieldValue } =
     useFormik({
       initialValues: { subCategories : initialValues},
       onSubmit: onSubmit ,
@@ -74,11 +74,6 @@ const AddEditSubCategory = ({
                 onBlur={handleBlur}
               />
               <p>press Enter to add new tag</p>
-              {touched.name && errors.name ? (
-                <p className='text-left text-destructive text-[10px]'>{errors.parentCategory}</p>
-              ) : (
-                <p className='opacity-0 text-[10px]'>null</p>
-              )}
             </div>
             <div className='flex gap-2 mt-1'>
               <Button

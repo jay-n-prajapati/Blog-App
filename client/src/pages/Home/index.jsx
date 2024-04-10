@@ -1,6 +1,6 @@
 import BlogCard from '@/components/common/BlogCard';
 import { Button } from '@/components/ui/button';
-import { getAllBlogs} from '@/utils/axios-instance';
+import { getAllBlogs } from '@/utils/axios-instance';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink, useNavigate } from 'react-router-dom';
@@ -14,7 +14,8 @@ const Landing = () => {
   const fetchBlogs = async () => {
     try {
       const { data } = await getAllBlogs();
-      setBlogs(data);
+      const latestBlogs = data.slice(-10).reverse();
+      setBlogs(latestBlogs);
     } catch ({ error }) {
       toast.error(`Error : ${error}`);
     }
@@ -29,8 +30,7 @@ const Landing = () => {
   }, []);
 
   return (
-    <div className='h-full w-full bg-slate-300'>
-      {console.log(blogs)}
+    <div className='h-full w-full'>
       <div className='h-[25rem] md:h-[30rem] bg-[#fec117] flex sm:pl-6'>
         <div className='w-full px-6 md:px-0 md:pr-6 md:w-[55%] flex md:items-start justify-center flex-col gap-4'>
           <h1 className='font-sohne-semibold font-medium text-[3.5rem] lg:text-[4rem] md:text-[4.5rem]'>
@@ -55,10 +55,23 @@ const Landing = () => {
           />
         </div>
       </div>
-      <div>
-        {blogs && blogs.map((blog) => {
-          return <BlogCard key={blog.id} blog={blog} />;
-        })}
+      <div className='p-6 pb-0'>
+        <div className='mb-4'>
+          <h1 className=' text-xl sm:text-2xl md:text-3xl font-bold'>Latest Releases</h1>
+        </div>
+        <div className='block  md:grid md:grid-cols-2 gap-4'>
+          {blogs &&
+            blogs.map((blog) => {
+              return <BlogCard key={blog.id} blog={blog} />;
+            })}
+        </div>
+        <div className='flex justify-center mt-2'>
+          <NavLink to='/auth'>
+            <Button variant='link' size='lg'>
+              Explore More
+            </Button>
+          </NavLink>
+        </div>
       </div>
     </div>
   );

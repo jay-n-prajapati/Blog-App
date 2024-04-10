@@ -37,7 +37,7 @@ const Editor = ({ blog, setBlog }) => {
               ref={reactQuillRef}
               theme='snow'
               value={blog.detailedBlog}
-              onChange={(content) => setBlog({ ...blog, detailedBlog: content })}
+              onChange={(content , text) => { setBlog({ ...blog, detailedBlog: content }) ; console.log(text) }}
               formats={formats}
               modules={modules}
               className='h-[60vh] max-h-[60vh] overflow-y-auto'

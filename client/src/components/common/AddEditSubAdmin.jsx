@@ -14,7 +14,14 @@ import * as yup from 'yup';
 import { useSelector, useDispatch } from 'react-redux';
 import { Loader2 } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
-import { addSubAdmin, getCategories, getSubAdmin, updateUser } from '@/utils/axios-instance';
+import {
+  addSubAdmin,
+  getCategories,
+  getSingleCategories,
+  getSubAdmin,
+  updateCategory,
+  updateUser,
+} from '@/utils/axios-instance';
 import {
   Select,
   SelectContent,
@@ -25,6 +32,7 @@ import {
 import { toast } from 'react-toastify';
 import { setLoader } from '@/redux/actions/appActions';
 import PropTypes from 'prop-types';
+import { TagsInput } from 'react-tag-input-component';
 
 const passwordRules = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{4,}$/;
 const Schema = yup.object({
@@ -80,6 +88,7 @@ const AddEditSubAdmin = ({
           password: '',
           cpassword: '',
           parentCategory: '',
+          subCategories: [],
         },
     validationSchema: Schema,
     onSubmit: isEditMode ? onEditSubmit : onAddSubmit,
@@ -102,7 +111,7 @@ const AddEditSubAdmin = ({
       password: values.password,
       parentCategory: values.parentCategory,
       bio: '',
-      subCategories: [],
+      subCategories: values.setCategories,
       savedBlogs: [],
       publishedBlogs: [],
     };
@@ -129,11 +138,13 @@ const AddEditSubAdmin = ({
         password: values.password,
         parentCategory: values.parentCategory,
         bio: '',
-        subCategories: [],
+        subCategories: values.subCategories,
         savedBlogs: [],
         publishedBlogs: [],
       };
-      await updateUser(initialValues.id, 'subAdmins', updateSubAdmin);
+      const { data } = await getSingleCategories(values.parentCategory);
+      await updateUser(initialValues.id, 'subAdmins', updateSubAdmin); // updating subAdmin
+      await updateCategory(data[0].id, { subCategories: values.subCategories }); // updating sub category
       toast.success(`Updated Successfully`);
       setRender(!render);
       handleReset();
@@ -266,6 +277,17 @@ const AddEditSubAdmin = ({
                 <p className='opacity-0 text-[10px]'>null</p>
               )}
             </div>
+            {isEditMode ? (
+              <div>
+                <TagsInput
+                  value={values.subCategories}
+                  onChange={(value) => setFieldValue('subCategories', value)}
+                  name='subCategories'
+                  onBlur={handleBlur}
+                />
+                <p>press Enter to add new tag</p>
+              </div>
+            ) : null}
             <div className='flex gap-2 mt-1'>
               <Button
                 type='submit'

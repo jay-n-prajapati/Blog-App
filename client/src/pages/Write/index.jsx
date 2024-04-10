@@ -13,15 +13,15 @@ import Form from '@/components/common/Form';
 import { toast } from 'react-toastify';
 import useRole from '@/utils/custom-hooks/useRole';
 import { useNavigate } from 'react-router-dom';
-import {useDispatch} from 'react-redux'
+import { useDispatch } from 'react-redux';
 import { setAuth } from '@/redux/actions/authActions';
 
 const Write = () => {
   const [categories, setCategories] = useState([]);
   const [parentCategory, setParentCategory] = useState('');
-  const { currentUser, endPoint , role } = useRole();
+  const { currentUser, endPoint, role } = useRole();
   const navigate = useNavigate();
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const [blog, setBlog] = useState({
     title: '',
@@ -50,13 +50,7 @@ const Write = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (
-      !blog.title ||
-      !blog.briefDescription ||
-      !blog.detailedBlog ||
-      !blog.parentCategory ||
-      !blog.subCategory
-    ) {
+    if (!blog.title || !blog.briefDescription || !blog.detailedBlog || !blog.parentCategory) {
       toast.warning("Sorry, Can't Publish Some Fields May Empty");
       return;
     }
@@ -67,7 +61,7 @@ const Write = () => {
       comments: [],
       likes: 0,
       published: currentDate,
-      savedBy : []
+      savedBy: [],
     };
 
     const { data, error } = await postBlog(blogToPost);
@@ -79,8 +73,8 @@ const Write = () => {
     const res = await updateUser(currentUser.id, endPoint, {
       publishedBlogs: currentUser.publishedBlogs,
     });
-    navigate('/stories')
-    dispatch(setAuth(role,currentUser))
+    navigate('/stories');
+    dispatch(setAuth(role, currentUser));
   };
 
   useEffect(() => {
@@ -111,7 +105,7 @@ const Write = () => {
                 ))}
               </SelectContent>
             </Select>
-            {parentCategory ? (
+            {parentCategory && findSubCategory().length !== 0 ? (
               <Select onValueChange={(value) => setBlog({ ...blog, subCategory: value })}>
                 <SelectTrigger className={`text-primary-text text-[12px] w-auto md:text-sm`}>
                   <SelectValue placeholder='Select Sub Category' />
