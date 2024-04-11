@@ -12,6 +12,7 @@ import { setLoader } from '@/redux/actions/appActions';
 import { useNavigate } from 'react-router-dom';
 import { Loader2 } from 'lucide-react';
 import { setAuth } from '@/redux/actions/authActions';
+import HelmetHeader from '@/components/common/HelmetHeader';
 
 const passwordRules = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{4,}$/;
 const signUpSchema = yup.object({
@@ -92,6 +93,7 @@ const Signup = ({ setContent }) => {
 
   return (
     <>
+    <HelmetHeader title='Signup' />
       <div>
         <Form className='p-0 gap-0' handleSubmit={handleSubmit} handleReset={handleReset}>
           <div>

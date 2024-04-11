@@ -8,6 +8,7 @@ import CommonAvatar from '@/components/common/Avatar';
 
 import SaveButton from '@/components/common/SaveButton';
 import LikeButton from '@/components/common/LikeButton';
+import HelmetHeader from '@/components/common/HelmetHeader';
 
 const Blog = () => {
   const { id } = useParams();
@@ -27,6 +28,8 @@ const Blog = () => {
   }, []);
 
   return (
+    <>
+    <HelmetHeader title='Blogify' />
     <div className='p-4 sm:p-6'>
       <div className='mx-auto max-w-[680px] pt-8'>
         <div>
@@ -66,6 +69,7 @@ const Blog = () => {
         <div className='blog-container'>{blog && parse(blog?.detailedBlog)}</div>
       </div>
     </div>
+    </>
   );
 };
 

@@ -3,6 +3,7 @@ import UserDetails from './UserDetails';
 import SubAdminDetails from './SubAdminDetails';
 import CategoryDetails from './CategoryDetails';
 import BlogIndex from './BlogDetails';
+import HelmetHeader from '@/components/common/HelmetHeader';
 
 const tabs = [
   { label: 'Blogs', value: 'blogs' },
@@ -13,6 +14,8 @@ const tabs = [
 
 const AdminDashBoard = () => {
   return (
+    <>
+    <HelmetHeader title='Admin DashBoard' />
     <div className='p-4 sm:p-6'>
       <div>
         <Tabs defaultValue='blogs' className='mx-auto'>
@@ -49,6 +52,7 @@ const AdminDashBoard = () => {
         </Tabs>
       </div>
     </div>
+    </>
   );
 };
 

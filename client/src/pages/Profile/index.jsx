@@ -4,11 +4,14 @@ import useRole from '@/utils/custom-hooks/useRole';
 import { NavLink } from 'react-router-dom';
 import EditProfileDialog from './EditProfileDialog';
 import { useState } from 'react';
+import HelmetHeader from '@/components/common/HelmetHeader';
 
 const Profile = () => {
   const { currentUser } = useRole();
   const [open , setOpen ] = useState(false)
   return (
+    <>
+    <HelmetHeader title='Profile' />
     <div className='p-4 px-6 min-h-[85vh] flex items-center justify-center'>
       <div className='flex w-full'>
         <div className='w-1/2 p-6 hidden md:block m-auto'>
@@ -50,6 +53,7 @@ const Profile = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

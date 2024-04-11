@@ -1,6 +1,7 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import BlogIndex from './BlogDetails';
 import CategoryDetails from './CategoryDetails';
+import HelmetHeader from '@/components/common/HelmetHeader';
 
 
 
@@ -11,6 +12,8 @@ const tabs = [
 
 const SubAdminDashBoard = () => {
   return (
+    <>
+    <HelmetHeader title='Sub admin DashBoard' />
     <div className='p-4 sm:p-6'>
       <div>
         <Tabs defaultValue='blogs' className='mx-auto'>
@@ -41,6 +44,7 @@ const SubAdminDashBoard = () => {
         </Tabs>
       </div>
     </div>
+    </>
   );
 };
 

@@ -1,4 +1,5 @@
 import BlogCard from '@/components/common/BlogCard';
+import HelmetHeader from '@/components/common/HelmetHeader';
 import LikeButton from '@/components/common/LikeButton';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -38,6 +39,8 @@ const Story = () => {
   }, [currentUser.savedBlogs]);
 
   return (
+    <>
+    <HelmetHeader title='Library' />
     <div className='p-6'>
       <div className='max-w-[700px] mx-auto '>
         <div className='py-4 my-2'>
@@ -81,6 +84,7 @@ const Story = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

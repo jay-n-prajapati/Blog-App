@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { NavLink } from 'react-router-dom';
+import HelmetHeader from '@/components/common/HelmetHeader';
 
 const UserHome = () => {
   const [blogs, setBlogs] = useState([]);
@@ -16,12 +17,12 @@ const UserHome = () => {
   const fetchBlogs = async () => {
     try {
       const { data: blogs } = await getBlogsWithPage(currentUser.id, page);
-      if (blogs && blogs.data.length > 0 && blogs.next !== null) {
+      if (blogs && blogs.length > 0) {
         setHasMore(true);
       } else {
         setHasMore(false);
       }
-      setBlogs((prevBlogs) => [...prevBlogs, ...blogs.data]);
+      setBlogs((prevBlogs) => [...prevBlogs, ...blogs]);
       setPage((prevPage) => prevPage + 1);
     } catch ({ error }) {
       toast.error(`Error : ${error}`);
@@ -44,6 +45,8 @@ const UserHome = () => {
   }, []);
 
   return (
+    <>
+    <HelmetHeader title='Home' />
     <div className='p-4 sm:p-6'>
       <div className='flex relative'>
         <div className='w-full px-2 sm:border-r sm:w-2/3'>
@@ -51,7 +54,6 @@ const UserHome = () => {
             dataLength={blogs.length}
             next={fetchBlogs}
             hasMore={hasMore}
-            loader={<h4>Loading...</h4>}
           >
             <div className='flex flex-col gap-4'>
               {blogs.map((blog) => {
@@ -60,7 +62,7 @@ const UserHome = () => {
             </div>
           </InfiniteScroll>
         </div>
-        <div className='hidden px-4 sm:block sm:w-[31%] fixed right-6'>
+       { category.length !== 0 ? (<div className='hidden px-4 sm:block sm:w-[31%] fixed right-6'>
           <div>
             <h1 className='text-lg font-bold'>Recommended Topics</h1>
             <div className='flex flex-wrap gap-2 mt-4'>
@@ -77,9 +79,10 @@ const UserHome = () => {
               })}
             </div>
           </div>
-        </div>
+        </div>) : null}
       </div>
     </div>
+    </>
   );
 };
 
