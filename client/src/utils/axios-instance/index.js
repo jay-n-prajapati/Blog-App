@@ -9,6 +9,7 @@ const instance = axios.create({
   timeout: 5000,
 });
 
+
 instance.interceptors.response.use(
   (response) => {
     return {
@@ -25,6 +26,7 @@ instance.interceptors.response.use(
     });
   },
 );
+
 
 export const findUser = (endpoint, email) => instance.get(`${endpoint}?email=${email}`);
 export const getUsers = async () => await instance.get('/users');

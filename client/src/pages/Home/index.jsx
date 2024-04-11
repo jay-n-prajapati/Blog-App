@@ -1,4 +1,5 @@
 import BlogCard from '@/components/common/BlogCard';
+import HelmetHeader from '@/components/common/HelmetHeader';
 import { Button } from '@/components/ui/button';
 import { getAllBlogs } from '@/utils/axios-instance';
 import { useEffect, useState } from 'react';
@@ -22,14 +23,16 @@ const Landing = () => {
   };
 
   useEffect(() => {
-    fetchBlogs();
-  }, []);
-
-  useEffect(() => {
     isAuth ? navigate('/home') : null;
   }, []);
 
+  useEffect(() => {
+    fetchBlogs();
+  }, []);
+
   return (
+    <>
+    <HelmetHeader title='Blogify' />
     <div className='h-full w-full'>
       <div className='h-[25rem] md:h-[30rem] bg-[#fec117] flex sm:pl-6'>
         <div className='w-full px-6 md:px-0 md:pr-6 md:w-[55%] flex md:items-start justify-center flex-col gap-4'>
@@ -74,6 +77,7 @@ const Landing = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

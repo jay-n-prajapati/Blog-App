@@ -61,11 +61,11 @@ const SpecificBlogs = () => {
           </div>
         ) : (
           <div
-            className={`flex gap-4 w-full ${
+            className={`flex gap-4 ${
               subCategories.length === 0 ? 'justify-center' : 'justify-start'
             }`}
           >
-            <div className={`flex flex-col min-w-[50rem]`}>
+            <div className={`flex flex-col`}>
               <div className='mb-4 w-full'>
                 <Input
                   placeholder='search stories here..'
@@ -85,7 +85,7 @@ const SpecificBlogs = () => {
               )}
             </div>
             {subCategories.length !== 0 ? (
-              <div className='hidden px-4 md:block min-w-48'>
+              <div className='hidden px-2 md:block'>
                 <div>
                   <h1 className='text-lg font-bold'>Related Topics</h1>
                   <div className='flex flex-wrap gap-2 mt-4'>

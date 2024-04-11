@@ -19,6 +19,7 @@ import {
 import { setAuth } from '@/redux/actions/authActions';
 import { setLoader } from '@/redux/actions/appActions';
 import { Loader2 } from 'lucide-react';
+import HelmetHeader from '@/components/common/HelmetHeader';
 
 const signinSchema = yup.object({
   email: yup.string().email().required('* email is required').trim(),
@@ -101,6 +102,7 @@ const Signin = ({ setContent }) => {
 
   return (
     <>
+    <HelmetHeader title='Signin' />
       <div>
         <Form className='p-0 gap-0' handleSubmit={handleSubmit} handleReset={handleReset}>
           <div>

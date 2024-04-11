@@ -65,7 +65,6 @@ const SaveButton = ({ blog }) => {
       toast.error(`Error : ${updateErr}`);
       return;
     }
-
     setIsSaved(false);
     dispatch(setAuth(role, currentUser));
     toast.info('blog removed from Library');
