@@ -45,7 +45,9 @@ const SubAdminDetails = () => {
       ),
       accessorKey: 'parentCategory',
       cell: ({ row }) => (
-        <div className='w-fit p-2 rounded mx-auto'>{row.original.parentCategory}</div>
+        <div className='w-fit p-2 rounded mx-auto'>
+          {row.original.parentCategory ? row.original.parentCategory : <strong>Not Assigned</strong>}
+        </div>
       ),
     },
     {

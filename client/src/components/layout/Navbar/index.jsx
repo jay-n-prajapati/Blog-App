@@ -1,9 +1,8 @@
 import { NavLink, useNavigate } from 'react-router-dom';
 import Links from './Links';
-// import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useDispatch, useSelector } from 'react-redux';
-import { DropDownLinks, links } from './NavData';
+import { DropDownLinks, links } from './NavLinks';
 import { LogOut } from 'lucide-react';
 import { removeAuth } from '@/redux/actions/authActions';
 import { toast } from 'react-toastify';
@@ -12,7 +11,6 @@ import CommonAvatar from '@/components/common/Avatar';
 import DropDown from './DropDownMenu';
 
 const Navbar = () => {
-  // const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
   const { isAuth } = useSelector((state) => state.auth);
   const { currentUser,role } = useRole();
@@ -33,9 +31,6 @@ const Navbar = () => {
               <img src='/images/logo/blogify-logo.svg' alt='logo ' className='size-full' />
             </NavLink>
           </div>
-          {/* <div className='block md:hidden cursor-pointer'>
-            {open ? <X onClick={() => setOpen(!open)} /> : <Menu onClick={() => setOpen(!open)} />}
-          </div> */}
         </div>
         <div className={`block w-auto`}>
           <Links linkToRender={links}>

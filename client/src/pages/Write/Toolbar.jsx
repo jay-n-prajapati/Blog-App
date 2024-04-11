@@ -1,16 +1,18 @@
 import { Quill } from 'react-quill';
+import PropTypes from 'prop-types';
+import { uploadToCloudinary } from '@/utils/services/services';
 
 const Size = Quill.import('formats/size');
 Size.whitelist = ['extra-small', 'small', 'medium', 'large'];
 Quill.register(Size, true);
- 
+
 const BlockEmbed = Quill.import('blots/block/embed');
 class CustomImageBlot extends BlockEmbed {
   static create(value) {
     const node = super.create();
     node.setAttribute('src', value.src);
     node.setAttribute('alt', value.alt);
-    node.style.width = '70%';
+    node.style.width = '75%';
     node.style.display = 'block';
     node.style.margin = '0 auto';
     return node;
@@ -23,21 +25,8 @@ CustomImageBlot.blotName = 'image';
 CustomImageBlot.tagName = 'img';
 Quill.register(CustomImageBlot);
 
-const uploadToCloudinary = async (file) => {
-  const formData = new FormData();
-  formData.append('file', file);
-  formData.append('upload_preset', import.meta.env.VITE_CLOUDINARY_PRESET);
-  const res = await fetch(
-    `https://api.cloudinary.com/v1_1/${import.meta.env.VITE_CLOUDINARY_NAME}/upload`,
-    { method: 'POST', body: formData },
-  );
-  const data = await res.json();
-  const url = data.url;
-  return url;
-};
 
 let reactQuillRef;
-
 const imageHandler = () => {
   const input = document.createElement('input');
   input.setAttribute('type', 'file');
@@ -90,14 +79,11 @@ export const formats = [
 
 // Quill Toolbar component
 export const Toolbar = ({ quillRef }) => {
-
   reactQuillRef = quillRef;
-
   return (
     <div id='toolbar' className='flex items-center justify-center flex-wrap h-auto'>
       <span className='ql-formats'>
         <select className='ql-size' defaultValue='medium'>
-          {/* <option value="extra-small">size 1</option> */}
           <option value='small'>size 1</option>
           <option value='medium'>size 2</option>
           <option value='large'>size 3</option>
@@ -140,6 +126,10 @@ export const Toolbar = ({ quillRef }) => {
       </span>
     </div>
   );
+};
+
+Toolbar.propTypes = {
+  quillRef: PropTypes.object,
 };
 
 export default Toolbar;

@@ -11,24 +11,24 @@ import { useEffect, useRef, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
 const DropDown = ({ children, links }) => {
-  const [open , setOpen] = useState(false)
+  const [open, setOpen] = useState(false);
   const dropDownRef = useRef(null);
 
   const closeHandler = (e) => {
-    if ( dropDownRef && !dropDownRef?.current?.contains(e.target)) {
+    if (dropDownRef && !dropDownRef?.current?.contains(e.target)) {
       setOpen(false);
     }
   };
 
   useEffect(() => {
-    document.addEventListener("mousedown", closeHandler);
+    document.addEventListener('mousedown', closeHandler);
   });
   return (
     <DropdownMenu className='outline-none ring-0' open={open}>
       <DropdownMenuTrigger onClick={() => setOpen(true)}>{children}</DropdownMenuTrigger>
-      <DropdownMenuContent ref={dropDownRef} >
+      <DropdownMenuContent ref={dropDownRef}>
         <DropdownMenuLabel>Menu</DropdownMenuLabel>
-        <DropdownMenuSeparator/>
+        <DropdownMenuSeparator />
         {links.map((link, idx) => (
           <DropdownMenuItem key={idx} className='px-0'>
             <NavLink

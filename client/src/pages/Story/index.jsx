@@ -1,4 +1,5 @@
 import BlogCard from '@/components/common/BlogCard';
+import DeleteButton from '@/components/common/DeleteBlogButton';
 import HelmetHeader from '@/components/common/HelmetHeader';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -7,7 +8,7 @@ import useRole from '@/utils/custom-hooks/useRole';
 import useSearch from '@/utils/custom-hooks/useSearch';
 import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { toast } from 'react-toastify';
+
 
 const Story = () => {
   const { currentUser } = useRole();
@@ -20,11 +21,8 @@ const Story = () => {
   ]);
 
   const fetchUserBlogs = async () => {
-    const { data, error } = await getUsersBlogs(currentUser.id);
-    if (error) {
-      toast.error(`Error : ${error}`);
-      return;
-    }
+    const { success, data, error } = await getUsersBlogs(currentUser.id);
+    if (!success) console.log(error);
     setUserBlogs(data);
   };
 
@@ -71,7 +69,11 @@ const Story = () => {
                 ) : (
                   <div className='flex flex-col gap-3'>
                     {filteredData.map((blog) => {
-                      return <BlogCard key={blog.id} blog={blog} />;
+                      return (
+                        <BlogCard key={blog.id} blog={blog}>
+                          <DeleteButton blog={blog} />
+                        </BlogCard>
+                      );
                     })}
                   </div>
                 )}

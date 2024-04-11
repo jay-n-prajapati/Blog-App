@@ -13,25 +13,24 @@ const DeleteButton = ({ blog }) => {
   const dispatch = useDispatch();
 
   const handleDelete = async () => {
-    dispatch(setLoader(true));
-    const filteredBlogs = currentUser.publishedBlogs.filter((blogId) => blogId !== blog.id);
-    currentUser.publishedBlogs = filteredBlogs;
-    const { success, error } = await updateUser(currentUser.id, endPoint, {
-      publishedBlogs: currentUser.publishedBlogs,
-    });
-    if (!success) {
+    try {
+      dispatch(setLoader(true));
+      // deleting from users published blogs
+      const filteredBlogs = currentUser.publishedBlogs.filter((blogId) => blogId !== blog.id);
+      currentUser.publishedBlogs = filteredBlogs;
+      await updateUser(currentUser.id, endPoint, {
+        publishedBlogs: currentUser.publishedBlogs,
+      });
+      // deleting from users saved blogs who saved it
+      await removeFromSavedBlogs(blog);
+      // deleting it from all blogs
+      await deleteBlog(blog.id);
+      dispatch(setAuth(role, currentUser));
+    } catch ({ error }) {
       toast.error(`Error : ${error}`);
-      return;
+    } finally {
+      dispatch(setLoader(false));
     }
-    await removeFromSavedBlogs(blog);
-    const { success: deleteSuccess, error: deleteErr } = await deleteBlog(blog.id);
-    if (!deleteSuccess) {
-      toast.error(`Error : ${deleteErr}`);
-      return;
-    }
-    console.log(currentUser);
-    dispatch(setAuth(role, currentUser));
-    dispatch(setLoader(false));
   };
 
   return (

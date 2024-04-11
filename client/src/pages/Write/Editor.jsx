@@ -7,6 +7,7 @@ import { Textarea } from '@/components/ui/textarea';
 import PropTypes from 'prop-types';
 import './editor.css'
 
+
 const Editor = ({ blog, setBlog }) => {
   const reactQuillRef = useRef(null);
 
@@ -37,7 +38,7 @@ const Editor = ({ blog, setBlog }) => {
               ref={reactQuillRef}
               theme='snow'
               value={blog.detailedBlog}
-              onChange={(content , text) => { setBlog({ ...blog, detailedBlog: content }) ; console.log(text) }}
+              onChange={(content) => { setBlog({ ...blog, detailedBlog: content })}}
               formats={formats}
               modules={modules}
               className='h-[60vh] max-h-[60vh] overflow-y-auto'

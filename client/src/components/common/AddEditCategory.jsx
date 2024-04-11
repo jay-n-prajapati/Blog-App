@@ -8,24 +8,21 @@ import {
 } from '@/components/ui/dialog';
 import PropTypes from 'prop-types';
 import { useFormik } from 'formik';
-import * as yup from 'yup';
 import Form from './Form';
 import { Button } from '../ui/button';
 import { useSelector, useDispatch } from 'react-redux';
 import { Loader2 } from 'lucide-react';
 import InputWithLabel from './InputWithLabel';
 import { toast } from 'react-toastify';
-import { addCategory, getSingleCategories, updateCategory } from '@/utils/axios-instance';
+import {
+  addCategory,
+  getSingleCategories,
+  getSubAdminByCategory,
+  updateCategory,
+  updateUser,
+} from '@/utils/axios-instance';
 import { setLoader } from '@/redux/actions/appActions';
-
-const Schema = yup.object({
-  parentCategory: yup
-    .string()
-    .required('* required')
-    .min(2, '* must contain atleast 2 characters')
-    .max(25, '* must not contain more than 25 characters')
-    .trim(),
-});
+import { AddEditCategorySchema } from '@/utils/Constants/constants';
 
 const AddEditCategory = ({
   children,
@@ -46,7 +43,7 @@ const AddEditCategory = ({
             parentCategory: '',
             subCategories: [],
           },
-      validationSchema: Schema,
+      validationSchema: AddEditCategorySchema,
       onSubmit: isEditMode ? onEditSubmit : onAddSubmit,
     });
 
@@ -73,6 +70,12 @@ const AddEditCategory = ({
   async function onEditSubmit() {
     dispatch(setLoader(true));
     try {
+      // updating category assigned to subadmin
+      const { data: subAdmin } = await getSubAdminByCategory(initialValues.parentCategory);
+      subAdmin.length !== 0
+        ? await updateUser(subAdmin[0].id, 'subAdmins', { parentCategory: values.parentCategory })
+        : null;
+      // updating category
       await updateCategory(initialValues.id, { parentCategory: values.parentCategory });
       toast.success('Category updated');
       handleOpen(false);

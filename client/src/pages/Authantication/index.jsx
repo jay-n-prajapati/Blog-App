@@ -39,11 +39,7 @@ const Auth = ({ children, formType = '', defaultOpen = false }) => {
           <DialogDescription className='text-center text-primary-text text-[14px]'>
             {content === 'signup' ? 'SignUp here' : 'LogIn here'}
           </DialogDescription>
-          {content === 'signup' ? (
-            <Signup setContent={setContent} />
-          ) : (
-            <Signin setContent={setContent} />
-          )}
+          {content === 'signup' ? (<Signup setContent={setContent} />) : (<Signin setContent={setContent} />)}
         </DialogHeader>
       </DialogContent>
     </Dialog>

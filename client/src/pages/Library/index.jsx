@@ -1,6 +1,5 @@
 import BlogCard from '@/components/common/BlogCard';
 import HelmetHeader from '@/components/common/HelmetHeader';
-import LikeButton from '@/components/common/LikeButton';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { getSingleBlogs } from '@/utils/axios-instance';
@@ -34,7 +33,6 @@ const Story = () => {
   };
 
   useEffect(() => {
-    console.log('mounting');
     fetchSavedSBlogs();
   }, [currentUser.savedBlogs]);
 

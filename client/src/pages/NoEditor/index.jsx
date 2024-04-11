@@ -13,7 +13,7 @@ const NoEditor = () => {
 
   const handleChange = (open) => {
     if (!open) {
-      navigate('/');
+      navigate('/home');
     }
   };
 
@@ -25,7 +25,7 @@ const NoEditor = () => {
             Start Writing in the Blogify App.
           </DialogTitle>
           <DialogDescription className='text-center text-primary-text text-[14px]'>
-            It's Free to Compose and Edit in it.
+            It is Free to Compose and Edit in it.
           </DialogDescription>
         </DialogHeader>
         <Button onClick={() => navigate('/')}>Back to Home</Button>
