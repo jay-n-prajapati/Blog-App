@@ -2,7 +2,6 @@ import PropTypes from 'prop-types';
 import Form from '@/components/common/Form';
 import { Button } from '@/components/ui/button';
 import InputWithLabel from '@/components/common/InputWithLabel';
-import * as yup from 'yup';
 import { useFormik } from 'formik';
 import { addUser, getUsers } from '@/utils/axios-instance';
 import { useEffect, useState } from 'react';
@@ -13,28 +12,9 @@ import { useNavigate } from 'react-router-dom';
 import { Loader2 } from 'lucide-react';
 import { setAuth } from '@/redux/actions/authActions';
 import HelmetHeader from '@/components/common/HelmetHeader';
+import { signUpSchema } from '@/utils/Constants/constants';
 
-const passwordRules = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{4,}$/;
-const signUpSchema = yup.object({
-  name: yup
-    .string()
-    .required('* required')
-    .min(2, '* must contain atleast 2 characters')
-    .max(25, '* must not contain more than 25 characters')
-    .trim(),
-  email: yup.string().email().required('* email is required').trim(),
-  password: yup
-    .string()
-    .required('* required')
-    .matches(
-      passwordRules,
-      '* Password must contain 1 UpperCase, 1 Lowercase, 1 special characters and 1 number',
-    ),
-  cpassword: yup
-    .string()
-    .required('* required')
-    .oneOf([yup.ref('password')], '* Passwords must match'),
-});
+
 
 const Signup = ({ setContent }) => {
   const [users, setUsers] = useState([]);
