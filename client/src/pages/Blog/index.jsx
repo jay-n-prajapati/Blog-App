@@ -5,10 +5,9 @@ import { toast } from 'react-toastify';
 import parse from 'html-react-parser';
 import './blog.css';
 import CommonAvatar from '@/components/common/Avatar';
-
 import SaveButton from '@/components/common/SaveButton';
-import LikeButton from '@/components/common/LikeButton';
 import HelmetHeader from '@/components/common/HelmetHeader';
+
 
 const Blog = () => {
   const { id } = useParams();
@@ -52,8 +51,7 @@ const Blog = () => {
                 <div>
                   <h3 className='text-primary-text text-[10px] sm:text-xs'>{blog?.author}</h3>
                 </div>
-                <div className='flex justify-end gap-2 sm:gap-6'>
-                  <h3 className='text-primary-text text-[10px] sm:text-xs'>read time</h3>
+                <div>
                   {blog && (
                     <h3 className='text-primary-text text-[10px] sm:text-xs'>{blog?.published}</h3>
                   )}
@@ -61,7 +59,6 @@ const Blog = () => {
               </div>
             </div>
             <div className='flex items-center justify-end gap-5'>
-              <LikeButton likes={blog?.likes} />
               <SaveButton blog={blog} />
             </div>
           </div>
