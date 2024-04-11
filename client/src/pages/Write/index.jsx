@@ -131,7 +131,7 @@ const Write = () => {
                 <Button
                   size='icon'
                   className='rounded-full size-10'
-                  disabled={!blog.title || blog.briefDescription}
+                  disabled={!blog.title || !blog.briefDescription}
                 >
                   <Eye />
                 </Button>

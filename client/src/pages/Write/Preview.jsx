@@ -16,11 +16,11 @@ const Preview = ({ children , blog }) => {
   return (
     <Dialog>
       <DialogTrigger asChild>{children}</DialogTrigger>
-      <DialogContent className='max-w-[90%] h-[90vh] overflow-auto'>
+      <DialogContent className='max-w-[90%] h-[90vh] '>
         <DialogHeader>
           <DialogTitle className='text-center text-xl sm:text-2xl md:text-3xl font-sohne-light underline'>Blog Preview</DialogTitle>
         </DialogHeader>
-        <div className='mx-auto max-w-[680px] pt-8'>
+        <div className='mx-auto max-w-[680px] h-full overflow-auto p-4 bg-[#f0f0f0]'>
           <div>
             <h1 className=' text-2xl sm:text-3xl md:text-4xl font-sohne-semibold mb-4'>
               {blog?.title}
