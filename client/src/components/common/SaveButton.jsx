@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import useRole from '@/utils/custom-hooks/useRole';
 import { Button } from '../ui/button';
 import { CustomTooltip } from './Tooltip';
@@ -6,7 +7,6 @@ import { setAuth } from '@/redux/actions/authActions';
 import { updateBlog, updateUser } from '@/utils/axios-instance';
 import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
-import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 
 const SaveButton = ({ blog }) => {

@@ -1,7 +1,6 @@
 import React from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import PrivateRoutesUser from './PrivateRoutes/PrivateRoutesUser/index.jsx';
 import PrivateRoutesAdmin from './PrivateRoutes/PrivateRoutesAdmin/index.jsx';
 import PrivateRoutesSubAdmin from './PrivateRoutes/PrivateRoutesSubAdmin/index.jsx';
 import PrivateRoute from './PrivateRoutes/PrivateRoute/index.jsx';
@@ -23,7 +22,7 @@ const SpecificBlogs = React.lazy(() => import('@/pages/SpecificBlogs/index.jsx')
 const SpecificSubBlogs = React.lazy(() => import('@/pages/SpecificSubBlogs/index.jsx'));
 
 export const Router = () => {
-  const { isAuth, user, subAdmin, admin } = useSelector((state) => state.auth);
+  const { isAuth, subAdmin, admin } = useSelector((state) => state.auth);
   return createBrowserRouter([
     {
       path: '/',
@@ -77,10 +76,6 @@ export const Router = () => {
               element: <NoEditor />,
             },
           ],
-        },
-        {
-          element: <PrivateRoutesUser isUserAuth={user ? true : false} />,
-          children: [],
         },
         {
           element: <PrivateRoutesAdmin isAdminAuth={admin ? true : false} />,

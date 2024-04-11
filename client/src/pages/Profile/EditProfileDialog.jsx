@@ -16,7 +16,7 @@ import { updateUser } from '@/utils/axios-instance';
 import { useDispatch } from 'react-redux';
 import { setAuth } from '@/redux/actions/authActions';
 
-const EditProfileDialog = ({ children , open ,setOpen }) => {
+const EditProfileDialog = ({ children, open, setOpen }) => {
   const { currentUser, endPoint, role } = useRole();
   const [isProfChanged, setIsProfChanged] = useState(false);
   const dispatch = useDispatch();
@@ -40,19 +40,20 @@ const EditProfileDialog = ({ children , open ,setOpen }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const { success, error } = await updateUser(currentUser.id, endPoint, {
-      name: profInfo.name,
-      bio: profInfo.bio,
-    });
-    if (!success) {
-      toast(`Error : ${error}`);
-      return;
+    try {
+      if (!profInfo.name) toast.warn("Name can't be empty");
+      await updateUser(currentUser.id, endPoint, {
+        name: profInfo.name,
+        bio: profInfo.bio,
+      });
+      currentUser.name = profInfo.name;
+      currentUser.bio = profInfo.bio;
+      dispatch(setAuth(role, currentUser));
+      toast.success('Profile updated Successfully');
+      setOpen(false);
+    } catch (error) {
+      toast.error(`Error : ${error}`)
     }
-    currentUser.name = profInfo.name;
-    currentUser.bio = profInfo.bio;
-    dispatch(setAuth(role, currentUser));
-    toast.success('Profile updated Successfully');
-    setOpen(false);
   };
 
   useEffect(() => {
@@ -88,14 +89,12 @@ const EditProfileDialog = ({ children , open ,setOpen }) => {
               />
             </div>
             <div className='flex gap-4 mt-4'>
-                <Button type='submit' disabled={!isProfChanged} onClick={handleSubmit}>
-                  Save
-                </Button>
-     
-                <Button type='button' variant='outline' onClick={() => setOpen(false)}>
-                  Close
-                </Button>
-
+              <Button type='submit' disabled={!isProfChanged} onClick={handleSubmit}>
+                Save
+              </Button>
+              <Button type='button' variant='outline' onClick={() => setOpen(false)}>
+                Close
+              </Button>
             </div>
           </Form>
         </div>
@@ -106,6 +105,8 @@ const EditProfileDialog = ({ children , open ,setOpen }) => {
 
 EditProfileDialog.propTypes = {
   children: PropTypes.node,
+  open: PropTypes.bool,
+  setOpen: PropTypes.func,
 };
 
 export default EditProfileDialog;

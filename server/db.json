@@ -85,20 +85,6 @@
       "savedBy": []
     },
     {
-      "id": "e9a1",
-      "title": "demo for search",
-      "briefDescription": "demo for search",
-      "detailedBlog": "<p>ssfvfjbndfbdnbdljn</p>",
-      "parentCategory": "Political Blogs",
-      "subCategory": "",
-      "authorId": "14",
-      "author": "jay Prajapati",
-      "comments": [],
-      "likes": 0,
-      "published": "10/04/2024",
-      "savedBy": []
-    },
-    {
       "id": "b934",
       "title": "My own five steps for getting into something new",
       "briefDescription": "My own five steps for getting into something newMy own five steps for getting into something new",
@@ -133,20 +119,6 @@
       "detailedBlog": "<h1><strong>My own five steps for getting into something new</strong></h1><h1><strong>My own five steps for getting into something newMy own five steps for getting into something new</strong></h1><h1><strong>My own five steps for getting into something newMy own five steps for getting into something new</strong></h1><h1><strong>My own five steps for getting into something new</strong></h1><h1><strong>My own five steps for getting into something new</strong></h1><h1><strong>My own five steps for getting into something new</strong></h1><h1><strong>My own five steps for getting into something new</strong></h1><h1><strong>My own five steps for getting into something new</strong></h1><h1><strong>My own five steps for getting into something new</strong></h1><h1><strong>My own five steps for getting into something new</strong></h1><p><br></p>",
       "parentCategory": "Fitness Blog",
       "subCategory": "yoga",
-      "authorId": "14",
-      "author": "jay Prajapati",
-      "comments": [],
-      "likes": 0,
-      "published": "10/04/2024",
-      "savedBy": []
-    },
-    {
-      "id": "d4ec",
-      "title": "My own five steps for getting into something new search",
-      "briefDescription": "My own five steps for getting into something new",
-      "detailedBlog": "<h1><strong>My own five steps for getting into something new</strong></h1><h1><strong>My own five steps for getting into something new</strong></h1><h1><strong>My own five steps for getting into something new</strong></h1><h1><strong>My own five steps for getting into something new</strong></h1><h1><strong>My own five steps for getting into something new</strong></h1><h1><strong>My own five steps for getting into something new</strong></h1><p><br></p>",
-      "parentCategory": "Educational Blog",
-      "subCategory": "",
       "authorId": "14",
       "author": "jay Prajapati",
       "comments": [],
@@ -207,11 +179,9 @@
         "0e0a",
         "df2d",
         "a0b1",
-        "e9a1",
         "b934",
         "8cd1",
-        "789b",
-        "d4ec"
+        "789b"
       ]
     }
   ],
@@ -268,7 +238,7 @@
       "name": "Blogify SubTeam",
       "email": "subadmin6@gmail.com",
       "password": "SubAdmin@123",
-      "parentCategory": "AI Blog",
+      "parentCategory": "Financial Blog",
       "bio": "",
       "subCategories": [],
       "savedBlogs": [],
@@ -301,7 +271,7 @@
       "name": "Blogify SubTeam",
       "email": "subadmin10@gmail.com",
       "password": "SubAdmin@123",
-      "parentCategory": "Food Blog",
+      "parentCategory": "Financial Blog",
       "bio": "",
       "subCategories": [],
       "savedBlogs": [],
@@ -312,9 +282,12 @@
       "name": "Blogify SubTeam",
       "email": "subadmin7@gmail.com",
       "password": "SubAdmin@123",
-      "parentCategory": "Sports Blog",
+      "parentCategory": "Political Blogs",
       "bio": "",
-      "subCategories": [],
+      "subCategories": [
+        "BJP",
+        "NDA"
+      ],
       "savedBlogs": [],
       "publishedBlogs": []
     }
@@ -340,11 +313,6 @@
       ]
     },
     {
-      "id": "6976",
-      "parentCategory": "AI Blog",
-      "subCategories": []
-    },
-    {
       "id": "da8d",
       "parentCategory": "Educational Blog",
       "subCategories": []
@@ -355,14 +323,12 @@
       "subCategories": []
     },
     {
-      "id": "86b4",
-      "parentCategory": "Sports Blog",
-      "subCategories": []
-    },
-    {
       "id": "36d3",
       "parentCategory": "Political Blogs",
-      "subCategories": []
+      "subCategories": [
+        "BJP",
+        "NDA"
+      ]
     }
   ]
 }

@@ -9,8 +9,8 @@ import React from 'react';
 
 const DeleteSubAdmin = ({ subAdmin, subAdmins, setSubAdmins }) => {
   const dispatch = useDispatch();
+  
   const handleDelete = async () => {
-
     dispatch(setLoader(true));
     try {
       const { success, error } = await deleteSubAdmin(subAdmin.id);
@@ -43,6 +43,7 @@ const DeleteSubAdmin = ({ subAdmin, subAdmins, setSubAdmins }) => {
       dispatch(setLoader(false));
     }
   };
+
   return (
     <DeleteWithModal
       title='Are you Sure ?'

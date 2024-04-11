@@ -66,21 +66,22 @@ const Write = () => {
       savedBy: [],
     };
 
-    const { data, error } = await postBlog(blogToPost);
-    if (error) {
+    try {
+      const { data } = await postBlog(blogToPost);
+      currentUser.publishedBlogs.push(data.id);
+      await updateUser(currentUser.id, endPoint, {
+        publishedBlogs: currentUser.publishedBlogs,
+      });
+      toast.success('Blog published Successfully');
+      navigate('/stories');
+      dispatch(setAuth(role, currentUser));
+    } catch ({error}) {
       toast.error(`Error : ${error}`);
     }
-    toast.success('Blog published Successfully');
-    currentUser.publishedBlogs.push(data.id);
-    const res = await updateUser(currentUser.id, endPoint, {
-      publishedBlogs: currentUser.publishedBlogs,
-    });
-    navigate('/stories');
-    dispatch(setAuth(role, currentUser));
   };
 
   useEffect(() => {
-    if (window.innerWidth < 920) {
+    if (window.innerWidth < 800) {
       navigate('/no-editor');
     }
   }, []);
@@ -130,7 +131,7 @@ const Write = () => {
               <Preview blog={blog}>
                 <Button
                   size='icon'
-                  className='rounded-full size-10'
+                  className='rounded-full size-10 disabled:cursor-none'
                   disabled={!blog.title || !blog.briefDescription}
                 >
                   <Eye />

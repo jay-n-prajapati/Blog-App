@@ -3,7 +3,6 @@ import Form from '@/components/common/Form';
 import { Button } from '@/components/ui/button';
 import InputWithLabel from '@/components/common/InputWithLabel';
 import { useFormik } from 'formik';
-import * as yup from 'yup';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -20,11 +19,9 @@ import { setAuth } from '@/redux/actions/authActions';
 import { setLoader } from '@/redux/actions/appActions';
 import { Loader2 } from 'lucide-react';
 import HelmetHeader from '@/components/common/HelmetHeader';
+import { signinSchema } from '@/utils/Constants/constants';
 
-const signinSchema = yup.object({
-  email: yup.string().email().required('* email is required').trim(),
-  password: yup.string().required('* required').trim(),
-});
+
 const options = [
   { label: 'User', value: 'user' },
   { label: 'Admin', value: 'admin' },
@@ -52,7 +49,6 @@ const Signin = ({ setContent }) => {
     if (role === 'user') {
       dispatch(setLoader(true));
       const {data:user} = await findUser('users', values.email);
-      console.log(user);
       if (user.length === 0) {
         toast.warn('User Not exist , Please Signup');
         handleReset();

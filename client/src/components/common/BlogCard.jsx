@@ -6,6 +6,7 @@ import SaveButton from './SaveButton';
 const BlogCard = ({ blog, children }) => {
   const { id, title, briefDescription, author, parentCategory, subCategory, published } = blog;
   const navigate = useNavigate();
+  
   const handleClick = () => {
     navigate(`/blog/${id}`);
   };

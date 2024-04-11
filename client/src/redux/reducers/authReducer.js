@@ -1,6 +1,5 @@
 import { REMOVE_AUTH, SET_AUTH } from "../actions/authActions";
 
-
 const initialState = {
   isAuth: false,
   admin : null,

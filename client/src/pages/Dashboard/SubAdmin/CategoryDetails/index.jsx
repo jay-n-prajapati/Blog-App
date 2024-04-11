@@ -5,7 +5,6 @@ import DataTable from '@/components/common/DataTable';
 import { ArrowDownUp } from 'lucide-react';
 import useRole from '@/utils/custom-hooks/useRole';
 
-
 import {
   Select,
   SelectContent,
@@ -29,6 +28,15 @@ const CategoryDetails = () => {
         </div>
       ),
       accessorKey: 'parentCategory',
+      cell: ({ row }) => (
+        <div className='w-fit p-2 rounded mx-auto'>
+          {row.original.parentCategory ? (
+            row.original.parentCategory
+          ) : (
+            <strong>Not Assigned</strong>
+          )}
+        </div>
+      ),
     },
     {
       header: (

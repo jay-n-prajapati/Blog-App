@@ -10,7 +10,6 @@ import {
   DialogDescription,
 } from '@/components/ui/dialog';
 import { useFormik } from 'formik';
-import * as yup from 'yup';
 import { useSelector, useDispatch } from 'react-redux';
 import { Loader2 } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
@@ -33,29 +32,9 @@ import { toast } from 'react-toastify';
 import { setLoader } from '@/redux/actions/appActions';
 import PropTypes from 'prop-types';
 import { TagsInput } from 'react-tag-input-component';
+import { AddEditSubAdminSchema } from '@/utils/Constants/constants';
 
-const passwordRules = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{4,}$/;
-const Schema = yup.object({
-  name: yup
-    .string()
-    .required('* required')
-    .min(2, '* must contain atleast 2 characters')
-    .max(25, '* must not contain more than 25 characters')
-    .trim(),
-  email: yup.string().email().required('* email is required').trim(),
-  password: yup
-    .string()
-    .required('* required')
-    .matches(
-      passwordRules,
-      '* Password must contain 1 UpperCase, 1 Lowercase, 1 special characters and 1 number',
-    ),
-  cpassword: yup
-    .string()
-    .required('* required')
-    .oneOf([yup.ref('password')], '* Passwords must match'),
-  parentCategory: yup.string().required('* required'),
-});
+
 
 const AddEditSubAdmin = ({
   children,
@@ -90,7 +69,7 @@ const AddEditSubAdmin = ({
           parentCategory: '',
           subCategories: [],
         },
-    validationSchema: Schema,
+    validationSchema: AddEditSubAdminSchema,
     onSubmit: isEditMode ? onEditSubmit : onAddSubmit,
   });
 
@@ -256,7 +235,11 @@ const AddEditSubAdmin = ({
               >
                 <SelectTrigger className='w-full mb-2 text-primary-text text-[12px] md:text-sm'>
                   <SelectValue
-                    placeholder={isEditMode ? values.parentCategory : `Select Category to Assign`}
+                    placeholder={
+                      isEditMode && values.parentCategory
+                        ? values.parentCategory
+                        : `Select Category to Assign`
+                    }
                   />
                 </SelectTrigger>
                 <SelectContent>

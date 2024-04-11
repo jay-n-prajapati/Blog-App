@@ -1,14 +1,12 @@
-import React from "react";
-import Navbar from "./Navbar";
-import {Outlet} from "react-router-dom";
-import Footer from "./Footer";
+import Navbar from './Navbar';
+import { Outlet } from 'react-router-dom';
+import Footer from './Footer';
 
 const Layout = () => {
-  
   return (
     <>
       <Navbar />
-      <div className="min-h-[95vh]">
+      <div className='min-h-[92vh]'>
         <Outlet />
       </div>
       <Footer />
