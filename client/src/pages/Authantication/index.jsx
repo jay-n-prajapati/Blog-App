@@ -33,7 +33,7 @@ const Auth = ({ children, formType = '', defaultOpen = false }) => {
       <DialogTrigger asChild>{children}</DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle className='text-center text-3xl font-sohne-light'>
+          <DialogTitle className='text-center text-xl sm:text-2xl md:text-3xl font-sohne-light'>
             {content === 'signup' ? 'Join Blogify.' : 'Welcome Back.'}
           </DialogTitle>
           <DialogDescription className='text-center text-primary-text text-[14px]'>
