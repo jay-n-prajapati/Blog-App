@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { getSingleCategories, getSpecificCategoryBlogs } from '@/utils/axios-instance';
 import useSearch from '@/utils/custom-hooks/useSearch';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { NavLink, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
@@ -11,12 +11,11 @@ const SpecificBlogs = () => {
   const { category } = useParams();
   const [blogs, setBlogs] = useState([]);
   const [subCategories, setSubCategories] = useState([]);
-  const { filteredData, searchQuery, setSearchQuery } = useSearch(blogs, [
-    'title',
-    'briefDescription',
-    'parentCategory',
-    'subCategory',
-  ]);
+  const fieldsToSearch = useMemo(
+    () => ['title', 'briefDescription', 'parentCategory', 'subCategory'],
+    [],
+  );
+  const { filteredData, searchQuery, setSearchQuery } = useSearch(blogs, fieldsToSearch);
 
   const fetchSpecificBlogs = async () => {
     try {

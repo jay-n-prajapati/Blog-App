@@ -6,19 +6,17 @@ import { Input } from '@/components/ui/input';
 import { getUsersBlogs } from '@/utils/axios-instance';
 import useRole from '@/utils/custom-hooks/useRole';
 import useSearch from '@/utils/custom-hooks/useSearch';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { NavLink } from 'react-router-dom';
-
 
 const Story = () => {
   const { currentUser } = useRole();
   const [userBlogs, setUserBlogs] = useState([]);
-  const { filteredData, searchQuery, setSearchQuery } = useSearch(userBlogs, [
-    'title',
-    'briefDescription',
-    'parentCategory',
-    'subCategory',
-  ]);
+  const fieldsToSearch = useMemo(
+    () => ['title', 'briefDescription', 'parentCategory', 'subCategory'],
+    [],
+  );
+  const { filteredData, searchQuery, setSearchQuery } = useSearch(userBlogs, fieldsToSearch);
 
   const fetchUserBlogs = async () => {
     const { success, data, error } = await getUsersBlogs(currentUser.id);

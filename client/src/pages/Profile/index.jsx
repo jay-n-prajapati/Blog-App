@@ -14,15 +14,15 @@ const Profile = () => {
     <HelmetHeader title='Profile' />
     <div className='p-4 px-6 min-h-[85vh] flex items-center justify-center'>
       <div className='flex w-full'>
-        <div className='w-1/2 p-6 hidden md:block m-auto'>
+        <div className='w-1/2 p-12 hidden md:block m-auto'>
           <img src='/images/profile-img.gif' alt='profile placeholder' className='w-full' />
         </div>
         <div className='w-full md:w-1/2 md:px-16 flex items-center'>
           <div className='flex flex-col gap-5 w-full'>
             <div>
-              <CommonAvatar userName={currentUser.name} className='size-16 cursor-default' />
-              <p className='text-2xl font-bold mt-2'>{currentUser.name}</p>
-              <p className='text-primary-text text-xs'>{currentUser.email}</p>
+              <CommonAvatar userName={currentUser.name} className=' size-14 sm:size-14 md:size-16 cursor-default' />
+              <p className='text-2xl sm:text-3xl font-bold mt-2'>{currentUser.name}</p>
+              <p className='text-primary-text text-xs sm:text-sm'>{currentUser.email}</p>
               {currentUser.bio && (
                 <div className='mt-2'>
                   <p className='text-lg font-bold'>Bio :</p>
@@ -46,7 +46,7 @@ const Profile = () => {
             </div>
             <div>
               <EditProfileDialog open={open} setOpen={setOpen}>
-                <Button onClick={() => setOpen(true)}>Edit Profile</Button>
+                <Button size='sm' onClick={() => setOpen(true)}>Edit Profile</Button>
               </EditProfileDialog>
             </div>
           </div>
