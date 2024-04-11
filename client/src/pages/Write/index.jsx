@@ -15,6 +15,8 @@ import useRole from '@/utils/custom-hooks/useRole';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setAuth } from '@/redux/actions/authActions';
+import { Eye } from 'lucide-react';
+import Preview from './Preview';
 
 const Write = () => {
   const [categories, setCategories] = useState([]);
@@ -88,7 +90,7 @@ const Write = () => {
   }, []);
 
   return (
-    <div className='p-2'>
+    <div className='p-2 relative'>
       <Form handleSubmit={handleSubmit}>
         <Editor blog={blog} setBlog={setBlog} />
         <div>
@@ -120,10 +122,21 @@ const Write = () => {
               </Select>
             ) : null}
           </div>
-          <div>
+          <div className='flex justify-between'>
             <Button size='lg' type='submit' className='rounded-3xl'>
               Publish
             </Button>
+            <div>
+              <Preview blog={blog}>
+                <Button
+                  size='icon'
+                  className='rounded-full size-10'
+                  disabled={!blog.title || blog.briefDescription}
+                >
+                  <Eye />
+                </Button>
+              </Preview>
+            </div>
           </div>
         </div>
       </Form>

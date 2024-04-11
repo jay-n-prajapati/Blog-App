@@ -16,7 +16,7 @@ const Editor = ({ blog, setBlog }) => {
         <div>
           <h1 className='text-primary-text font-sohne-regular text-2xl mb-2'>Blog Title</h1>
           <Input
-            placeholder='write brief description..'
+            placeholder='write title..'
             className='text-lg'
             onChange={(e) => setBlog({ ...blog, title: e.target.value })}
           />
